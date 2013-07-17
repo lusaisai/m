@@ -52,7 +52,7 @@ $(document).ready(function(){
 	}, [
 	], {
 		swfPath: "js",
-		supplied: "oga, mp3",
+		supplied: "mp3",
 		wmode: "window",
 		smoothPlayBar: true,
 		keyEnabled: true
