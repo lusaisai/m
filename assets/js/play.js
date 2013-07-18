@@ -7,6 +7,7 @@ var play = function(data) {
             },[], {playlistOptions: {enableRemoveControls: true}});
             myPlaylist.setPlaylist(data);
             myPlaylist.play();
+            $("body").animate({ scrollTop: 0 }, "slow");
  };
 
 function randomPlay() {
@@ -18,7 +19,7 @@ function randomPlay() {
 function albumPlay() {
     $('.album-play').click(function(){
         var id = $(this).attr('album_id');
-        $.getJSON( '/mv/tool/playAlbum.php', { album_id: id }, play);
+        $.getJSON( base + 'playutils/albumplay/' + id, play);
     });
 }
 

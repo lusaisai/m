@@ -4,10 +4,10 @@ namespace app\controllers;
 
 use \mako\View;
 
-class Index extends \mako\Controller
+class Home extends \mako\Controller
 {
 	public function action_index()
 	{
-		return new View('index');
+		return new View('home.index');
 	}
 }

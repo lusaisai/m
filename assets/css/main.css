@@ -1,0 +1,23 @@
+/* 
+    Document   : main
+    Created on : Jul 18, 2013, 11:00:07 PM
+    Author     : lusaisai
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.album-image {
+    overflow:hidden;
+    max-width:620px;
+    height:400px;
+    position:relative;
+    margin-bottom: 5px;
+}
+
+.album {
+    margin-bottom: 60px;
+}
