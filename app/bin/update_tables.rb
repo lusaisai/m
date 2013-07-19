@@ -15,12 +15,24 @@ class UpdateTables
      @password = password
      @client = Mysql2::Client.new(:username => @username, :password => @password, :database => @database )
      stageTableClean
+     sync_auto_incre
   end
   
   # This method cleans up working tables
   def stageTableClean
      tables = [ "artist_new", "artist_w", "album_new", "album_w", "song_new", "song_w", "image_new", "image_w" ]
      tables.each { |x| @client.query "delete from #{x}" }
+  end
+  
+  def sync_auto_incre
+    tables = [ "artist", "album", "song", "image" ]
+    tables.each do |x|
+      rs = @client.query "select coalesce( max(id) + 1, 1 ) as cnt from #{x}"
+      rs.each do |row|
+        count = row["cnt"]
+        @client.query "ALTER TABLE #{x}_new AUTO_INCREMENT = #{count}"
+      end
+    end
   end
   
   # This method inserts data into the artist new table

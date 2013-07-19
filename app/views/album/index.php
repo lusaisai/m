@@ -4,17 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>My Music Station</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <?php
-        Assets::add('jquery', '/js/jquery-1.10.2.min.js');
-        Assets::add('jplayer-skin', '/jplayer/skin/pink.flag/jplayer.pink.flag.css');
-        Assets::add('jplayer', '/jplayer/js/jquery.jplayer.min.js');
-        Assets::add('jplayer-playlist', '/jplayer/js/jplayer.playlist.min.js');
-        Assets::add('bootstrap-css', '/bootstrap/css/bootstrap.min.css');
-        
-        Assets::add('play-js', '/js/play.js');
-        Assets::add('main-css', '/css/main.css');
-        echo Assets::all();
-        ?>
+        <?php include dirname(__FILE__) . '/../assets.php';?>
     </head>
     <body>
         <div class="container">
@@ -44,11 +34,14 @@
                     }
                     
                     // the pagination
-                    $toalPages = $count / $limit + 1;
+                    $prevPageId = $pageid - 1;
+                    $nextPageId = $pageid + 1;
+                    $toalPages = ceil($count / $limit);
                     $startid = $pageid - 5 > 1 ? $pageid - 5 : 1;
                     $endid = $pageid + 4 < $toalPages ? $pageid + 4 : $toalPages;
                     
                     echo '<div class="pagination"><ul>';
+                    if ( $prevPageId > 0 ) echo "<li><a href='" . URL::to("album/index/$prevPageId" ) . "'>Prev</a></li>";
                     for( $i = $startid; $i <= $endid; $i++ ) {
                         if ( $i == $pageid ) {
                             echo "<li class='active'><a href='" . URL::to("album/index/$i" ) . "'>$i</a></li>";
@@ -56,6 +49,7 @@
                             echo "<li><a href='" . URL::to("album/index/$i" ) . "'>$i</a></li>";
                         }
                     }
+                    if ( $nextPageId <= $toalPages ) echo "<li><a href='" . URL::to("album/index/$nextPageId" ) . "'>Next</a></li>";
                     echo '</ul></div>';
                     ?>
                 </div>

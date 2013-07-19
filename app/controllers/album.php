@@ -13,7 +13,7 @@ class Album extends \mako\Controller
             $offset = ($pageid - 1) * 5;
             $data = array();
             
-            $query = "select id from album limit $offset, $limit";
+            $query = "select id from album order by id desc limit $offset, $limit";
             $albumIds = Database::all($query);
             
             foreach ($albumIds as $albumId) {
