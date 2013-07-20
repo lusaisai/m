@@ -38,6 +38,20 @@ class Playutils extends \mako\Controller {
         return $this->songJson( Database::query($query) );
     }
     
+    public function action_songplay($songs) {
+        $query = "select
+            s.name as song_name, al.name as album_name, ar.name as artist_name
+            from song s
+            join album al
+            on   s.album_id = al.id
+            join artist ar
+            on   al.artist_id = ar.id
+            where s.id in ( $songs )
+            ";
+        $this->response->type('application/json');
+        return $this->songJson( Database::query($query) );
+    }
+    
     private function songJson($rows) {
         $song_array = array();
         

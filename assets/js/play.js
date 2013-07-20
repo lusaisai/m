@@ -18,13 +18,28 @@ function randomPlay() {
 
 function albumPlay() {
     $('.album-play').click(function(){
-        var id = $(this).attr('album_id');
-        $.getJSON( base + 'playutils/albumplay/' + id, play);
+        var songs = new Array();
+        
+        $(this).parent().parent().find("input").each(function(){
+            if ( this.checked ){
+                songs.push($(this).attr('value'));
+            }
+        });
+        
+        $.getJSON( base + 'playutils/songplay/' + songs.join(","), play);
+    });
+}
+
+function songListToggle() {
+    $(".songs").slideToggle('slow');
+    $(".song-list").click(function(){
+        $(this).parent().prev().slideToggle('slow');
     });
 }
 
 
 $(function(){
+    songListToggle();
     randomPlay();
     albumPlay();
 });

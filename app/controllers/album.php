@@ -45,7 +45,15 @@ class Album extends \mako\Controller
             limit 1
             ";
             $image = Database::column($query);
-            return array( 'id' => $albumId, 'artist_name'=>$artist_name, 'album_name'=>$album_name, 'image'=>$image );
+            
+            $songs = array();
+            $query = "select id, name from song where album_id = $albumId";
+            $songrows = Database::all($query);
+            foreach( $songrows as $songrow ) {
+                array_push($songs, array( 'id'=>$songrow->id, 'name'=>$songrow->name ));
+            }
+            
+            return array( 'id' => $albumId, 'artist_name'=>$artist_name, 'album_name'=>$album_name, 'image'=>$image, 'songs'=>$songs );
         }
         
         

@@ -25,11 +25,23 @@
                         $albumName = $album['album_name'];
                         $artistName = $album['artist_name'];
                         $image = $album['image'];
+                        $songs = $album['songs'];
                         
                         echo "<div id='{$albumId}' class='album'>";
                         echo "<blockquote><p>{$albumName}</p><small>{$artistName}</small></blockquote>";
-                        echo "<div><img src='/music/{$artistName}/{$albumName}/{$image}' class='album-image'></img></div>";
-                        echo "<button album_id='{$albumId}' class='btn btn-primary album-play' type='button'>Play!</button>";
+                        echo "<div><img src='/music/{$artistName}/{$albumName}/{$image}' class='img-rounded album-image'></img></div>";
+                        echo "<div class='songs'>";
+                        foreach( $songs as $song ) {
+                            echo '<label class="checkbox">';
+                            echo "<input type='checkbox' checked='checked' value='{$song['id']}'>";
+                            echo $song['name'];
+                            echo "</label>";
+                        }
+                        echo "</div>";
+                        echo '<div class="btn-group">';
+                        echo '<button class="btn btn-primary song-list"><i class="icon-list icon-white"></i></button>';
+                        echo "<button album_id='{$albumId}' class='btn btn-primary album-play' type='button'><i class='icon-music icon-white'></i> Play</button>";
+                        echo "</div>";
                         echo "</div>";
                     }
                     
