@@ -108,9 +108,7 @@ artist_id integer,
 album_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
-primary key (id),
-constraint foreign key (artist_id) references artist_new(id) ON DELETE CASCADE,
-constraint foreign key (album_id) references album_new(id) ON DELETE CASCADE
+primary key (id)
 )
 char set utf8
 ;

@@ -13,7 +13,7 @@ root {
 .album-image {
     overflow:hidden;
     max-width:620px;
-    height:400px;
+    max-height:400px;
     position:relative;
     margin-bottom: 5px;
 }

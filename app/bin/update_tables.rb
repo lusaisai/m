@@ -104,6 +104,7 @@ class UpdateTables
     left join image t
     on   w.name = t.name
     and  a.id = t.artist_id
+    and  t.album_id is null
     where w.album_name is null
     EOF
     @client.query query
