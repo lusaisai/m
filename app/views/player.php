@@ -66,29 +66,47 @@ $(document).ready(function(){
      
     var base = "/m/index.php/";
 
-    var play = function(data) { 
-        myPlaylist.setPlaylist(data);
-        myPlaylist.play();
-        $("body").animate({ scrollTop: 0 }, "slow");
+    var play = function(info) { 
+        return function(data){
+            myPlaylist.setPlaylist(data);
+            myPlaylist.play();
+            $("body").animate({ scrollTop: 0 }, "slow", function(){
+                var JInfo = $("<div class='alert alert-success'> Now playing " + info + " ...</div>");
+                var JBox = $('#info');
+                JBox.empty();
+                JInfo.hide().appendTo(JBox).show('slow');
+            });
+        };
     };
-
-    function randomPlay() {
+    
+    var add = function(data) {
+        myPlaylist.add(data[0]);
+    };
+    
+    function plays(){
         $('#rplay').click(function(){
-            $.getJSON( base + 'playutils/randomplay', play);
+            $.getJSON( base + 'playutils/randomplay', play("randomly"));
         });
-    }
-
-    function albumPlay() {
+        
         $('.album-play').click(function(){
             var songs = new Array();
 
             $(this).parent().parent().find("input").each(function(){
                 if ( this.checked ){
-                    songs.push($(this).attr('value'));
+                    songs.push($(this).attr('songid'));
                 }
             });
-
-            $.getJSON( base + 'playutils/songplay/' + songs.join(","), play);
+            
+            var albumName = $(this).parent().parent().find("blockquote p").first().text();
+            $.getJSON( base + 'playutils/songplay/' + songs.join(","), play("album " + albumName));
+        });
+        
+        $(".song-play").click(function(){
+            $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), play("song " + $(this).attr('songname')));
+        });
+        
+        $(".song-add").click(function(){
+            $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), add);
         });
     }
 
@@ -101,8 +119,7 @@ $(document).ready(function(){
 
     function run() {
         songListToggle();
-        randomPlay();
-        albumPlay();    
+        plays();   
     }
     
     run();

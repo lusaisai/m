@@ -19,6 +19,7 @@
                     <?php include dirname(__FILE__).'/../player.php'; ?>
                 </div>
                 <div class="span8">
+                    <div id="info"></div>
                     <button id="rplay" class="btn btn-primary" type="button">Play!</button>
                 </div>
             </div>

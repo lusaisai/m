@@ -19,6 +19,7 @@
                     <?php include dirname(__FILE__).'/../player.php'; ?>
                 </div>
                 <div class="span8">
+                    <div id="info"></div>
                     <?php 
                     foreach( $data as $album ) {
                         $albumId = $album['id'];
@@ -31,12 +32,20 @@
                         echo "<blockquote><p>{$albumName}</p><small>{$artistName}</small></blockquote>";
                         echo "<div><img src='/music/{$artistName}/{$albumName}/{$image}' class='img-rounded album-image'></img></div>";
                         echo "<div class='songs'>";
+                        echo "<table class='table table-bordered table-hover'>";
                         foreach( $songs as $song ) {
+                            echo "<tr>";
+                            echo "<td>";
                             echo '<label class="checkbox">';
-                            echo "<input type='checkbox' checked='checked' value='{$song['id']}'>";
+                            echo "<input type='checkbox' checked='checked' songid='{$song['id']}'>";
                             echo $song['name'];
                             echo "</label>";
+                            echo "</td>";
+                            echo "<td style='text-align:center'><button class='btn btn-mini song-play' type='button' songid='{$song['id']}' songname='{$song['name']}'><i class='icon-headphones'></i></button></td>";
+                            echo "<td style='text-align:center'><button class='btn btn-mini song-add' type='button' songid='{$song['id']}'><i class='icon-plus'></i></button></td>";
+                            echo "</tr>";
                         }
+                        echo "</table>";
                         echo "</div>";
                         echo '<div class="btn-group">';
                         echo '<button class="btn btn-primary song-list"><i class="icon-list icon-white"></i></button>';
