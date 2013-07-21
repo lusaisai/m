@@ -45,18 +45,67 @@
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function(){
+    var myPlaylist = new jPlayerPlaylist(
+            {
+                jPlayer: "#jquery_jplayer_1",
+                cssSelectorAncestor: "#jp_container_1"
+            }, [], 
+            {
+                swfPath: "/m/assets/jplayer/js",
+                supplied: "mp3",
+                wmode: "window",
+                smoothPlayBar: true,
+                keyEnabled: true,
+                volume: 1,
+                playlistOptions: {
+                    autoPlay: true,
+                    enableRemoveControls: true
+                }
+            }
+    );
+     
+    var base = "/m/index.php/";
 
-	new jPlayerPlaylist({
-		jPlayer: "#jquery_jplayer_1",
-		cssSelectorAncestor: "#jp_container_1"
-	}, [
-	], {
-		swfPath: "/m/assets/jplayer/js",
-		supplied: "mp3",
-		wmode: "window",
-		smoothPlayBar: true,
-		keyEnabled: true
-	});
+    var play = function(data) { 
+        myPlaylist.setPlaylist(data);
+        myPlaylist.play();
+        $("body").animate({ scrollTop: 0 }, "slow");
+    };
+
+    function randomPlay() {
+        $('#rplay').click(function(){
+            $.getJSON( base + 'playutils/randomplay', play);
+        });
+    }
+
+    function albumPlay() {
+        $('.album-play').click(function(){
+            var songs = new Array();
+
+            $(this).parent().parent().find("input").each(function(){
+                if ( this.checked ){
+                    songs.push($(this).attr('value'));
+                }
+            });
+
+            $.getJSON( base + 'playutils/songplay/' + songs.join(","), play);
+        });
+    }
+
+    function songListToggle() {
+        $(".songs").slideToggle('slow');
+        $(".song-list").click(function(){
+            $(this).parent().prev().slideToggle('slow');
+        });
+    }
+
+    function run() {
+        songListToggle();
+        randomPlay();
+        albumPlay();    
+    }
+    
+    run();
 });
 //]]>
 </script>
