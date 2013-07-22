@@ -19,6 +19,17 @@
                     <?php include dirname(__FILE__).'/../player.php'; ?>
                 </div>
                 <div class="span8">
+                    <div id="searching">
+                        <form class="form-search" action="<?php echo URL::to("album/index/$pageid"); ?>" method="get">
+                            <input name="words" type="text" value="<?php if(isset($_GET['words'])) echo $_GET['words'];?>" class="input-xlarge" placeholder="品冠">
+                        <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
+                        <select name="type" style="width:120px">
+                            <option value="artistname">Artist Name</option>
+                            <option value="albumname">Album Name</option>
+                            <option value="songname">Song Name</option>
+                        </select>
+                    </form>
+                    </div>
                     <div id="info"></div>
                     <?php 
                     foreach( $data as $album ) {
@@ -62,15 +73,21 @@
                     $endid = $pageid + 4 < $toalPages ? $pageid + 4 : $toalPages;
                     
                     echo '<div class="pagination"><ul>';
-                    if ( $prevPageId > 0 ) echo "<li><a href='" . URL::to("album/index/$prevPageId" ) . "'>Prev</a></li>";
+                    if ( $startid > 1 ) {
+                        echo "<li><a href='" . URL::to("album/index/1", $_GET ) . "'>First</a></li>";
+                        echo "<li><a>...</a></li>";
+                    }
                     for( $i = $startid; $i <= $endid; $i++ ) {
                         if ( $i == $pageid ) {
-                            echo "<li class='active'><a href='" . URL::to("album/index/$i" ) . "'>$i</a></li>";
+                            echo "<li class='active'><a href='" . URL::to("album/index/$i", $_GET ) . "'>$i</a></li>";
                         } else {
-                            echo "<li><a href='" . URL::to("album/index/$i" ) . "'>$i</a></li>";
+                            echo "<li><a href='" . URL::to("album/index/$i", $_GET ) . "'>$i</a></li>";
                         }
                     }
-                    if ( $nextPageId <= $toalPages ) echo "<li><a href='" . URL::to("album/index/$nextPageId" ) . "'>Next</a></li>";
+                    if ( $endid < $toalPages ) {
+                        echo "<li><a>...</a></li>";
+                        echo "<li><a href='" . URL::to("album/index/$toalPages", $_GET ) . "'>Last</a></li>";
+                    }
                     echo '</ul></div>';
                     ?>
                 </div>

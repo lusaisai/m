@@ -8,21 +8,54 @@ class Album extends \mako\Controller
 {
 	public function action_index($pageid = 1)
 	{
-            $count = Database::column("select count(*) from album");
-            $limit = 5;
-            $offset = ($pageid - 1) * 5;
+            $limit = 5;            
             $data = array();
             
-            $query = "select id from album order by id desc limit $offset, $limit";
-            $albumIds = Database::all($query);
+            $albumIds = $this->searchAlbums();
+            $count = count($albumIds);
+            $toalPages = ceil($count / $limit);
+            if($pageid > $toalPages) $pageid = 1;
+            $offset = ($pageid - 1) * 5;
+            $thisPageIds = array_slice($albumIds, $offset, $limit);
             
-            foreach ($albumIds as $albumId) {
-                array_push($data, $this->albumInfo($albumId->id));
+            foreach ($thisPageIds as $albumId) {
+                array_push($data, $this->albumInfo($albumId));
             }
 
             return new View('album.index', array( 'pageid'=>$pageid, 'count'=>$count, 'limit'=>$limit, 'data'=>$data));
 	}
         
+        private function searchAlbums(){
+            $words = isset($_GET['words']) ? Database::connection()->pdo->quote( '%'.trim($_GET['words']).'%' ) : "";
+            $type = isset($_GET['type']) ? trim($_GET['type']) : "artistname";
+            
+            if( $words == "" ){
+                $query = "select id from album order by id desc";
+            } elseif ( $type == "artistname" ) {    
+                $query = "select
+                al.id
+                from album al
+                join artist ar
+                on   al.artist_id = ar.id
+                where ar.name like $words
+                order by id desc
+                ";
+            }
+            
+            return $this->queryAlbumIds($query);   
+        }
+        
+        private function queryAlbumIds($query) {
+            $albumIds = array();
+            $albums = Database::all($query);
+            
+            foreach ($albums as $album) {
+                array_push($albumIds, $album->id);
+            }
+            return $albumIds;
+        }
+
+
         private function albumInfo($albumId) {
             $query = "select
             al.name as album_name, ar.name as artist_name

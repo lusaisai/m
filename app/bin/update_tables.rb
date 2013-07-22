@@ -1,19 +1,23 @@
 #! /usr/bin/ruby
 
-require 'mysql2'
+require 'mysql'
 
 class UpdateTables
   @@IMAGE_SUFFIXES = [ "jpg", "jpeg", "png" ]
-  @@MUSIC_SUFFIXES = [ "mp3", "ape", "flac", "m4a" ]
+  @@MUSIC_SUFFIXES = [ "mp3", "m4a" ]
   @@MUSIC_DIR = "/var/www/music"
-  #@@MUSIC_DIR = "/media/lusaisai/Collection/Music"
+  
+  attr_reader :client
   
   # The constuctor creates the client connection and clean up the working tables
   def initialize( database, username, password )
      @database = database
      @username = username
      @password = password
-     @client = Mysql2::Client.new(:username => @username, :password => @password, :database => @database )
+     @client = Mysql.init
+     @client.options(Mysql::SET_CHARSET_NAME, 'utf8')
+     @client.real_connect "localhost", @username, @password, @database
+     @client.autocommit false
      stageTableClean
      sync_auto_incre
   end
@@ -28,10 +32,7 @@ class UpdateTables
     tables = [ "artist", "album", "song", "image" ]
     tables.each do |x|
       rs = @client.query "select coalesce( max(id) + 1, 1 ) as cnt from #{x}"
-      rs.each do |row|
-        count = row["cnt"]
-        @client.query "ALTER TABLE #{x}_new AUTO_INCREMENT = #{count}"
-      end
+      @client.query "ALTER TABLE #{x}_new AUTO_INCREMENT = #{rs.fetch_row[0]}"
     end
   end
   
@@ -40,7 +41,7 @@ class UpdateTables
     Dir.foreach(@@MUSIC_DIR) do |artistName|
       next if ( artistName == "." || artistName == ".." )
       puts "Found #{artistName} ..."
-      @client.query "insert into artist_w (name) values( '#{@client.escape artistName}' )"
+      @client.query "insert into artist_w (name) values( '#{Mysql.escape_string artistName}' )"
     end
     
     query = <<-EOF
@@ -63,7 +64,7 @@ class UpdateTables
         next if ! File.directory? albumName
         next if ( albumName == "." || albumName == ".." )
         puts "Found #{albumName} from #{artistName} ..."
-        @client.query "insert into album_w (name, artist_name) values( '#{@client.escape albumName}', '#{@client.escape artistName}' )"
+        @client.query "insert into album_w (name, artist_name) values( '#{Mysql.escape_string albumName}', '#{Mysql.escape_string artistName}' )"
       end
       
     end
@@ -90,7 +91,7 @@ class UpdateTables
       Dir.foreach( "." ) do |imageName| # iterate thru images
         next if ! imageName.end_with? *@@IMAGE_SUFFIXES
         puts "Found #{imageName} from #{artistName} ..."
-        @client.query "insert into image_w (name, artist_name) values( '#{@client.escape imageName}', '#{@client.escape artistName}' )"
+        @client.query "insert into image_w (name, artist_name) values( '#{Mysql.escape_string imageName}', '#{Mysql.escape_string artistName}' )"
       end
       
     end
@@ -123,7 +124,7 @@ class UpdateTables
         Dir.foreach( albumName ) do |songName| # iterate thru songs
           next if ! songName.end_with? *@@MUSIC_SUFFIXES
 	      puts "Found #{songName} from #{albumName} from #{artistName} ..."
-          @client.query "insert into song_w (name, artist_name, album_name) values( '#{@client.escape songName}', '#{@client.escape artistName}', '#{@client.escape albumName}' )"      
+          @client.query "insert into song_w (name, artist_name, album_name) values( '#{Mysql.escape_string songName}', '#{Mysql.escape_string artistName}', '#{Mysql.escape_string albumName}' )"      
         end
         
         end
@@ -165,7 +166,7 @@ class UpdateTables
         Dir.foreach( albumName ) do |imageName| # iterate thru images
           next if ! imageName.end_with? *@@IMAGE_SUFFIXES
 	      puts "Found #{imageName} from #{albumName} from #{artistName} ..."
-          @client.query "insert into image_w (name, artist_name, album_name) values( '#{@client.escape imageName}', '#{@client.escape artistName}', '#{@client.escape albumName}' )"      
+          @client.query "insert into image_w (name, artist_name, album_name) values( '#{Mysql.escape_string imageName}', '#{Mysql.escape_string artistName}', '#{Mysql.escape_string albumName}' )"      
         end
         
         end
@@ -206,4 +207,5 @@ ut.insertArtistImageNew
 ut.insertAlbumNew
 ut.insertSongNew
 ut.insertAlbumImageNew
+ut.client.commit
 ut.rename

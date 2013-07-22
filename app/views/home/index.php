@@ -20,7 +20,7 @@
                 </div>
                 <div class="span8">
                     <div id="info"></div>
-                    <button id="rplay" class="btn btn-primary" type="button">Play!</button>
+                    <button id="rplay" class="btn btn-primary" type="button"><i class='icon-music icon-white'></i> Play</button>
                 </div>
             </div>
         </div>

@@ -51,7 +51,6 @@ $(document).ready(function(){
                 cssSelectorAncestor: "#jp_container_1"
             }, [], 
             {
-                swfPath: "/m/assets/jplayer/js",
                 supplied: "mp3",
                 wmode: "window",
                 smoothPlayBar: true,
