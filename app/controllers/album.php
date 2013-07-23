@@ -26,33 +26,73 @@ class Album extends \mako\Controller
 	}
         
         private function searchAlbums(){
-            $words = isset($_GET['words']) ? Database::connection()->pdo->quote( '%'.trim($_GET['words']).'%' ) : "";
+            $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : "";
             $type = isset($_GET['type']) ? trim($_GET['type']) : "artistname";
             
             if( $words == "" ){
                 $query = "select id from album order by id desc";
+                return $this->queryAlbumIds(array($query));   
             } elseif ( $type == "artistname" ) {    
                 $query = "select
                 al.id
                 from album al
                 join artist ar
                 on   al.artist_id = ar.id
-                where ar.name like $words
-                order by id desc
                 ";
+                $andQuery = $query . " where true ";
+                $orQuery = $query . " where false ";
+                
+                foreach( $words as $word ) {
+                    $word = Database::connection()->pdo->quote('%'.trim($word).'%');
+                    $andQuery .= " and ar.name like $word ";
+                    $orQuery .= " or ar.name like $word ";
+                }
+                $andQuery .= " order by id desc ";
+                $orQuery .= " order by id desc ";
+            } elseif ( $type == "albumname" ) {
+                $query = "select al.id from album al";
+                $andQuery = $query . " where true ";
+                $orQuery = $query . " where false ";
+                
+                foreach( $words as $word ) {
+                    $word = Database::connection()->pdo->quote('%'.trim($word).'%');
+                    $andQuery .= " and al.name like $word ";
+                    $orQuery .= " or al.name like $word ";
+                }
+                $andQuery .= " order by id desc ";
+                $orQuery .= " order by id desc ";
+            } elseif ( $type == "songname" ) {
+                $query = "select
+                al.id
+                from song s
+                join album al
+                on   s.album_id = al.id";
+                $andQuery = $query . " where true ";
+                $orQuery = $query . " where false ";
+                
+                foreach( $words as $word ) {
+                    $word = Database::connection()->pdo->quote('%'.trim($word).'%');
+                    $andQuery .= " and s.name like $word ";
+                    $orQuery .= " or s.name like $word ";
+                }
+                $andQuery .= " group by id order by id desc ";
+                $orQuery .= " group by id order by id desc ";
             }
             
-            return $this->queryAlbumIds($query);   
+            return $this->queryAlbumIds( array( $andQuery, $orQuery ) );
         }
         
-        private function queryAlbumIds($query) {
+        private function queryAlbumIds( $queries ) {
             $albumIds = array();
-            $albums = Database::all($query);
             
-            foreach ($albums as $album) {
-                array_push($albumIds, $album->id);
+            foreach( $queries as $query ) {
+                $albums = Database::all($query);
+                foreach ($albums as $album) {
+                    array_push($albumIds, $album->id);
+                }
             }
-            return $albumIds;
+
+            return array_unique($albumIds);
         }
 
 

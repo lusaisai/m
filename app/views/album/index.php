@@ -24,9 +24,9 @@
                             <input name="words" type="text" value="<?php if(isset($_GET['words'])) echo $_GET['words'];?>" class="input-xlarge" placeholder="品冠">
                         <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
                         <select name="type" style="width:120px">
-                            <option value="artistname">Artist Name</option>
-                            <option value="albumname">Album Name</option>
-                            <option value="songname">Song Name</option>
+                            <option value="artistname" <?php if( isset($_GET['type']) && $_GET['type'] == "artistname" ) echo 'selected="selected"'; ?> >Artist Name</option>
+                            <option value="albumname" <?php if( isset($_GET['type']) && $_GET['type'] == "albumname" ) echo 'selected="selected"'; ?>>Album Name</option>
+                            <option value="songname" <?php if( isset($_GET['type']) && $_GET['type'] == "songname" ) echo 'selected="selected"'; ?>>Song Name</option>
                         </select>
                     </form>
                     </div>
