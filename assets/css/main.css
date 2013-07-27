@@ -22,3 +22,7 @@ root {
 .album {
     margin-bottom: 60px;
 }
+
+.songs table {
+    margin-bottom: 0px;
+}

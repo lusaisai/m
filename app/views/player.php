@@ -107,6 +107,20 @@ $(document).ready(function(){
         $(".song-add").click(function(){
             $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), add);
         });
+        
+        $(".reverse-check").click(function(){
+            $(this).closest("div.songs").find("input[type='checkbox']").each(function(){
+                $(this).prop( "checked", !$(this).prop("checked") );
+            });
+        });
+        
+        $(".check-all").click(function(){
+            $(this).closest("div.songs").find("input[type='checkbox']").prop("checked", true);
+        });
+        
+        $(".uncheck-all").click(function(){
+            $(this).closest("div.songs").find("input[type='checkbox']").prop("checked", false);
+        });
     }
 
     function songListToggle() {

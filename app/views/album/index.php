@@ -57,6 +57,11 @@
                             echo "</tr>";
                         }
                         echo "</table>";
+                        echo '<div class="btn-group">';
+                        echo '<button class="btn reverse-check" type="button">Reverse Check</button>';
+                        echo '<button class="btn check-all" type="button">Check All</button>';
+                        echo '<button class="btn uncheck-all" type="button">Uncheck All</button>';
+                        echo "</div>";
                         echo "</div>";
                         echo '<div class="btn-group">';
                         echo '<button class="btn btn-primary song-list"><i class="icon-list icon-white"></i></button>';
