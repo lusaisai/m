@@ -8,6 +8,15 @@ class Album extends \mako\Controller
 {
 	public function action_index($pageid = 1)
 	{
+            return new View("album.index", $this->fetchData($pageid));
+	}
+        
+        public function action_load($pageid = 1)
+	{
+            return new View("album.data", $this->fetchData($pageid));
+	}
+        
+        private function fetchData($pageid = 1) {
             $limit = 5;            
             $data = array();
             
@@ -21,9 +30,9 @@ class Album extends \mako\Controller
             foreach ($thisPageIds as $albumId) {
                 array_push($data, $this->albumInfo($albumId));
             }
-
-            return new View('album.index', array( 'pageid'=>$pageid, 'count'=>$count, 'limit'=>$limit, 'data'=>$data));
-	}
+            
+            return array( 'pageid'=>$pageid, 'count'=>$count, 'limit'=>$limit, 'data'=>$data);
+        }
         
         private function searchAlbums(){
             $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : "";

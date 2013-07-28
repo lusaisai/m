@@ -63,7 +63,7 @@ $(document).ready(function(){
             }
     );
      
-    var base = "/m/index.php/";
+    var base = "/m/";
 
     var play = function(info) { 
         return function(data){
@@ -82,12 +82,24 @@ $(document).ready(function(){
         myPlaylist.add(data[0]);
     };
     
+    var reloadGif = function(){
+        $("#data").empty();
+        $("#data").append("<img src='" + base + "assets/img/ajax.gif'>");
+    };
+
+    var songListToggle = function () {
+        $(".songs").slideToggle('slow');
+        $(".song-list").click(function(){
+            $(this).parent().prev().slideToggle('slow');
+        });
+    };
+    
     function plays(){
         $('#rplay').click(function(){
             $.getJSON( base + 'playutils/randomplay', play("randomly"));
         });
         
-        $('.album-play').click(function(){
+        $("#data").on( 'click','.album-play', function(){
             var songs = new Array();
 
             $(this).parent().parent().find("input").each(function(){
@@ -100,40 +112,56 @@ $(document).ready(function(){
             $.getJSON( base + 'playutils/songplay/' + songs.join(","), play("album " + albumName));
         });
         
-        $(".song-play").click(function(){
+        $("#data").on( 'click','.song-play', function(){
             $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), play("song " + $(this).attr('songname')));
         });
         
-        $(".song-add").click(function(){
+        $("#data").on( 'click','.song-add', function(){
             $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), add);
         });
         
-        $(".reverse-check").click(function(){
+        $("#data").on( 'click','.reverse-check', function(){
             $(this).closest("div.songs").find("input[type='checkbox']").each(function(){
                 $(this).prop( "checked", !$(this).prop("checked") );
             });
         });
         
-        $(".check-all").click(function(){
+        $("#data").on( 'click','.check-all', function(){
             $(this).closest("div.songs").find("input[type='checkbox']").prop("checked", true);
         });
         
-        $(".uncheck-all").click(function(){
+        
+        $("#data").on( 'click','.uncheck-all', function(){
             $(this).closest("div.songs").find("input[type='checkbox']").prop("checked", false);
         });
-    }
-
-    function songListToggle() {
-        $(".songs").slideToggle('slow');
-        $(".song-list").click(function(){
-            $(this).parent().prev().slideToggle('slow');
+        
+        $("#data").on( 'click','.pagination a[pageid]', function(){
+            var pageid = $(this).attr("pageid");
+            var pagetype = $("#data").attr("pagetype");
+            
+            reloadGif();
+            $("#data").load( base + pagetype + "/load/" + pageid, $("#searching form").serialize(), function(){
+                songListToggle();
+                $("body").animate({ scrollTop: 0 }, "slow");
+            } );
+            
+        });
+        
+        $("#searching form").submit(function(){
+            var pagetype = $("#data").attr("pagetype");
+            reloadGif();
+            $("#data").load( base + pagetype + "/load", $("#searching form").serialize(), function(){
+                songListToggle();
+                $("body").animate({ scrollTop: 0 }, "slow");
+            } );
+            return false;
         });
     }
 
-    function run() {
+    var run= function () {
         songListToggle();
         plays();   
-    }
+    };
     
     run();
 });
