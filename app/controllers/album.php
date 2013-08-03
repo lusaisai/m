@@ -24,7 +24,7 @@ class Album extends \mako\Controller
             $count = count($albumIds);
             $toalPages = ceil($count / $limit);
             if($pageid > $toalPages) $pageid = 1;
-            $offset = ($pageid - 1) * 5;
+            $offset = ($pageid - 1) * $limit;
             $thisPageIds = array_slice($albumIds, $offset, $limit);
             
             foreach ($thisPageIds as $albumId) {

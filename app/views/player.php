@@ -51,7 +51,7 @@ $(document).ready(function(){
                 cssSelectorAncestor: "#jp_container_1"
             }, [], 
             {
-                supplied: "mp3",
+                supplied: "mp3,m4a",
                 wmode: "window",
                 smoothPlayBar: true,
                 keyEnabled: true,
@@ -88,7 +88,7 @@ $(document).ready(function(){
     };
 
     var songListToggle = function () {
-        $(".songs").slideToggle('slow');
+        $(".slide").slideToggle('slow');
         $(".song-list").click(function(){
             $(this).parent().prev().slideToggle('slow');
         });
@@ -109,7 +109,8 @@ $(document).ready(function(){
             });
             
             var albumName = $(this).parent().parent().find("blockquote p").first().text();
-            $.getJSON( base + 'playutils/songplay/' + songs.join(","), play("album " + albumName));
+            if ( albumName !== "" ) albumName = "album " + albumName;
+            $.getJSON( base + 'playutils/songplay/' + songs.join(","), play(albumName));
         });
         
         $("#data").on( 'click','.song-play', function(){
