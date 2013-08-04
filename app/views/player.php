@@ -68,7 +68,6 @@ $(document).ready(function(){
     var play = function(info) { 
         return function(data){
             myPlaylist.setPlaylist(data);
-            myPlaylist.play();
             $("body").animate({ scrollTop: 0 }, "slow", function(){
                 var JInfo = $("<div class='alert alert-success'> Now playing " + info + " ...</div>");
                 var JBox = $('#info');

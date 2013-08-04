@@ -10,7 +10,7 @@ foreach( $data as $album ) {
     echo "<blockquote><p>{$albumName}</p><small>{$artistName}</small></blockquote>";
     echo "<div><img src='/music/{$artistName}/{$albumName}/{$image}' class='img-rounded album-image'></img></div>";
     echo "<div class='slide songs'>";
-    echo "<table class='table table-bordered table-hover'>";
+    echo "<table class='table table-bordered table-hover table-condensed'>";
     foreach( $songs as $song ) {
         echo "<tr>";
         echo "<td>";

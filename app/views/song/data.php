@@ -1,7 +1,7 @@
 <?php 
     
 echo "<div class='songs'>";
-echo "<table class='table table-bordered table-hover'>";
+echo "<table class='table table-bordered table-hover table-condensed'>";
     
 foreach( $data as $song ) {
     $songId = $song['id'];
