@@ -16,7 +16,7 @@
             </ul>
             <div class="row">
                 <div class="span4">
-                    <?php include dirname(__FILE__).'/../player.php'; ?>
+                    <?php include dirname(__FILE__).'/../player.html'; ?>
                 </div>
                 <div class="span8">
                     <div id="searching">
@@ -35,7 +35,6 @@
                         <?php include 'data.php';?>
                     </div>
                 </div>
-                    
                 </div>
             </div>
         </div>

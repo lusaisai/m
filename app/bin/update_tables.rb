@@ -88,7 +88,7 @@ class UpdateTables
       Dir.chdir File.join( @@MUSIC_DIR, artistName )
       next if ( artistName == "." || artistName == ".." )
       
-      Dir.foreach( "." ) do |imageName| # iterate thru images
+      Dir.foreach( "." ) do |imageName| # iterate thru images 
         next if ! imageName.end_with? *@@IMAGE_SUFFIXES
         puts "Found #{imageName} from #{artistName} ..."
         @client.query "insert into image_w (name, artist_name) values( '#{Mysql.escape_string imageName}', '#{Mysql.escape_string artistName}' )"
