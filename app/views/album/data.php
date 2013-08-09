@@ -1,11 +1,11 @@
-<?php 
+<?php
 foreach( $data as $album ) {
     $albumId = $album['id'];
     $albumName = $album['album_name'];
     $artistName = $album['artist_name'];
     $image = $album['image'];
     $songs = $album['songs'];
-    
+
     echo "<div id='{$albumId}' class='album'>";
     echo "<blockquote><p>{$albumName}</p><small>{$artistName}</small></blockquote>";
     echo "<div><img src='/music/{$artistName}/{$albumName}/{$image}' class='img-rounded album-image'></img></div>";
@@ -19,7 +19,7 @@ foreach( $data as $album ) {
         echo $song['name'];
         echo "</label>";
         echo "</td>";
-        echo "<td style='text-align:center'><button class='btn btn-mini song-play' type='button' songid='{$song['id']}' songname='{$song['name']}'><i class='icon-headphones'></i></button></td>";
+        echo "<td style='text-align:center'><button class='btn btn-mini song-play' type='button' songid='{$song['id']}'><i class='icon-headphones'></i></button></td>";
         echo "<td style='text-align:center'><button class='btn btn-mini song-add' type='button' songid='{$song['id']}'><i class='icon-plus'></i></button></td>";
         echo "</tr>";
     }

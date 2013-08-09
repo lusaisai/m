@@ -1,8 +1,8 @@
-<?php 
-    
+<?php
+
 echo "<div class='songs'>";
 echo "<table class='table table-bordered table-hover table-condensed'>";
-    
+
 foreach( $data as $song ) {
     $songId = $song['id'];
     $songName = $song['song_name'];
@@ -18,7 +18,7 @@ foreach( $data as $song ) {
     echo "</td>";
     echo "<td>$artistName</td>";
     echo "<td>$albumName</td>";
-    echo "<td style='text-align:center'><button class='btn btn-mini song-play' type='button' songid='$songId' songname='$songName'><i class='icon-headphones'></i></button></td>";
+    echo "<td style='text-align:center'><button class='btn btn-mini song-play' type='button' songid='$songId'><i class='icon-headphones'></i></button></td>";
     echo "<td style='text-align:center'><button class='btn btn-mini song-add' type='button' songid='$songId'><i class='icon-plus'></i></button></td>";
     echo "</tr>";
 }

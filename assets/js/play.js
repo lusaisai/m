@@ -19,16 +19,9 @@ $(document).ready(function(){
 
     var base = "/m/";
 
-    var play = function(info) {
-        return function(data){
-            myPlaylist.setPlaylist(data);
-            $("body").animate({ scrollTop: 0 }, "slow", function(){
-                var JInfo = $("<div class='alert alert-success'> Now playing " + info + " ...</div>");
-                var JBox = $('#info');
-                JBox.empty();
-                JInfo.hide().appendTo(JBox).show('slow');
-            });
-        };
+    var play = function(data) {
+        myPlaylist.setPlaylist(data);
+        $("body").animate({ scrollTop: 0 }, "slow");
     };
 
     var add = function(data) {
@@ -47,27 +40,30 @@ $(document).ready(function(){
         });
     };
 
-    function plays(){
-        $('#rplay').click(function(){
-            $.getJSON( base + 'playutils/randomplay', play("randomly"));
-        });
-
-        $("#data").on( 'click','.album-play', function(){
+    var playSongs = function (selector) {
+        return  function() {
             var songs = new Array();
 
-            $(this).parent().parent().find("input").each(function(){
+            $(this).parent().parent().find(selector).each(function(){
                 if ( this.checked ){
                     songs.push($(this).attr('songid'));
                 }
             });
+            $.getJSON( base + 'playutils/songplay/' + songs.join(","), play );
+        }
+    }
 
-            var albumName = $(this).parent().parent().find("blockquote p").first().text();
-            if ( albumName !== "" ) albumName = "album " + albumName;
-            $.getJSON( base + 'playutils/songplay/' + songs.join(","), play(albumName));
+    function plays(){
+        $('#rplay').click(function(){
+            $.getJSON( base + 'playutils/randomplay', play);
         });
 
+        $("#data").on( 'click','.album-play', playSongs("input"));
+
+        $("#data").on( 'click','.artist-play', playSongs(".in input"));
+
         $("#data").on( 'click','.song-play', function(){
-            $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), play("song " + $(this).attr('songname')));
+            $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), play );
         });
 
         $("#data").on( 'click','.song-add', function(){
