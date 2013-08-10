@@ -25,7 +25,7 @@
                             <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
                             <select name="type" style="width:120px">
                                 <option value="artistname">Artist Name</option>
-                                <option value="albumname">Album Name</option>
+                                <option value="albumname" selected="selected">Album Name</option>
                                 <option value="songname">Song Name</option>
                             </select>
                         </form>

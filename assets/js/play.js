@@ -1,5 +1,20 @@
 $(document).ready(function(){
-    var myPlaylist = new jPlayerPlaylist(
+    var myPlaylist;
+    var base = "/m/";
+
+    var play = function(data) {
+        myPlaylist.setPlaylist(data);
+        $("body").animate({ scrollTop: 0 }, "slow");
+    };
+
+    var loadPlaylist = function () {
+        if (typeof $.cookie('playlist') !== undefined) {
+            var playlist = $.cookie('playlist');
+            $.getJSON( base + 'playutils/songplay/' + playlist, play );
+        };
+    }
+
+    myPlaylist = new jPlayerPlaylist(
             {
                 jPlayer: "#jquery_jplayer_1",
                 cssSelectorAncestor: "#jp_container_1"
@@ -13,16 +28,12 @@ $(document).ready(function(){
                 playlistOptions: {
                     autoPlay: true,
                     enableRemoveControls: true
-                }
+                },
+                ready: loadPlaylist
             }
     );
 
-    var base = "/m/";
 
-    var play = function(data) {
-        myPlaylist.setPlaylist(data);
-        $("body").animate({ scrollTop: 0 }, "slow");
-    };
 
     var add = function(data) {
         myPlaylist.add(data[0]);
@@ -40,6 +51,20 @@ $(document).ready(function(){
         });
     };
 
+    var setCookie = function( songIDs, addWay ) {
+        var playlist = typeof $.cookie('playlist') === undefined ? "" : $.cookie('playlist');
+        switch(addWay) {
+            case "replace":
+                $.cookie('playlist', songIDs, { expires: 30 });
+                break;
+            case "add":
+                $.cookie('playlist', playlist + "," + songIDs, { expires: 30 });
+                break;
+            default:
+                $.cookie('playlist', songIDs, { expires: 30 });
+        }
+    }
+
     var playSongs = function (selector) {
         return  function() {
             var songs = new Array();
@@ -50,6 +75,7 @@ $(document).ready(function(){
                 }
             });
             $.getJSON( base + 'playutils/songplay/' + songs.join(","), play );
+            setCookie( songs.join(","), "replace" );
         }
     }
 
@@ -63,11 +89,15 @@ $(document).ready(function(){
         $("#data").on( 'click','.artist-play', playSongs(".in input"));
 
         $("#data").on( 'click','.song-play', function(){
-            $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), play );
+            var songID = $(this).attr('songid');
+            $.getJSON( base + 'playutils/songplay/' + songID, play );
+            setCookie( songID, "replace" );
         });
 
         $("#data").on( 'click','.song-add', function(){
-            $.getJSON( base + 'playutils/songplay/' + $(this).attr('songid'), add);
+            var songID = $(this).attr('songid');
+            $.getJSON( base + 'playutils/songplay/' + songID, add);
+            setCookie( songID, "add" );
         });
 
         $("#data").on( 'click','.reverse-check', function(){
