@@ -1,10 +1,11 @@
 $(document).ready(function(){
     var myPlaylist;
     var base = "/m/";
+    var playerY = $("#the_player").position().top;
 
     var play = function(data) {
         myPlaylist.setPlaylist(data);
-        $("body").animate({ scrollTop: 0 }, "slow");
+        myPlaylist.option("autoPlay", true);
     };
 
     var loadPlaylist = function () {
@@ -26,14 +27,12 @@ $(document).ready(function(){
                 keyEnabled: true,
                 volume: 1,
                 playlistOptions: {
-                    autoPlay: true,
+                    autoPlay: false,
                     enableRemoveControls: true
                 },
                 ready: loadPlaylist
             }
     );
-
-
 
     var add = function(data) {
         myPlaylist.add(data[0]);
@@ -122,7 +121,6 @@ $(document).ready(function(){
             reloadGif();
             $("#data").load( base + pagetype + "/load/" + pageid, $("#searching form").serialize(), function(){
                 songListToggle();
-                $("body").animate({ scrollTop: 0 }, "slow");
             } );
 
         });
@@ -132,9 +130,16 @@ $(document).ready(function(){
             reloadGif();
             $("#data").load( base + pagetype + "/load", $("#searching form").serialize(), function(){
                 songListToggle();
-                $("body").animate({ scrollTop: 0 }, "slow");
             } );
             return false;
+        });
+
+        $(window).scroll(function() {
+            if ( $(window).scrollTop() >= playerY ) {
+                $("#the_player").css({ "position": "fixed", "top": "0px" })
+            } else {
+                $("#the_player").css({ "position": "relative" })
+            };
         });
     }
 
