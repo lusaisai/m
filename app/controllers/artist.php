@@ -106,7 +106,6 @@ class Artist extends \mako\Controller
             return array_unique($artistIDs);
         }
 
-
         private function artistInfo($artistID) {
             $query = "select
             ar.id as artist_id, ar.name as artist_name, i.name as image_name

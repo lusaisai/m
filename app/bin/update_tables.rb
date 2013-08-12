@@ -89,7 +89,7 @@ class UpdateTables
       next if ( artistName == "." || artistName == ".." )
 
       Dir.foreach( "." ) do |imageName| # iterate thru images
-        next if ! imageName.end_with? *@@IMAGE_SUFFIXES
+        next if ! imageName.end_with?(*@@IMAGE_SUFFIXES)
         puts "Found #{imageName} from #{artistName} ..."
         @client.query "insert into image_w (name, artist_name) values( '#{Mysql.escape_string imageName}', '#{Mysql.escape_string artistName}' )"
       end
@@ -122,7 +122,7 @@ class UpdateTables
         next if ( albumName == "." || albumName == ".." )
 
         Dir.foreach( albumName ) do |songName| # iterate thru songs
-          next if ! songName.end_with? *@@MUSIC_SUFFIXES
+          next if ! songName.end_with?(*@@MUSIC_SUFFIXES)
 	      puts "Found #{songName} from #{albumName} from #{artistName} ..."
           @client.query "insert into song_w (name, artist_name, album_name) values( '#{Mysql.escape_string songName}', '#{Mysql.escape_string artistName}', '#{Mysql.escape_string albumName}' )"
         end
@@ -164,7 +164,7 @@ class UpdateTables
         next if ( albumName == "." || albumName == ".." )
 
         Dir.foreach( albumName ) do |imageName| # iterate thru images
-          next if ! imageName.end_with? *@@IMAGE_SUFFIXES
+          next if ! imageName.end_with?(*@@IMAGE_SUFFIXES)
 	      puts "Found #{imageName} from #{albumName} from #{artistName} ..."
           @client.query "insert into image_w (name, artist_name, album_name) values( '#{Mysql.escape_string imageName}', '#{Mysql.escape_string artistName}', '#{Mysql.escape_string albumName}' )"
         end
