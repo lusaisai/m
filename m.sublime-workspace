@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"for	for …"
+			],
+			[
+				"arti",
+				"artist"
+			],
+			[
 				"fl",
 				"fl	float: ${1:left};"
 			],
@@ -64,10 +72,6 @@
 				"album_id"
 			],
 			[
-				"for",
-				"foreach	foreach …"
-			],
-			[
 				"artist",
 				"artist_id"
 			],
@@ -100,26 +104,34 @@
 	"buffers":
 	[
 		{
-			"contents": "",
+			"file": "app/views/album/data.php",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 1881,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/artist/index.php",
+			"file": "app/views/artist/data.php",
 			"settings":
 			{
-				"buffer_size": 1925,
+				"buffer_size": 2820,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/assets.php",
+			"file": "app/views/song/data.php",
 			"settings":
 			{
-				"buffer_size": 595,
+				"buffer_size": 1157,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/pagination.php",
+			"settings":
+			{
+				"buffer_size": 830,
 				"line_ending": "Unix"
 			}
 		}
@@ -127,9 +139,21 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 180.0,
+		"height": 96.0,
 		"selected_items":
 		[
+			[
+				"gitpush",
+				"Git: Push Current Branch"
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
 			[
 				"html",
 				"Set Syntax: HTML"
@@ -165,14 +189,6 @@
 			[
 				"git push",
 				"Git: Push Current Branch"
-			],
-			[
-				"git co",
-				"Git: Commit"
-			],
-			[
-				"git add",
-				"Git: Add..."
 			],
 			[
 				"git p",
@@ -243,7 +259,7 @@
 				"Set Syntax: PHP"
 			]
 		],
-		"width": 476.0
+		"width": 602.0
 	},
 	"console":
 	{
@@ -260,6 +276,9 @@
 	},
 	"file_history":
 	[
+		"/var/www/m/app/config/pagination.php",
+		"/var/www/m/app/views/assets.php",
+		"/var/www/m/app/views/artist/index.php",
 		"/var/www/m/app/views/player.html",
 		"/var/www/m/assets/js/play.js",
 		"/var/www/m/app/bin/update_tables.rb",
@@ -270,7 +289,6 @@
 		"/var/www/m/assets/jplayer/skin/bootstrap/style.css",
 		"/home/lusaisai/Projects/jplayer-bootstrap-skin/index.html",
 		"/home/lusaisai/Projects/jplayer-bootstrap-skin/skin/style.css",
-		"/var/www/m/app/views/assets.php",
 		"/var/www/m/assets/css/main.css",
 		"/home/lusaisai/Downloads/jQuery.jPlayer.2.4.0.demos/skin/pink.flag/jplayer.pink.flag.css",
 		"/home/lusaisai/Downloads/jQuery.jPlayer.2.4.0.demos/demo-02-pf.htm",
@@ -280,7 +298,6 @@
 		"/home/lusaisai/.config/sublime-text-2/Packages/JS-Snippets/switch.sublime-snippet",
 		"/home/lusaisai/.config/sublime-text-2/Packages/JavaScript Snippets/vanilla.console_dir.sublime-snippet",
 		"/var/www/m/app/views/album/index.php",
-		"/var/www/m/app/views/artist/index.php",
 		"/var/www/m/app/views/song/data.php",
 		"/var/www/m/app/migrations/schema.mysql.sql",
 		"/home/lusaisai/.config/sublime-text-2/Packages/User/Git.sublime-settings",
@@ -322,6 +339,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$i",
+			"'",
+			"\"]}\"><",
+			"'",
 			"[]",
 			"0px",
 			"jp-audio",
@@ -355,6 +376,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"<?php echo $i?>"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -365,22 +387,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "app/views/album/data.php",
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 1881,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1498,
+								1498
 							]
 						],
 						"settings":
@@ -577,7 +600,9 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -587,18 +612,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/artist/index.php",
+					"file": "app/views/artist/data.php",
 					"settings":
 					{
-						"buffer_size": 1925,
+						"buffer_size": 2820,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1916,
-								1916
+								1957,
+								1957
 							]
 						],
 						"settings":
@@ -807,18 +832,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/views/assets.php",
+					"file": "app/views/song/data.php",
 					"settings":
 					{
-						"buffer_size": 595,
+						"buffer_size": 1157,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1157,
+								1157
 							]
 						],
 						"settings":
@@ -1024,6 +1049,224 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/pagination.php",
+					"settings":
+					{
+						"buffer_size": 830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								212,
+								212
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublime_auto_complete": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -1069,7 +1312,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1077,6 +1320,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"pa",
+				"app/views/pagination.php"
+			],
+			[
+				"pag",
+				"app/config/pagination.php"
+			],
+			[
+				"data",
+				"app/views/song/data.php"
+			],
 			[
 				"a",
 				"app/views/assets.php"
@@ -1104,10 +1359,6 @@
 			[
 				"play",
 				"assets/js/play.js"
-			],
-			[
-				"data",
-				"app/views/album/data.php"
 			],
 			[
 				"main",

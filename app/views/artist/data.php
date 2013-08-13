@@ -1,4 +1,5 @@
 <?php foreach ($data as $artist): ?>
+    <?php $i = 1 ?>
     <div id="<?php echo $artist["artist_id"] ?>" class="album">
         <blockquote>
             <h3><?php echo $artist["artist_name"] ?></h3>
@@ -10,7 +11,7 @@
                     <div class="accordion-heading">
                         <a class="accordion-toggle" data-toggle="collapse" data-parent="<?php echo "#accordion{$artist["artist_id"]}" ?>" href="<?php echo "#collapse{$album["album_id"]}" ?>"><?php echo $album["album_name"] ?></a>
                     </div>
-                    <div id="<?php echo "collapse{$album["album_id"]}" ?>" class="accordion-body collapse">
+                    <div id="<?php echo "collapse{$album["album_id"]}" ?>" class="accordion-body <?php if ($i==1) echo "in"; ?> collapse">
                         <div class="accordion-inner songs">
                             <table class="table table-bordered table-hover table-condensed">
                                 <?php foreach ($album["songs"] as $song): ?>
@@ -29,6 +30,7 @@
                         </div>
                     </div>
                 </div>
+                <?php $i++ ?>
             <?php endforeach ?>
         </div>
         <div class="btn-group">
