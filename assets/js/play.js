@@ -3,6 +3,15 @@ $(document).ready(function(){
     var base = "/m/";
     var playerY = $("#the_player").position().top;
 
+    var setPlaylistCookie = function() {
+        var songs = [];
+        $(".jp-playlist li[songid]").each(function () {
+            songs.push($(this).attr('songid'));
+        });
+        $.cookie('playlist', songs.join(","), { expires: 30 });
+        setTimeout( setPlaylistCookie, 30 * 1000 );
+    };
+
     var play = function(data) {
         myPlaylist.setPlaylist(data);
         myPlaylist.option("autoPlay", true);
@@ -24,6 +33,7 @@ $(document).ready(function(){
             }, [],
             {
                 supplied: "mp3,m4a",
+                swfPath: "/m/assets/jplayer/js",
                 wmode: "window",
                 smoothPlayBar: true,
                 keyEnabled: true,
@@ -52,19 +62,6 @@ $(document).ready(function(){
         });
     };
 
-    var setCookie = function( songIDs, addWay ) {
-        var playlist = typeof $.cookie('playlist') === undefined ? "" : $.cookie('playlist');
-        switch(addWay) {
-            case "replace":
-                $.cookie('playlist', songIDs, { expires: 30 });
-                break;
-            case "add":
-                $.cookie('playlist', playlist + "," + songIDs, { expires: 30 });
-                break;
-            default:
-                $.cookie('playlist', songIDs, { expires: 30 });
-        }
-    };
 
     var playSongs = function (selector) {
         return  function() {
@@ -76,7 +73,6 @@ $(document).ready(function(){
                 }
             });
             $.getJSON( base + 'playutils/songplay/' + songs.join(","), play );
-            setCookie( songs.join(","), "replace" );
         };
     };
 
@@ -92,13 +88,11 @@ $(document).ready(function(){
         $("#data").on( 'click','.song-play', function(){
             var songID = $(this).attr('songid');
             $.getJSON( base + 'playutils/songplay/' + songID, play );
-            setCookie( songID, "replace" );
         });
 
         $("#data").on( 'click','.song-add', function(){
             var songID = $(this).attr('songid');
             $.getJSON( base + 'playutils/songplay/' + songID, add);
-            setCookie( songID, "add" );
         });
 
         $("#data").on( 'click','.reverse-check', function(){
@@ -143,11 +137,13 @@ $(document).ready(function(){
                 $("#the_player").css({ "position": "relative" });
             }
         });
+
     }
 
     var run= function () {
         songListToggle();
         plays();
+        setTimeout( setPlaylistCookie, 30 * 1000 );
     };
 
     run();

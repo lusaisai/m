@@ -11,7 +11,7 @@ class Playutils extends \mako\Controller {
 
     public function action_randomplay() {
         $query = "select
-            s.name as song_name, al.name as album_name, ar.name as artist_name
+            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
             from song s
             join album al
             on   s.album_id = al.id
@@ -26,7 +26,7 @@ class Playutils extends \mako\Controller {
 
     public function action_albumplay($id) {
         $query = "select
-            s.name as song_name, al.name as album_name, ar.name as artist_name
+            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
             from song s
             join album al
             on   s.album_id = al.id
@@ -38,9 +38,9 @@ class Playutils extends \mako\Controller {
         return $this->songJson( Database::query($query) );
     }
 
-    public function action_songplay($songs) {
+    public function action_songplay($songs = 0) {
         $query = "select
-            s.name as song_name, al.name as album_name, ar.name as artist_name
+            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
             from song s
             join album al
             on   s.album_id = al.id
@@ -56,7 +56,7 @@ class Playutils extends \mako\Controller {
         $song_array = array();
 
         foreach ($rows as $row) {
-            $object = "{ \"title\": \"{$row->song_name}\", \"mp3\": \"/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}\" }";
+            $object = "{ \"songid\": \"{$row->song_id}\", \"title\": \"{$row->song_name}\", \"mp3\": \"/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}\" }";
             array_push($song_array, $object);
         }
 
