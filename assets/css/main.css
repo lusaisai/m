@@ -25,10 +25,15 @@ root {
 }
 
 .songs table {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .btn-group {
     margin-bottom: 1px;
     margin-top: 1px;
+}
+
+.login {
+    width: 600px;
+    margin: auto;
 }

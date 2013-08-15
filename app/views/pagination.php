@@ -15,7 +15,7 @@
 
 		<?php for( $i = $startid; $i <= $endid; $i++ ): ?>
 			<?php if ($i == $pageid): ?>
-				<li class="active"><a href="javascript:;" pageid="$i"><?php echo $i?></a></li>
+				<li class="active"><a><?php echo $i?></a></li>
 			<?php else: ?>
 				<li><a href="javascript:;" pageid="<?php echo $i?>"><?php echo $i?></a></li>
 			<?php endif ?>

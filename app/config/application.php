@@ -75,6 +75,9 @@ return array
 	(
 		'URL'    => 'mako\URL',
 		'Assets' => 'mako\Assets',
+		'Database' => 'mako\Database',
+		'Session' => 'mako\Session',
+		'View' => 'mako\View',
 	),
 
 	/**

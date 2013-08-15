@@ -24,7 +24,7 @@ class Playutils extends \mako\Controller {
         return $this->songJson( Database::query($query) );
     }
 
-    public function action_albumplay($id) {
+    public function action_albumplay($id=0) {
         $query = "select
             s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
             from song s
@@ -47,6 +47,7 @@ class Playutils extends \mako\Controller {
             join artist ar
             on   al.artist_id = ar.id
             where s.id in ( $songs )
+            order by field ( s.id, $songs )
             ";
         $this->response->type('application/json');
         return $this->songJson( Database::query($query) );

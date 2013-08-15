@@ -107,6 +107,7 @@
 
 		$(this.cssSelector.shuffle).click(function() {
 			self.shuffle(true);
+			$(this).blur();
 			return false;
 		});
 		$(this.cssSelector.shuffleOff).click(function() {

@@ -5,11 +5,12 @@
 ################################################################################
 APP_DIR=/var/www/m/app
 MYSQL="mysql -u mav -pmav -D mav "
-SQL_FILE=$APP_DIR/migrations/schema.mysql.sql
+SONG_TABLE_FILE=$APP_DIR/migrations/song_tables.sql
+USER_TABLE_FILE=$APP_DIR/migrations/users.sql
 RUBY_FILE=$APP_DIR/bin/update_tables.rb
 
 ################################################################################
 # Main process
 ################################################################################
-$MYSQL < $SQL_FILE
+cat $SONG_TABLE_FILE $USER_TABLE_FILE | $MYSQL
 $RUBY_FILE
