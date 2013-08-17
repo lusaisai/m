@@ -18,7 +18,7 @@ $(document).ready(function(){
     };
 
     var loadPlaylist = function () {
-        if (typeof $.cookie('playlist') != "undefined") {
+        if (typeof $.cookie('playlist') != "undefined" && $.cookie('playlist') !== "") {
             var playlist = $.cookie('playlist');
             $.getJSON( base + 'playutils/songplay/' + playlist + "/0", play );
         } else {
@@ -126,6 +126,13 @@ $(document).ready(function(){
             reloadGif();
             $("#data").load( base + pagetype + "/load", $("#searching form").serialize(), function(){
                 songListToggle();
+            } );
+            return false;
+        });
+
+        $("#randoms form").submit(function(){
+            $.getJSON( base + 'home/random', $("#randoms form").serialize(), function (data) {
+                $.getJSON( base + 'playutils/songplay/' + data.ids + "/0", play );
             } );
             return false;
         });

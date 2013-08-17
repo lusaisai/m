@@ -3,6 +3,8 @@
         <?php foreach ($data as $song): ?>
             <tr>
                 <td><label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["id"] ?>"><?php echo $song["song_name"] ?></label></td>
+                <td><?php echo $song['artist_name']; ?></td>
+                <td><?php echo $song['album_name']; ?></td>
                 <td style="text-align:center"><button class="btn btn-mini song-play" type="button" songid="<?php echo $song["id"] ?>"><i class="icon-headphones"></i></button></td>
                 <td style="text-align:center"><button class="btn btn-mini song-add" type="button" songid="<?php echo $song["id"] ?>"><i class="icon-plus"></i></button></td>
             </tr>

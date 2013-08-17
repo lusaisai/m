@@ -31,7 +31,7 @@ class Song extends \mako\Controller {
         return array( 'pageid'=>$pageid, 'count'=>$count, 'limit'=>$limit, 'data'=>$data);
     }
 
-    private function searchSongs(){
+    public function searchSongs(){
             $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : "";
             $type = isset($_GET['type']) ? trim($_GET['type']) : "songname";
 

@@ -27,8 +27,9 @@
                     <?php include dirname(__FILE__).'/../player.html'; ?>
                 </div>
                 <div class="span8">
-                    <div id="info"></div>
-                    <button id="rplay" class="btn btn-primary" type="button"><i class='icon-music icon-white'></i> Play</button>
+                    <div id="randoms">
+                        <?php include 'randoms.php'; ?>
+                    </div>
                 </div>
             </div>
         </div>

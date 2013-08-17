@@ -12,7 +12,7 @@ class Playutils extends \mako\Controller {
 
     public function action_randomplay() {
         $query = "select
-            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
+            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name, -1 as log_id
             from song s
             join album al
             on   s.album_id = al.id
