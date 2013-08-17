@@ -9,18 +9,18 @@ return array
 	/**
 	 * Default configuration to use.
 	 */
-	
-	'default' => 'native',
+
+	'default' => 'file',
 
 	/**
-	 * Session name. 
-	 * 
+	 * Session name.
+	 *
 	 * Using a unique session name will prevent session collisions with other applications.
 	 * Note that only alphanumeric characters can be used in the session name.
 	 */
 
-	'session_name' => 'mako_session',
-	
+	'session_name' => 'm_session',
+
 	/**
 	 * You can define as many session configurations as you want.
 	 *
@@ -31,7 +31,7 @@ return array
 	 * path         : Save path for session files (only required when using "File" sessions).
 	 * table        : Name of the database table (only required when using "Database" sessions).
 	 */
-	
+
 	'configurations' => array
 	(
 		'database' => array

@@ -14,6 +14,11 @@ class User extends \mako\Controller
     }
 
     public function action_login() {
+        if($this->request->method() == 'GET') { // this is for accessing from menu, not from form
+            $data = array('errors' => "", 'page' =>'login');
+            return new View("user.login", $data);
+        }
+
         $rules = array (
             'username' => 'required',
             'password' => 'required'
@@ -22,12 +27,12 @@ class User extends \mako\Controller
         if($validation->successful()) {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $remember = isset($_POST['remember']) ? $_POST['remember'] : "";
             $row = Database::first( "select * from users where username = ? ", array($username) );
 
             if ( ! $row ) {
                 $data = array('errors' => "Incorrect username or password", 'page' =>'login');
             } elseif (Password::validate($password, $row->password)) {
+                Session::regenerate();
                 Session::remember( "isLogin", true );
                 Session::remember( "username", $username );
                 Session::remember( "userid", $row->id );
@@ -43,6 +48,13 @@ class User extends \mako\Controller
 
             return new View("user.login", $data);
         }
+    }
+
+    public function action_logout()
+    {
+        Session::destroy();
+        Session::regenerate();
+        $this->response->redirect('user/login');
     }
 
     public function action_register() {

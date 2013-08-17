@@ -20,7 +20,7 @@ $(document).ready(function(){
     var loadPlaylist = function () {
         if (typeof $.cookie('playlist') != "undefined") {
             var playlist = $.cookie('playlist');
-            $.getJSON( base + 'playutils/songplay/' + playlist, play );
+            $.getJSON( base + 'playutils/songplay/' + playlist + "/0", play );
         } else {
             play([]);
         }

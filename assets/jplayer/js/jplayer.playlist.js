@@ -237,7 +237,7 @@
 			var self = this;
 
 			// Wrap the <li> contents in a <div>
-			var listItem = "<li" + ( media.songid ? " songid='" + media.songid +"'" : "") + "><div>";
+			var listItem = "<li" + ( media.logid ? " logid='" + media.logid +"' " : "") + ( media.songid ? " songid='" + media.songid +"'" : "") + "><div>";
 
 			// Create remove control
 			listItem += "<a href='javascript:;' class='" + this.options.playlistOptions.removeItemClass + "'>&times;</a>";
@@ -289,8 +289,10 @@
 			// Create live handlers for the remove controls
 			$(this.cssSelector.playlist).off("click", "a." + this.options.playlistOptions.removeItemClass).on("click", "a." + this.options.playlistOptions.removeItemClass, function() {
 				var index = $(this).parent().parent().index();
+				var logID = $(this).closest("li").attr('logid');
 				self.remove(index);
 				$(this).blur();
+				$.get( '/m/playutils/songremove/' + logID); // update log info
 				return false;
 			});
 		},

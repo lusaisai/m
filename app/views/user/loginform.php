@@ -1,4 +1,4 @@
-<div class="login">
+<div class="login well well-large">
   <ul id="account" class="nav nav-tabs">
     <li <?php if ($page == "login") { echo "class='active'"; } ?> ><a href="#login" data-toggle="tab">Login</a></li>
     <li <?php if ($page == "register") { echo "class='active'"; } ?> ><a href="#register" data-toggle="tab">Create an account</a></li>
@@ -21,9 +21,6 @@
         </div>
         <div class="control-group">
           <div class="controls">
-            <label class="checkbox">
-              <input name="remember" type="checkbox"> Remember me
-            </label>
             <button type="submit" class="btn btn-primary">Sign in</button>
           </div>
         </div>
