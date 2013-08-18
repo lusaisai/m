@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use \mako\View;
-use mako\Arr;
 
 class Home extends \mako\Controller
 {
@@ -22,6 +21,6 @@ class Home extends \mako\Controller
 		$randomSongs = implode(",", $output);
 
 		$this->response->type('application/json');
-		return "{ \"ids\": \"$randomSongs\" }";
+		return json_encode(array( "ids" => $randomSongs ));
 	}
 }
