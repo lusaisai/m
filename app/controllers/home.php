@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use \mako\View;
+use mako\Request;
 
 class Home extends \mako\Controller
 {
@@ -20,7 +21,6 @@ class Home extends \mako\Controller
 		$output = array_slice($songids, 0, $numReq);
 		$randomSongs = implode(",", $output);
 
-		$this->response->type('application/json');
-		return json_encode(array( "ids" => $randomSongs ));
+		return Request::factory("playutils/songplay/{$randomSongs}/0")->execute();
 	}
 }

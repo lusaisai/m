@@ -131,9 +131,7 @@ $(document).ready(function(){
         });
 
         $("#randoms form").submit(function(){
-            $.getJSON( base + 'home/random', $("#randoms form").serialize(), function (data) {
-                $.getJSON( base + 'playutils/songplay/' + data.ids + "/0", play );
-            } );
+            $.getJSON( base + 'home/random', $("#randoms form").serialize(), play );
             return false;
         });
 
