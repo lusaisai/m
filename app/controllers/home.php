@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use \mako\View;
+use mako\Arr;
 
 class Home extends \mako\Controller
 {

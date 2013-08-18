@@ -53,12 +53,15 @@ class Playutils extends \mako\Controller {
         $song_array = array();
 
         foreach ($rows as $row) {
-            $object = "{ \"logid\": \"{$row->log_id}\",\"songid\": \"{$row->song_id}\", \"title\": \"{$row->song_name}\", \"mp3\": \"/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}\" }";
-            array_push($song_array, $object);
+            $song = array();
+            $song["logid"] = $row->log_id;
+            $song["songid"] = $row->song_id;
+            $song["title"] = $row->song_name;
+            $song["mp3"] = "/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
+            array_push($song_array, $song);
         }
 
-        $song_array_string = implode(",", $song_array);
-        return "[{$song_array_string}]";
+        return json_encode($song_array);
     }
 
     private function playlog($songs)
@@ -69,7 +72,7 @@ class Playutils extends \mako\Controller {
         try {
             $connection->pdo->beginTransaction();
             foreach ( explode(",", $songs) as $songid ) {
-                 $connection->query( $query, array($userid, $songid) );
+                $connection->query( $query, array($userid, $songid) );
             }
             $connection->pdo->commit();
         } catch(PDOException $e) {

@@ -1,69 +1,85 @@
 .jp-audio {
-	width: 238px;
-
-	background: -webkit-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
-	background: -moz-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
-	background: -o-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
-	background: -ms-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
-	background: radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
-
-	-webkit-box-shadow: 0 0 2px 2px #999;
-	box-shadow: 0 0 2px 2px #999;
+  width: 238px;
+  background: -webkit-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
+  background: -o-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
+  background: -ms-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
+  background: -webkit-radial-gradient(ellipse at center, #feffff 0%, #d2ebf9 100%);
+  background: -o-radial-gradient(ellipse at center, #feffff 0%, #d2ebf9 100%);
+  background: radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
+  box-shadow: 0 0 2px 2px #999;
 }
 
-.jp-controls li,.jp-toggles li,.jp-playlist li {
-	display: inline;
+.jp-controls li,
+.jp-toggles li,
+.jp-playlist li {
+  display: inline;
 }
 
-.jp-controls,.jp-playlist ul {
-	margin-left: auto;
+.jp-controls,
+.jp-playlist ul {
+  margin-left: auto;
 }
 
-.jp-volume-bar,.jp-volume-bar-value {
-	display: inline-block;
-	width: 158px;
-	margin-bottom: 0;
-	vertical-align: text-bottom;
-	height: 15px;
-	cursor: pointer;
+.jp-volume-bar,
+.jp-volume-bar-value {
+  display: inline-block;
+  width: 158px;
+  margin-bottom: 0;
+  vertical-align: text-bottom;
+  height: 15px;
+  cursor: pointer;
 }
 
-.jp-progress,.jp-seek-bar,.jp-play-bar {
-	width: 238px;
-	overflow: hidden;
-	cursor: pointer;
-	margin-bottom: 0;
+.jp-progress,
+.jp-seek-bar,
+.jp-play-bar {
+  width: 238px;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 0;
 }
 
-.jp-progress .progess,.jp-progress .bar {
-	-webkit-transition: width 0s;
-	-moz-transition: width 0s;
-	-o-transition: width 0s;
-	-ms-transition: width 0s;
-	transition: width 0s;
+.jp-progress .progess,
+.jp-progress .bar {
+  -webkit-transition: width 0s;
+  -o-transition: width 0s;
+  -ms-transition: width 0s;
+  transition: width 0s;
 }
 
 #time {
-	height: 20px;
+  height: 20px;
 }
 
 .jp-current-time {
-	float: left;
+  float: left;
 }
 
 .jp-duration {
-	float: right;
+  float: right;
 }
 
 .jp-playlist li div {
-	margin: 5px;
+  margin: 5px;
 }
 
 .jp-playlist-current div a {
-	color: black;
-	text-shadow: 0px 0px 9px rgba(150, 150, 150, 1);
+  color: black;
+  text-shadow: 0 0 9px rgba(150, 150, 150, 1);
 }
 
 .jp-playlist-item-remove {
-	float: right;
+  float: right;
+}
+
+.jp-type-playlist li a:hover {
+  font-size: 125%;
+  color: #000;
+  -webkit-transition: 50ms ease;
+  -o-transition: 50ms ease;
+  transition: 50ms ease;
+}
+
+.jp-type-playlist a {
+  text-decoration: none;
 }

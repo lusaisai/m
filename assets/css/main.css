@@ -1,39 +1,26 @@
-/*
-    Document   : main
-    Created on : Jul 18, 2013, 11:00:07 PM
-    Author     : lusaisai
-    Description:
-        Purpose of the stylesheet follows.
-*/
-root {
-    display: block;
-}
-
 .album-image {
-    overflow: hidden;
-    max-width: 620px;
-    max-height: 400px;
-    position: relative;
-    margin-bottom: 5px;
-
-    -webkit-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
-    box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.75);
+  overflow: hidden;
+  max-width: 620px;
+  max-height: 400px;
+  position: relative;
+  margin-bottom: 5px;
+  box-shadow: 0 0 10px 4px rgba(119, 119, 119, 0.75);
 }
 
 .album {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 .songs table {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .btn-group {
-    margin-bottom: 1px;
-    margin-top: 1px;
+  margin-bottom: 1px;
+  margin-top: 1px;
 }
 
 .login {
-    width: 600px;
-    margin: auto;
+  width: 600px;
+  margin: auto;
 }

@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"s",
+				"song_array"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"array",
+				"array  (keyword)"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"background-c",
+				"background-color:   (property)"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"song",
+				"songids"
+			],
+			[
+				"play",
+				"playlogs"
+			],
+			[
+				"if",
+				"if	if …"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
 				"a",
 				"authkey"
 			],
@@ -18,10 +62,6 @@
 			[
 				"els",
 				"else"
-			],
-			[
-				"if",
-				"ifelse	if … else …"
 			],
 			[
 				"pass",
@@ -140,21 +180,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/assets.php",
+			"file": "app/controllers/playutils.php",
 			"settings":
 			{
-				"buffer_size": 787,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "/*!\n * jQuery Cookie Plugin v1.3.1\n * https://github.com/carhartl/jquery-cookie\n *\n * Copyright 2013 Klaus Hartl\n * Released under the MIT license\n */\n(function (factory) {\n	if (typeof define === 'function' && define.amd) {\n		// AMD. Register as anonymous module.\n		define(['jquery'], factory);\n	} else {\n		// Browser globals.\n		factory(jQuery);\n	}\n}(function ($) {\n\n	var pluses = /\\+/g;\n\n	function raw(s) {\n		return s;\n	}\n\n	function decoded(s) {\n		return decodeURIComponent(s.replace(pluses, ' '));\n	}\n\n	function converted(s) {\n		if (s.indexOf('\"') === 0) {\n			// This is a quoted cookie as according to RFC2068, unescape\n			s = s.slice(1, -1).replace(/\\\\\"/g, '\"').replace(/\\\\\\\\/g, '\\\\');\n		}\n		try {\n			return config.json ? JSON.parse(s) : s;\n		} catch(er) {}\n	}\n\n	var config = $.cookie = function (key, value, options) {\n\n		// write\n		if (value !== undefined) {\n			options = $.extend({}, config.defaults, options);\n\n			if (typeof options.expires === 'number') {\n				var days = options.expires, t = options.expires = new Date();\n				t.setDate(t.getDate() + days);\n			}\n\n			value = config.json ? JSON.stringify(value) : String(value);\n\n			return (document.cookie = [\n				config.raw ? key : encodeURIComponent(key),\n				'=',\n				config.raw ? value : encodeURIComponent(value),\n				options.expires ? '; expires=' + options.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE\n				options.path    ? '; path=' + options.path : '',\n				options.domain  ? '; domain=' + options.domain : '',\n				options.secure  ? '; secure' : ''\n			].join(''));\n		}''\n\n		// read\n		var decode = config.raw ? raw : decoded;\n		var cookies = document.cookie.split('; ');\n		var result = key ? undefined : {};\n		for (var i = 0, l = cookies.length; i < l; i++) {\n			var parts = cookies[i].split('=');\n			var name = decode(parts.shift());\n			var cookie = decode(parts.join('='));\n\n			if (key && key === name) {\n				result = converted(cookie);\n				break;\n			}\n\n			if (!key) {\n				result[name] = converted(cookie);\n			}\n		}\n\n		return result;\n	};\n\n	config.defaults = {};\n\n	$.removeCookie = function (key, options) {\n		if ($.cookie(key) !== undefined) {\n			// Must not alter options, thus extending a fresh object...\n			$.cookie(key, '', $.extend({}, options, { expires: -1 }));\n			return true;\n		}\n		return false;\n	};\n\n}));\n",
-			"file": "assets/js/jquery.cookie.js",
-			"file_size": 2320,
-			"file_write_time": 1376097523000000,
-			"settings":
-			{
-				"buffer_size": 2322,
+				"buffer_size": 2636,
 				"line_ending": "Unix"
 			}
 		}
@@ -166,12 +195,16 @@
 		"selected_items":
 		[
 			[
-				"ins",
-				"Package Control: Install Package"
+				"",
+				"Autoprefix CSS"
 			],
 			[
-				"remove",
-				"Package Control: Remove Package"
+				"auto",
+				"Autoprefix CSS"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
 			],
 			[
 				"rem",
@@ -179,6 +212,10 @@
 			],
 			[
 				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
 				"Package Control: Remove Package"
 			],
 			[
@@ -315,43 +352,50 @@
 	},
 	"file_history":
 	[
+		"/var/www/m/assets/css/main.css",
+		"/var/www/m/assets/jplayer/skin/bootstrap/style.css",
+		"/var/www/m/app/controllers/home.php",
+		"/var/www/m/assets/bootstrap/css/bootstrap.css",
+		"/var/www/m/assets/js/play.js",
+		"/var/www/m/app/controllers/song.php",
+		"/var/www/m/app/controllers/playutils.php",
+		"/var/www/m/app/views/home/randoms.php",
+		"/var/www/m/app/views/artist/data.php",
+		"/var/www/m/app/bin/migrate.sh",
+		"/var/www/m/libraries/mako/Controller.php",
+		"/var/www/m/app/views/home/index.php",
+		"/var/www/m/app/controllers/artist.php",
+		"/var/www/m/app/views/artist/index.php",
+		"/var/www/m/app/views/song/data.php",
+		"/var/www/m/app/controllers/user.php",
+		"/var/www/m/app/views/user/loginform.php",
+		"/var/www/m/assets/jplayer/js/jplayer.playlist.js",
+		"/var/www/m/app/migrations/logs.sql",
+		"/var/www/m/app/views/user/index.php",
+		"/var/www/m/app/migrations/users.sql",
+		"/var/www/m/app/migrations/song_tables.sql",
+		"/var/www/m/app/views/assets.php",
+		"/var/www/m/assets/jplayer/js/jplayer.playlist.min.js",
+		"/var/www/m/assets/js/jquery-1.10.2.min.js",
+		"/var/www/m/assets/js/jquery.cookie.js",
+		"/var/www/m/assets/js/jquery.cookie.min.js",
 		"/home/lusaisai/.config/sublime-text-2/Packages/Minifier/Minifier.sublime-settings",
 		"/home/lusaisai/.config/sublime-text-2/Packages/User/Minifier.sublime-settings",
-		"/var/www/m/assets/js/play.js",
-		"/var/www/m/assets/js/jquery.cookie.min.js",
-		"/var/www/m/app/controllers/user.php",
 		"/var/www/m/app/views/user/login.php",
-		"/var/www/m/app/views/user/loginform.php",
-		"/var/www/m/app/views/user/index.php",
-		"/var/www/m/app/views/artist/index.php",
 		"/var/www/m/app/config/session.php",
 		"/home/lusaisai/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
-		"/var/www/m/assets/css/main.css",
 		"/var/www/m/app/views/album/index.php",
-		"/var/www/m/app/views/home/index.php",
 		"/var/www/m/app/views/song/index.php",
-		"/var/www/m/app/migrations/users.sql",
 		"/var/www/m/app/config/application.php",
-		"/var/www/m/assets/bootstrap/css/bootstrap.css",
-		"/var/www/m/app/controllers/song.php",
-		"/var/www/m/app/controllers/artist.php",
-		"/var/www/m/app/migrations/song_tables.sql",
-		"/var/www/m/app/bin/migrate.sh",
-		"/var/www/m/app/controllers/playutils.php",
-		"/var/www/m/app/views/assets.php",
 		"/var/www/m/app/views/player.html",
 		"/var/www/m/app/views/pagination.php",
 		"/var/www/m/libraries/mako/Config.php",
-		"/var/www/m/assets/jplayer/js/jplayer.playlist.js",
-		"/var/www/m/assets/jplayer/skin/bootstrap/style.css",
 		"/var/www/m/app/views/welcome.php",
 		"/home/lusaisai/.config/sublime-text-2/Packages/User/trailing_spaces.sublime-settings",
 		"/home/lusaisai/.config/sublime-text-2/Packages/TrailingSpaces/trailing_spaces.sublime-settings",
 		"/var/www/m/app/config/crypto.php",
 		"/var/www/m/app/config/routes.php",
-		"/var/www/m/app/views/artist/data.php",
 		"/var/www/m/app/views/album/data.php",
-		"/var/www/m/app/views/song/data.php",
 		"/var/www/m/app/config/pagination.php",
 		"/var/www/m/app/bin/update_tables.rb",
 		"/var/www/m/app/controllers/album.php",
@@ -395,6 +439,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"songplay",
+			"remember",
+			"removeItemClass",
+			"jp-playlist-item-remove",
+			"songid",
+			"playutils/songplay",
 			"set",
 			"$errors",
 			"\\mysqli::escape_string",
@@ -458,23 +508,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/assets.php",
+					"file": "app/controllers/playutils.php",
 					"settings":
 					{
-						"buffer_size": 787,
+						"buffer_size": 2636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								787,
-								787
+								2020,
+								2020
 							]
 						],
 						"settings":
@@ -676,226 +726,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "assets/js/jquery.cookie.js",
-					"settings":
-					{
-						"buffer_size": 2322,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								34,
-								34
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublime_auto_complete": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 176.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -953,12 +784,92 @@
 		"selected_items":
 		[
 			[
-				"cookie",
-				"assets/js/jquery.cookie.js"
+				"pla",
+				"app/controllers/playutils.php"
+			],
+			[
+				"home",
+				"app/controllers/home.php"
+			],
+			[
+				"boots",
+				"assets/bootstrap/css/bootstrap.css"
+			],
+			[
+				"sty",
+				"assets/jplayer/skin/bootstrap/style.css"
+			],
+			[
+				"play",
+				"assets/js/play.js"
+			],
+			[
+				"m",
+				"assets/css/main.css"
+			],
+			[
+				"ma",
+				"assets/css/main.css"
+			],
+			[
+				"mi",
+				"app/bin/migrate.sh"
+			],
+			[
+				"arti/data",
+				"app/views/artist/data.php"
+			],
+			[
+				"home/in",
+				"app/views/home/index.php"
+			],
+			[
+				"con",
+				"libraries/mako/Controller.php"
+			],
+			[
+				"controll",
+				"libraries/mako/Controller.php"
+			],
+			[
+				"song/",
+				"app/views/song/data.php"
+			],
+			[
+				"song",
+				"app/controllers/song.php"
+			],
+			[
+				"user/",
+				"app/views/user/index.php"
+			],
+			[
+				"user",
+				"app/controllers/user.php"
+			],
+			[
+				"login",
+				"app/views/user/loginform.php"
+			],
+			[
+				"playli",
+				"assets/jplayer/js/jplayer.playlist.js"
+			],
+			[
+				"play.js",
+				"assets/js/play.js"
+			],
+			[
+				"user.",
+				"app/controllers/user.php"
 			],
 			[
 				"ass",
 				"app/views/assets.php"
+			],
+			[
+				"cookie",
+				"assets/js/jquery.cookie.js"
 			],
 			[
 				"log",
@@ -1005,24 +916,12 @@
 				"assets/css/main.css"
 			],
 			[
-				"song",
-				"app/controllers/song.php"
-			],
-			[
-				"login",
-				"app/views/user/loginform.php"
-			],
-			[
 				"lo",
 				"app/views/user/login.php"
 			],
 			[
 				"ar",
 				"app/controllers/artist.php"
-			],
-			[
-				"user",
-				"app/controllers/user.php"
 			],
 			[
 				"config",
@@ -1037,16 +936,8 @@
 				"app/views/pagination.php"
 			],
 			[
-				"play",
-				"app/views/player.html"
-			],
-			[
 				"as",
 				"app/views/assets.php"
-			],
-			[
-				"mi",
-				"app/bin/migrate.sh"
 			],
 			[
 				"wel",
@@ -1063,10 +954,6 @@
 			[
 				"pl",
 				"assets/js/play.js"
-			],
-			[
-				"pla",
-				"app/views/player.html"
 			],
 			[
 				"arti",
@@ -1087,14 +974,6 @@
 			[
 				"in",
 				"app/views/artist/index.php"
-			],
-			[
-				"sty",
-				"assets/jplayer/skin/bootstrap/style.css"
-			],
-			[
-				"ma",
-				"assets/css/main.css"
 			],
 			[
 				"player",
@@ -1133,14 +1012,6 @@
 				"assets/js/play.js"
 			],
 			[
-				"play.js",
-				"assets/js/play.js"
-			],
-			[
-				"con",
-				"libraries/mako/Config.php"
-			],
-			[
 				".rb",
 				"app/bin/update_tables.rb"
 			],
@@ -1151,10 +1022,6 @@
 			[
 				"controller/",
 				"m/app/controllers/song.php"
-			],
-			[
-				"song/",
-				"m/app/views/song/data.php"
 			]
 		],
 		"width": 0.0
@@ -1170,7 +1037,7 @@
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_visible": false,
+	"side_bar_width": 201.0,
 	"status_bar_visible": true
 }
