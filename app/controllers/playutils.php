@@ -9,22 +9,6 @@ use mako\Session;
  * @author lusaisai
  */
 class Playutils extends \mako\Controller {
-
-    public function action_randomplay() {
-        $query = "select
-            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name, -1 as log_id
-            from song s
-            join album al
-            on   s.album_id = al.id
-            join artist ar
-            on   al.artist_id = ar.id
-            order by rand()
-            limit 20
-            ";
-        $this->response->type('application/json');
-        return $this->songJson( Database::query($query) );
-    }
-
     public function action_songplay($songs = 0, $iflog = true) {
         $query = "select
             s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name, coalesce(l.log_id, 0) as log_id

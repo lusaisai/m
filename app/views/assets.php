@@ -9,6 +9,8 @@
     Assets::add('jplayer-js', '/jplayer/js/jquery.jplayer.min.js');
     Assets::add('jplayer-playlist-js', '/jplayer/js/jplayer.playlist.js');
 
+    Assets::add('tagcanvas-js', '/js/jquery.tagcanvas.min.js');
+
     Assets::add('play-js', '/js/play.js');
 
     Assets::add('bootstrap-css', '/bootstrap/css/bootstrap.css');

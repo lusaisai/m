@@ -180,10 +180,13 @@
 	"buffers":
 	[
 		{
+			"contents": "<?php\n\nnamespace app\\controllers;\nuse mako\\Database;\nuse mako\\Session;\n/**\n * Description of PlayUtils\n *\n * @author lusaisai\n */\nclass Playutils extends \\mako\\Controller {\n    public function action_songplay($songs = 0, $iflog = true) {\n        $query = \"select\n            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name, coalesce(l.log_id, 0) as log_id\n            from song s\n            join album al\n            on   s.album_id = al.id\n            join artist ar\n            on   al.artist_id = ar.id\n            left join ( select song_id, max(id) as log_id from playlogs group by 1 ) l\n            on   s.id = l.song_id\n            where s.id in ( $songs )\n            order by field ( s.id, $songs )\n            \";\n        if ($iflog) {$this->playlog($songs);}\n        $this->response->type('application/json');\n        return $this->songJson( Database::query($query) );\n    }\n\n    public function action_songremove($logid = -1)\n    {\n        $query = \"update playlogs set is_deleted = 1 where id = ?\";\n        Database::query( $query, array($logid) );\n    }\n\n    private function songJson($rows) {\n        $song_array = array();\n\n        foreach ($rows as $row) {\n            $song = array();\n            $song[\"logid\"] = $row->log_id;\n            $song[\"songid\"] = $row->song_id;\n            $song[\"title\"] = $row->song_name;\n            $song[\"mp3\"] = \"/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}\";\n            array_push($song_array, $song);\n        }\n\n        return json_encode($song_array);\n    }\n\n    private function playlog($songs)\n    {\n        $userid = Session::get(\"userid\", -1);\n        $connection = Database::connection();\n        $query = \"insert into playlogs ( user_id, song_id ) values (?,?)\";\n        try {\n            $connection->pdo->beginTransaction();\n            foreach ( explode(\",\", $songs) as $songid ) {\n                $connection->query( $query, array($userid, $songid) );\n            }\n            $connection->pdo->commit();\n        } catch(PDOException $e) {\n            $connection->pdo->rollBack();\n        }\n    }\n}\n\n?>\n",
 			"file": "app/controllers/playutils.php",
+			"file_size": 2636,
+			"file_write_time": 1376845947000000,
 			"settings":
 			{
-				"buffer_size": 2636,
+				"buffer_size": 2126,
 				"line_ending": "Unix"
 			}
 		},
@@ -191,7 +194,15 @@
 			"file": "app/controllers/home.php",
 			"settings":
 			{
-				"buffer_size": 540,
+				"buffer_size": 537,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/js/play.js",
+			"settings":
+			{
+				"buffer_size": 4808,
 				"line_ending": "Unix"
 			}
 		}
@@ -524,15 +535,15 @@
 					"file": "app/controllers/playutils.php",
 					"settings":
 					{
-						"buffer_size": 2636,
+						"buffer_size": 2126,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1557,
-								1557
+								215,
+								215
 							]
 						],
 						"settings":
@@ -734,7 +745,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 176.0,
+						"translation.y": 23.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -744,15 +755,15 @@
 					"file": "app/controllers/home.php",
 					"settings":
 					{
-						"buffer_size": 540,
+						"buffer_size": 537,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								540,
-								540
+								537,
+								537
 							]
 						],
 						"settings":
@@ -957,6 +968,226 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/js/play.js",
+					"settings":
+					{
+						"buffer_size": 4808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4330,
+								4330
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublime_auto_complete": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1839.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -1010,6 +1241,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"p",
+				"assets/js/play.js"
+			],
 			[
 				"h",
 				"app/controllers/home.php"

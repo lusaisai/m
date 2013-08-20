@@ -26,6 +26,43 @@ $(document).ready(function(){
         }
     };
 
+    var setTagCanvas = function ( canvasid, tagid ) {
+        $("li.topsongs a").click(function(event) {
+            var songid = $(this).attr("songid");
+            $.getJSON( base + 'playutils/songplay/' + songid + "/0", play );
+        });
+
+        if(! $(canvasid).tagcanvas({
+                textColour : '#00f',
+                textHeight : 25,
+                outlineColour : '#ff9999',
+                maxSpeed : 0.03,
+                minBrightness : 0.2,
+                depth : 0.92,
+                pulsateTo : 0.6,
+                initial : [0.1,-0.1],
+                decel : 0.98,
+                reverse : true,
+                hideTags : true,
+                shadow : '#ccf',
+                shadowBlur : 3,
+                weight : false,
+                imageScale : null,
+                fadeIn : 1000
+                }, tagid) ) {
+            $(canvasid).hide();
+        }
+
+        $(window).blur(function(event) {
+            $(canvasid).tagcanvas("pause");
+        });
+        $(window).focus(function(event) {
+            $(canvasid).tagcanvas("resume");
+        });
+
+
+    };
+
     myPlaylist = new jPlayerPlaylist(
             {
                 jPlayer: "#jquery_jplayer_1",
@@ -142,6 +179,8 @@ $(document).ready(function(){
                 $("#the_player").css({ "position": "relative" });
             }
         });
+
+        setTagCanvas( "#OverallTopSongs", "OverallTopSongsTags" );
 
     }
 
