@@ -9,7 +9,8 @@ insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 create table if not exists album
@@ -22,9 +23,10 @@ artist_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id),
-constraint foreign key (artist_id) references artist(id) ON DELETE CASCADE
+index(artist_id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 create table if not exists song
@@ -36,9 +38,10 @@ album_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id),
-constraint foreign key (album_id) references album(id) ON DELETE CASCADE
+index(album_id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 create table if not exists image
@@ -50,10 +53,11 @@ album_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id),
-constraint foreign key (artist_id) references artist(id) ON DELETE CASCADE,
-constraint foreign key (album_id) references album(id) ON DELETE CASCADE
+index (artist_id),
+index (album_id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 
@@ -68,7 +72,8 @@ insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 create table if not exists album_new
@@ -81,9 +86,10 @@ artist_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id),
-constraint foreign key (artist_id) references artist_new(id) ON DELETE CASCADE
+index(artist_id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 create table if not exists song_new
@@ -95,9 +101,10 @@ album_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id),
-constraint foreign key (album_id) references album_new(id) ON DELETE CASCADE
+index(album_id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 create table if not exists image_new
@@ -108,9 +115,12 @@ artist_id integer,
 album_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
-primary key (id)
+primary key (id),
+index(artist_id),
+index(album_id)
 )
-char set utf8
+char set utf8,
+ENGINE = INNODB
 ;
 
 

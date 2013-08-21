@@ -1,12 +1,14 @@
-<h3>Overall Top Songs</h3>
-<canvas width="800" height="500" id="OverallTopSongs"></canvas>
-<div id="OverallTopSongsTags">
-	<ul>
-		<?php foreach ($overallTopSongs as $song): ?>
-			<li class="topsongs"><a songid="<?php echo $song->song_id ?>" href="javascript:;"><?php echo $song->song_name ?></a></li>
-		<?php endforeach ?>
-	</ul>
+<h3>Top Songs</h3>
+<div id="timeline" class="btn-group" data-toggle="buttons-radio">
+	<button time="week" type="button" class="btn">Week</button>
+	<button time="month" type="button" class="btn">Month</button>
+	<button time="all" type="button" class="btn active">Overall</button>
 </div>
-<script type="text/javascript">
-
-</script>
+<div id="userstatus" class="btn-group" data-toggle="buttons-radio">
+	<button user="user" type="button" class="btn <?php if( ! Session::get( "isLogin", false ) ) echo "disabled"; ?>">My Tops</button>
+	<button user="all" type="button" class="btn active">Overall</button>
+</div>
+<canvas width="800" height="500" id="topSongs"></canvas>
+<div id="topSongsTags">
+<?php include 'topsongstags.php'; ?>
+</div>

@@ -27,7 +27,7 @@ $(document).ready(function(){
     };
 
     var setTagCanvas = function ( canvasid, tagid ) {
-        $("li.topsongs a").click(function(event) {
+        $("#topSongsTags").on( 'click','li.topsongs a', function() {
             var songid = $(this).attr("songid");
             $.getJSON( base + 'playutils/songplay/' + songid + "/0", play );
         });
@@ -59,8 +59,20 @@ $(document).ready(function(){
         $(window).focus(function(event) {
             $(canvasid).tagcanvas("resume");
         });
-
-
+        $("#timeline button").click(function() {
+            var time = $(this).attr("time");
+            var user = $("#userstatus .active").attr("user");
+            $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
+                $(canvasid).tagcanvas("reload");
+            });
+        });
+        $('#userstatus button').not(".disabled").click(function() {
+            var user = $(this).attr("user");
+            var time = $("#timeline .active").attr("time");
+            $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
+                $(canvasid).tagcanvas("reload");
+            });
+        });
     };
 
     myPlaylist = new jPlayerPlaylist(
@@ -180,7 +192,7 @@ $(document).ready(function(){
             }
         });
 
-        setTagCanvas( "#OverallTopSongs", "OverallTopSongsTags" );
+        setTagCanvas( "#topSongs", "topSongsTags" );
 
     }
 
