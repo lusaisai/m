@@ -6,9 +6,10 @@ create table if not exists playlogs
 	user_id integer not null default -1,
 	song_id integer not null,
 	play_ts timestamp not null default current_timestamp,
-	is_deleted bool not null default 0,
 	primary key (id),
-	index(song_id)
+	index(song_id),
+	index(user_id),
+	index(play_ts)
 )
 char set utf8
 ;
@@ -19,7 +20,6 @@ create table if not exists playlogs_new
 	user_id integer not null default -1,
 	song_id integer not null,
 	play_ts timestamp not null default current_timestamp,
-	is_deleted bool not null default 0,
 	primary key (id),
 	index(song_id),
 	index(user_id),

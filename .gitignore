@@ -1,3 +1,7 @@
 .DS_Store
-console_history
+composer.phar
+composer.lock
+/vendor
+/app/storage/console_history
+/app/storage/offline
 m.sublime-workspace
