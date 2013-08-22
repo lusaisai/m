@@ -128,6 +128,7 @@ return array
 	(
 		'display_errors' => true, // It is recommended to set this value to false when you are in production.
 		'log_errors'     => true,
+		'open_with'      => 'sublime',
 	),
 );
 

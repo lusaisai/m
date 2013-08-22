@@ -19,12 +19,35 @@ class Music extends \mako\Controller
             on   al.artist_id = ar.id
             where s.id = $id
             ";
-        $this->response->type('audio/mpeg');
         $row = Database::first( $query );
+        $log = \mako\Log::instance();
+
         if ($row) {
-        	if ($iflog) {$this->playlog($id);}
+
         	$file = "/var/www/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
-        	return file_get_contents($file);
+            $filesize = filesize($file);
+            $offset = 0;
+            $length = $filesize;
+
+            if ( isset($_SERVER['HTTP_RANGE']) ) {
+                preg_match('/bytes=(\d+)-(\d+)?/', $_SERVER['HTTP_RANGE'], $matches);
+                $offset = intval($matches[0]);
+            }
+            if ( $offset == 0 ) {
+                if ($iflog) {$this->playlog($id);}
+            }
+
+            $this->response->type('audio/mpeg');
+            $this->response->header("Accept-Ranges", "bytes");
+            $this->response->header("Content-Length", $filesize);
+            $this->response->header("Content-Range", 'bytes ' . $offset . '-' . ($offset + $length) . '/' . $filesize);
+
+            $file = fopen($file, 'r');
+            fseek($file, $offset);
+            $data = fread($file, $length);
+            fclose($file);
+
+        	return $data;
         } else {
         	return "";
         }
