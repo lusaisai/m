@@ -23,7 +23,7 @@
 
 		<?php if ($endid < $toalPages): ?>
 			<li><a>...</a></li>
-			<li><a href="javascript:;" pageid="$toalPages">Last</a></li>
+			<li><a href="javascript:;" pageid="<?php echo $toalPages?>">Last</a></li>
 		<?php endif ?>
 	</ul>
 </div>
