@@ -59,17 +59,31 @@ $(document).ready(function(){
         $(window).focus(function(event) {
             $(canvasid).tagcanvas("resume");
         });
-        $("#timeline button").click(function() {
+        $("#topsongs .timeline button").click(function() {
             var time = $(this).attr("time");
-            var user = $("#userstatus .active").attr("user");
+            var user = $("#topsongs .userstatus .active").attr("user");
             $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
                 $(canvasid).tagcanvas("reload");
             });
         });
-        $('#userstatus button').not(".disabled").click(function() {
+        $('#topsongs .userstatus button').not(".disabled").click(function() {
             var user = $(this).attr("user");
-            var time = $("#timeline .active").attr("time");
+            var time = $("#topsongs .timeline .active").attr("time");
             $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
+                $(canvasid).tagcanvas("reload");
+            });
+        });
+        $("#topartists .timeline button").click(function() {
+            var time = $(this).attr("time");
+            var user = $("#topartists .userstatus .active").attr("user");
+            $("#topArtistsTags").load(base + "home/topartistdata/" + user + "/" + time + "/" , function () {
+                $(canvasid).tagcanvas("reload");
+            });
+        });
+        $('#topartists .userstatus button').not(".disabled").click(function() {
+            var user = $(this).attr("user");
+            var time = $("#topartists .timeline .active").attr("time");
+            $("#topArtistsTags").load(base + "home/topartistdata/" + user + "/" + time + "/" , function () {
                 $(canvasid).tagcanvas("reload");
             });
         });
@@ -191,15 +205,14 @@ $(document).ready(function(){
                 $("#the_player").css({ "position": "relative" });
             }
         });
-
-        setTagCanvas( "#topSongs", "topSongsTags" );
-
     }
 
     var run= function () {
         songListToggle();
         plays();
         setTimeout( setPlaylistCookie, 30 * 1000 );
+        setTagCanvas( "#topSongs", "topSongsTags" );
+        setTagCanvas( "#topArtists", "topArtistsTags" );
     };
 
     run();

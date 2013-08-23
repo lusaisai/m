@@ -30,8 +30,11 @@
                     <div id="randoms">
                         <?php include 'randoms.php'; ?>
                     </div>
-                    <div id="topsongs">
+                    <div id="topsongs" class="tops">
                         <?php include 'topsongs.php'; ?>
+                    </div>
+                    <div id="topartists" class="tops">
+                        <?php include 'topartists.php'; ?>
                     </div>
                 </div>
             </div>
