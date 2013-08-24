@@ -2,12 +2,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/ico" href="/m/assets/img/favicon.ico"/>
         <title>My Music Station</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php include dirname(__FILE__) . '/../assets.php';?>
     </head>
     <body>
         <div class="container">
+            <?php include dirname(__FILE__).'/../info.php'; ?>
             <ul class="nav nav-pills">
                 <li class="active"><a href="<?php echo URL::to('home/index'); ?>">Home</a></li>
                 <li><a href="<?php echo URL::to('artist/index'); ?>">Artist</a></li>

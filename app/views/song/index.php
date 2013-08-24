@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="icon" type="image/ico" href="/m/assets/img/favicon.ico"/>
         <title>My Songs</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php include dirname(__FILE__) . '/../assets.php';?>
     </head>
     <body>

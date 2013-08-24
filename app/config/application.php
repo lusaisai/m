@@ -78,6 +78,7 @@ return array
 		'Database' => 'mako\Database',
 		'Session' => 'mako\Session',
 		'View' => 'mako\View',
+		'UserAgent' => 'mako\UserAgent',
 	),
 
 	/**

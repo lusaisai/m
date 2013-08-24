@@ -3,9 +3,6 @@
 
     Assets::add('jquery-cookie-js', '/js/jquery.cookie.js');
 
-/*    Assets::add('jquery-ui-js', '/jquery-ui/js/jquery-ui-1.10.3.custom.min.js');
-    Assets::add('jquery-ui-css', '/jquery-ui/css/redmond/jquery-ui-1.10.3.custom.min.css');*/
-
     Assets::add('jplayer-js', '/jplayer/js/jquery.jplayer.min.js');
     Assets::add('jplayer-playlist-js', '/jplayer/js/jplayer.playlist.js');
 

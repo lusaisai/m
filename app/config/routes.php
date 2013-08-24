@@ -19,7 +19,7 @@ return array
 	 * Default route.
 	 */
 
-	'default_route' => 'artist/index',
+	'default_route' => 'home/index',
 
 	/**
 	 * Custom routes.
