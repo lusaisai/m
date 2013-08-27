@@ -9,10 +9,10 @@
     <body>
         <div class="container">
             <ul class="nav nav-pills">
-                <li><a href="<?php echo URL::to('home/index'); ?>">Home</a></li>
-                <li><a href="<?php echo URL::to('artist/index'); ?>">Artist</a></li>
-                <li><a href="<?php echo URL::to('album/index'); ?>">Album</a></li>
-                <li><a href="<?php echo URL::to('song/index'); ?>">Song</a></li>
+                <li><a href="<?php echo URL::to('home'); ?>">Home</a></li>
+                <li><a href="<?php echo URL::to('artist'); ?>">Artist</a></li>
+                <li><a href="<?php echo URL::to('album'); ?>">Album</a></li>
+                <li><a href="<?php echo URL::to('song'); ?>">Song</a></li>
                 <li class="active pull-right">
                     <?php if (Session::get( "isLogin", false )): ?>
                         <a href="<?php echo URL::to('user/logout'); ?>">Logout</a>

@@ -6,11 +6,17 @@ use mako\View;
 use mako\Validate;
 use mako\Session;
 use mako\security\Password;
+use \mako\ReCaptcha;
 
 class User extends \mako\Controller
 {
 	public function action_index() {
-        return new View("user.index");
+        if (Session::get('isLogin', false)) {
+            return new View("user.index");
+        } else {
+            $this->response->redirect('user/login');
+        }
+
     }
 
     public function action_login() {
@@ -58,6 +64,7 @@ class User extends \mako\Controller
     }
 
     public function action_register() {
+        $recaptcha = new ReCaptcha();
         $rules = array (
             'username' => 'required|min_length:4|max_length:20',
             'password' => 'required|min_length:8',
@@ -76,7 +83,10 @@ class User extends \mako\Controller
                 $data = array('errors' => "The username has already been registered", 'page' =>'register');
             } elseif ($isemailExist) {
                 $data = array('errors' => "The email has already been registered", 'page' =>'register');
-            } else {
+            } elseif ( $recaptcha->validate() && $recaptcha->failed() ) {
+                $data = array('errors' => "The ReCaptcha inputs are incorrect", 'page' =>'register');
+            }
+            else {
                 Database::query( "insert into users (username, password, email) values(?,?,?)", array($username,$password,$email) );
                 $data = array('errors' => "", 'page' =>'login');
             }

@@ -8,7 +8,9 @@
 	<button user="user" type="button" class="btn <?php if( ! Session::get( "isLogin", false ) ) echo "disabled"; ?>">My Tops</button>
 	<button user="all" type="button" class="btn active">Overall</button>
 </div>
-<canvas width="800" height="500" id="topSongs"></canvas>
+<div class="cw">
+	<canvas width="800" height="500" id="topSongs"></canvas>
+</div>
 <div id="topSongsTags">
 <?php include 'topsongstags.php'; ?>
 </div>

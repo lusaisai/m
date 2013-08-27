@@ -9,13 +9,13 @@
     <body>
         <div class="container">
             <ul class="nav nav-pills">
-                <li><a href="<?php echo URL::to('home/index'); ?>">Home</a></li>
-                <li><a href="<?php echo URL::to('artist/index'); ?>">Artist</a></li>
-                <li class="active"><a href="<?php echo URL::to('album/index'); ?>">Album</a></li>
-                <li><a href="<?php echo URL::to('song/index'); ?>">Song</a></li>
+                <li><a href="<?php echo URL::to('home'); ?>">Home</a></li>
+                <li><a href="<?php echo URL::to('artist'); ?>">Artist</a></li>
+                <li class="active"><a href="<?php echo URL::to('album'); ?>">Album</a></li>
+                <li><a href="<?php echo URL::to('song'); ?>">Song</a></li>
                 <li class="pull-right">
                     <?php if ( Session::get( "isLogin", false ) ) {
-                        echo "<a href='" . URL::to('user/index') . "'>" . Session::get("username") . "</a>";
+                        echo "<a href='" . URL::to('user') . "'>" . Session::get("username") . "</a>";
                     } else {
                         echo "<a href='" . URL::to('user/login') . "'>Login</a>";
                     }

@@ -38,7 +38,7 @@ return array
 	 * @see http://php.net/manual/en/timezones.php
 	 */
 
-	'timezone' => 'UTC',
+	'timezone' => 'Asia/Shanghai',
 
 	/**
 	 * Default character set used internally in the framework.
@@ -87,7 +87,7 @@ return array
 
 	'packages' => array
 	(
-
+		'recaptcha'
 	),
 
 	/**

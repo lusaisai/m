@@ -9,15 +9,15 @@ return array
 	/**
 	 * Default configuration to use.
 	 */
-	
-	'default' => 'test',
+
+	'default' => 'mysql',
 
 	/**
 	 * Enable the query log?
 	 */
 
 	'log_queries' => false,
-	
+
 	/**
 	 * You can define as many database configurations as you want.
 	 *
@@ -27,10 +27,10 @@ return array
 	 * persistent: (optional) Set to true to make the connection persistent
 	 * queries   : (optional) Queries that will be executed right after a connection has been made
 	 */
-	
+
 	'configurations' => array
 	(
-		'test' => array
+		'mysql' => array
 		(
 			'dsn'        => 'mysql:dbname=mav;host=localhost;port=3306',
 			'username'   => 'mav',
@@ -49,7 +49,7 @@ return array
 			(
 				"PRAGMA encoding = 'UTF-8'",
 			),
-		),	
+		),
 	),
 );
 
