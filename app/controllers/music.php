@@ -20,7 +20,7 @@ class Music extends \mako\Controller
 		where s.id = $id
 		";
 		$row = Database::first( $query );
-		$log = \mako\Log::instance();
+		// $log = \mako\Log::instance();
 
 		if ($row) {
 

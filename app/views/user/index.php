@@ -26,7 +26,14 @@
                     <?php include dirname(__FILE__).'/../player.html'; ?>
                 </div>
                 <div class="span8">
-                    <div class="alert alert-success">You are logged in!</div>
+                    <div id="side" class="span2">
+                        <ul class="nav nav-tabs nav-stacked">
+                          <li class="active"><a href="javascript:;">My Information</a></li>
+                        </ul>
+                    </div>
+                    <div id="content" class="span6">
+                        <?php include 'updateinfo.php'; ?>
+                    </div>
                 </div>
                 </div>
             </div>

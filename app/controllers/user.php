@@ -11,17 +11,74 @@ use \mako\ReCaptcha;
 class User extends \mako\Controller
 {
 	public function action_index() {
-        if (Session::get('isLogin', false)) {
-            return new View("user.index");
+        $data = $this->userInfo() + array('errors' => "", 'successes' => "");
+        if ($this->checkLogin()) {
+            return new View("user.index", $data);
+        }
+    }
+
+    public function checkLogin()
+    {
+        if ( Session::get('isLogin', false)) {
+            return true;
         } else {
             $this->response->redirect('user/login');
+        }
+    }
+
+    private function userInfo()
+    {
+        $row = Database::first( "select * from users where id = ? ", array( Session::get('userid', -1) ) );
+        if ($row) {
+            return array( 'id' => $row->id, 'name' => $row->username, 'email' => $row->email );
+        } else {
+            return array( 'id' => '-1', 'name' => '', 'email' => '' );
         }
 
     }
 
+    public function action_updateinfo()
+    {
+        $this->checkLogin();
+        $rules = array (
+            'oldpassword' => 'required|min_length:8',
+            'newpassword' => 'required|min_length:8',
+        );
+
+        $validation = new Validate($_POST, $rules);
+        $data = $this->userInfo() + array('errors' => "", 'successes' => "");
+        if($validation->successful()) {
+            $oldpassword = $_POST['oldpassword'];
+            $newpassword = Password::hash( $_POST['newpassword'] );
+            $newpasswordrpt = $_POST['newpasswordrpt'];
+            $row = Database::first( "select * from users where id = ? ", array($data['id']) );
+
+            if ( ! Password::validate($oldpassword, $row->password) ) {
+                $data['errors'] = "The old password is incorrect";
+            } elseif ( ! Password::validate($newpasswordrpt, $newpassword) ) {
+                $data['errors'] = "Your repeated password is different";
+            }
+            else {
+                $query = "update users
+                set password = ?,
+                update_ts = current_timestamp
+                where id = ?
+                ";
+                Database::query( $query, array($newpassword,$data['id']) );
+                $data['successes'] = "Your password has been updated";
+            }
+        }
+        else {
+            $errors = implode( "<br/>", array_values($validation->errors()) );
+            $data['errors'] = $errors;
+        }
+        return new View("user.updateinfo", $data);
+    }
+
     public function action_login() {
+        $data = array('errors' => "", 'successes' => "", 'page' =>'login');
+
         if($this->request->method() == 'GET') { // this is for accessing from menu, not from form
-            $data = array('errors' => "", 'page' =>'login');
             return new View("user.login", $data);
         }
 
@@ -36,21 +93,22 @@ class User extends \mako\Controller
             $row = Database::first( "select * from users where username = ? ", array($username) );
 
             if ( ! $row ) {
-                $data = array('errors' => "Incorrect username or password", 'page' =>'login');
+                $data['errors'] = "Incorrect username or password";
             } elseif (Password::validate($password, $row->password)) {
                 Session::regenerate();
                 Session::remember( "isLogin", true );
                 Session::remember( "username", $username );
                 Session::remember( "userid", $row->id );
-                return new View("user.index");
+                $data += $this->userInfo();
+                return new View("user.index", $data);
             } else {
-                $data = array('errors' => "Incorrect username or password", 'page' =>'login');
+                $data['errors'] = "Incorrect username or password";
             }
             return new View("user.login", $data);
         }
         else {
             $errors = implode( "<br/>", array_values($validation->errors()) );
-            $data = array('errors' => $errors, 'page' =>'login');
+            $data['errors'] = $errors;
 
             return new View("user.login", $data);
         }

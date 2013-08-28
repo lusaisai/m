@@ -199,7 +199,7 @@ $(document).ready(function(){
         });
 
         $(window).scroll(function() {
-            if ( $(window).scrollTop() >= playerY ) {
+            if ( $(window).scrollTop() >= playerY && $(window).height() > $("#the_player").height() ) {
                 $("#the_player").css({ "position": "fixed", "top": "0px" });
             } else {
                 $("#the_player").css({ "position": "relative" });
