@@ -74,12 +74,4 @@
 
 .jp-type-playlist li a:hover {
   color: #000;
-  -webkit-transition: 50ms ease;
-  -o-transition: 50ms ease;
-  transition: 50ms ease;
-  text-decoration: underline;
-}
-
-.jp-type-playlist a {
-  text-decoration: none;
 }

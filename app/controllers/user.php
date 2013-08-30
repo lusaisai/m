@@ -37,6 +37,23 @@ class User extends \mako\Controller
 
     }
 
+    public function action_saveplaylist($songids, $playlistName, $playlistid = 0)
+    {
+        $this->checkLogin();
+        $user = $this->userInfo();
+        $query = "select count(*) from playlists where id = ?";
+        $isPlaylistExist = Database::column( $query, array($playlistid) );
+        if ($isPlaylistExist) {
+            $query = "update playlists set song_ids = ? where id = ?";
+            Database::query( $query, array( $songids, $playlistid ) );
+        } else {
+            $query = "insert into playlists
+            ( name, user_id, song_ids ) values ( ?,?,? )
+            ";
+            Database::query( $query, array( $playlistName, $user['id'], $songids ) );
+        }
+    }
+
     public function action_updateinfo()
     {
         $this->checkLogin();
