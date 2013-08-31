@@ -24,7 +24,8 @@ class Music extends \mako\Controller
 
 		if ($row) {
 
-			$file = "/var/www/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
+			$file = "C:/wamp/www/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
+			$file = mb_convert_encoding( $file, "cp936" );
 			$filesize = filesize($file);
 			$offset = 0;
 			$length = $filesize;
