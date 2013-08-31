@@ -1,0 +1,2 @@
+[30-Aug-2013 18:08:18] PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mav.playlists' doesn't exist in /var/www/m/vendor/mako/framework/src/mako/database/Connection.php at line 218
+[30-Aug-2013 18:08:27] PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mav.playlists' doesn't exist in /var/www/m/vendor/mako/framework/src/mako/database/Connection.php at line 218

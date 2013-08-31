@@ -37,6 +37,15 @@ class User extends \mako\Controller
 
     }
 
+    public function action_palylist()
+    {
+        $this->checkLogin();
+        $user = $this->userInfo();
+
+        $limit = 50;
+        $data = array();
+    }
+
     public function action_saveplaylist($songids, $playlistName, $playlistid = 0)
     {
         $this->checkLogin();

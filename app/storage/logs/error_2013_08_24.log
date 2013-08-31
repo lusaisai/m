@@ -1,0 +1,2 @@
+[24-Aug-2013 03:40:23 UTC] PHP Fatal error:  Class 'UserAgent' not found in /var/www/m/app/views/info.php on line 1
+[24-Aug-2013 03:40:24] ErrorException: Class 'UserAgent' not found in /var/www/m/app/views/info.php at line 1

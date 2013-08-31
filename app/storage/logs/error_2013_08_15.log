@@ -1,0 +1,37 @@
+[15-Aug-2013 12:25:42 UTC] PHP Fatal error:  Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php on line 11
+[15-Aug-2013 12:25:42] ErrorException: Fatal Error: Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php at line 11
+[15-Aug-2013 12:41:31 UTC] PHP Fatal error:  Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php on line 11
+[15-Aug-2013 12:41:31] ErrorException: Fatal Error: Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php at line 11
+[15-Aug-2013 12:41:33 UTC] PHP Fatal error:  Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php on line 11
+[15-Aug-2013 12:41:33] ErrorException: Fatal Error: Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php at line 11
+[15-Aug-2013 12:41:34 UTC] PHP Fatal error:  Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php on line 11
+[15-Aug-2013 12:41:34] ErrorException: Fatal Error: Class 'app\controllers\View' not found in /var/www/m/app/controllers/user.php at line 11
+[15-Aug-2013 13:40:53 UTC] PHP Parse error:  syntax error, unexpected ':', expecting ',' or ';' in /var/www/m/app/views/user/loginform.php on line 10
+[15-Aug-2013 13:40:53] ErrorException: Parse Error: syntax error, unexpected ':', expecting ',' or ';' in /var/www/m/app/views/user/loginform.php at line 10
+[15-Aug-2013 14:07:28 UTC] PHP Fatal error:  Class 'app\controllers\Validate' not found in /var/www/m/app/controllers/user.php on line 25
+[15-Aug-2013 14:07:28] ErrorException: Fatal Error: Class 'app\controllers\Validate' not found in /var/www/m/app/controllers/user.php at line 25
+[15-Aug-2013 14:08:29] ErrorException: Notice: Undefined variable: errors in /var/www/m/app/views/user/loginform.php at line 3
+[15-Aug-2013 14:13:43] ErrorException: Notice: Undefined variable: errors in /var/www/m/app/views/user/login.php at line 22
+[15-Aug-2013 14:14:43] ErrorException: Notice: Undefined variable: page in /var/www/m/app/views/user/loginform.php at line 3
+[15-Aug-2013 14:26:32 UTC] PHP Fatal error:  Cannot access protected property mako\Validate::$errors in /var/www/m/app/controllers/user.php on line 32
+[15-Aug-2013 14:26:32] ErrorException: Fatal Error: Cannot access protected property mako\Validate::$errors in /var/www/m/app/controllers/user.php at line 32
+[15-Aug-2013 14:26:35 UTC] PHP Fatal error:  Cannot access protected property mako\Validate::$errors in /var/www/m/app/controllers/user.php on line 32
+[15-Aug-2013 14:26:35] ErrorException: Fatal Error: Cannot access protected property mako\Validate::$errors in /var/www/m/app/controllers/user.php at line 32
+[15-Aug-2013 14:50:16] ErrorException: Notice: Undefined index: remember in /var/www/m/app/controllers/user.php at line 32
+[15-Aug-2013 15:15:26 UTC] PHP Fatal error:  Class 'app\controllers\mysqli' not found in /var/www/m/app/controllers/user.php on line 30
+[15-Aug-2013 15:15:26] ErrorException: Fatal Error: Class 'app\controllers\mysqli' not found in /var/www/m/app/controllers/user.php at line 30
+[15-Aug-2013 15:16:46] ErrorException: Warning: mysqli_real_escape_string() expects exactly 2 parameters, 1 given in /var/www/m/app/controllers/user.php at line 30
+[15-Aug-2013 15:17:39 UTC] PHP Fatal error:  Non-static method mysqli::escape_string() cannot be called statically, assuming $this from incompatible context in /var/www/m/app/controllers/user.php on line 30
+[15-Aug-2013 15:17:39] ErrorException: Fatal Error: Non-static method mysqli::escape_string() cannot be called statically, assuming $this from incompatible context in /var/www/m/app/controllers/user.php at line 30
+[15-Aug-2013 15:18:29 UTC] PHP Fatal error:  Class 'app\controllers\Password' not found in /var/www/m/app/controllers/user.php on line 31
+[15-Aug-2013 15:18:29] ErrorException: Fatal Error: Class 'app\controllers\Password' not found in /var/www/m/app/controllers/user.php at line 31
+[15-Aug-2013 15:18:55 UTC] PHP Fatal error:  Class 'mako\Password' not found in /var/www/m/app/controllers/user.php on line 32
+[15-Aug-2013 15:18:55] ErrorException: Fatal Error: Class 'mako\Password' not found in /var/www/m/app/controllers/user.php at line 32
+[15-Aug-2013 15:19:50] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'userename' in 'where clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[15-Aug-2013 15:20:07] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'username' in 'where clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[15-Aug-2013 15:27:17] PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'a'a'a'a'a'''''' at line 1 in /var/www/m/libraries/mako/database/Connection.php at line 218
+[15-Aug-2013 15:47:57] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/user.php at line 28
+[15-Aug-2013 15:49:19] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/user.php at line 28
+[15-Aug-2013 15:53:14 UTC] PHP Fatal error:  Class 'app\controllers\Session' not found in /var/www/m/app/controllers/user.php on line 30
+[15-Aug-2013 15:53:14] ErrorException: Fatal Error: Class 'app\controllers\Session' not found in /var/www/m/app/controllers/user.php at line 30
+[15-Aug-2013 15:53:30] ErrorException: Warning: call_user_func_array() expects parameter 1 to be a valid callback, class 'mako\session\Native' does not have a method 'set' in /var/www/m/libraries/mako/Session.php at line 110

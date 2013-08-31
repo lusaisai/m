@@ -1,0 +1,27 @@
+[18-Jul-2013 13:51:09] ErrorException: Warning: include(player.php): failed to open stream: No such file or directory in /var/www/m/app/views/home/index.php at line 28
+[18-Jul-2013 14:06:07 UTC] PHP Fatal error:  Class 'app\controllers\Database' not found in /var/www/m/app/controllers/album.php on line 11
+[18-Jul-2013 14:06:07] ErrorException: Fatal Error: Class 'app\controllers\Database' not found in /var/www/m/app/controllers/album.php at line 11
+[18-Jul-2013 14:06:30 UTC] PHP Fatal error:  Class 'app\controllers\Pagination' not found in /var/www/m/app/controllers/album.php on line 11
+[18-Jul-2013 14:06:30] ErrorException: Fatal Error: Class 'app\controllers\Pagination' not found in /var/www/m/app/controllers/album.php at line 11
+[18-Jul-2013 14:06:58 UTC] PHP Fatal error:  Class 'app\controllers\View' not found in /var/www/m/app/controllers/album.php on line 17
+[18-Jul-2013 14:06:58] ErrorException: Fatal Error: Class 'app\controllers\View' not found in /var/www/m/app/controllers/album.php at line 17
+[18-Jul-2013 14:08:30 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'Undefined variable: paginagion' in /var/www/m/app/views/album/index.php:35
+Stack trace:
+#0 /var/www/m/app/views/album/index.php(35): {closure}(8, 'Undefined varia...', '/var/www/m/app/...', 35, Array)
+#1 /var/www/m/libraries/mako/view/renderer/PHP.php(80): include('/var/www/m/app/...')
+#2 /var/www/m/libraries/mako/View.php(181): mako\view\renderer\PHP->render()
+#3 /var/www/m/libraries/mako/View.php(256): mako\View->render()
+#4 /var/www/m/libraries/mako/Response.php(211): mako\View->__toString()
+#5 /var/www/m/libraries/mako/Request.php(410): mako\Response->body(Object(mako\View))
+#6 /var/www/m/libraries/mako/Mako.php(98): mako\Request->execute()
+#7 /var/www/m/index.php(40): mako\Mako->run()
+#8 {main}
+  thrown in /var/www/m/app/views/album/index.php on line 35
+[18-Jul-2013 14:08:30 UTC] PHP Fatal error:  Call to a member function render() on a non-object in /var/www/m/app/views/album/index.php on line 35
+[18-Jul-2013 14:08:30] ErrorException: Fatal Error: Call to a member function render() on a non-object in /var/www/m/app/views/album/index.php at line 35
+[18-Jul-2013 14:14:17] ErrorException: Notice: Undefined variable: pages in /var/www/m/app/views/album/index.php at line 43
+[18-Jul-2013 14:39:22] PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '}' at line 1 in /var/www/m/libraries/mako/database/Connection.php at line 218
+[18-Jul-2013 14:39:52 UTC] PHP Fatal error:  Call to undefined function app\controllers\albumInfo() in /var/www/m/app/controllers/album.php on line 20
+[18-Jul-2013 14:39:52] ErrorException: Fatal Error: Call to undefined function app\controllers\albumInfo() in /var/www/m/app/controllers/album.php at line 20
+[18-Jul-2013 14:40:06] ErrorException: Recoverable Error: Object of class stdClass could not be converted to string in /var/www/m/app/controllers/album.php at line 33
+[18-Jul-2013 14:44:53] ErrorException: Notice: Undefined variable: data in /var/www/m/app/views/album/index.php at line 32

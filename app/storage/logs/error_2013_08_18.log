@@ -1,0 +1,8 @@
+[18-Aug-2013 19:00:11 UTC] PHP Fatal error:  Class 'app\controllers\Request' not found in /var/www/m/app/controllers/home.php on line 23
+[18-Aug-2013 19:00:11] ErrorException: Fatal Error: Class 'app\controllers\Request' not found in /var/www/m/app/controllers/home.php at line 23
+[18-Aug-2013 19:00:13 UTC] PHP Fatal error:  Class 'app\controllers\Request' not found in /var/www/m/app/controllers/home.php on line 23
+[18-Aug-2013 19:00:13] ErrorException: Fatal Error: Class 'app\controllers\Request' not found in /var/www/m/app/controllers/home.php at line 23
+[18-Aug-2013 19:00:34 UTC] PHP Fatal error:  Class 'app\controllers\Request' not found in /var/www/m/app/controllers/home.php on line 23
+[18-Aug-2013 19:00:34] ErrorException: Fatal Error: Class 'app\controllers\Request' not found in /var/www/m/app/controllers/home.php at line 23
+[18-Aug-2013 19:01:08] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'undefined' in 'where clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[18-Aug-2013 19:12:04] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'undefined' in 'where clause' in /var/www/m/libraries/mako/database/Connection.php at line 218

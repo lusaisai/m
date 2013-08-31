@@ -1,0 +1,44 @@
+[03-Aug-2013 03:51:37] ErrorException: Warning: include(data.php): failed to open stream: No such file or directory in /var/www/m/app/views/song/index.php at line 35
+[03-Aug-2013 03:54:08] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.song_id' in 'on clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[03-Aug-2013 04:01:53] ErrorException: Notice: Undefined index: name in /var/www/m/app/views/song/data.php at line 21
+[03-Aug-2013 04:06:09] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.song_id' in 'on clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[03-Aug-2013 04:09:50] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.song_id' in 'on clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[03-Aug-2013 04:11:09] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.song_id' in 'on clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[03-Aug-2013 04:12:24] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 's.song_id' in 'on clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[03-Aug-2013 04:39:14 UTC] PHP Fatal error:  Class 'app\controllers\Log' not found in /var/www/m/app/controllers/song.php on line 96
+[03-Aug-2013 04:39:14] ErrorException: Fatal Error: Class 'app\controllers\Log' not found in /var/www/m/app/controllers/song.php at line 96
+[03-Aug-2013 04:39:51 UTC] PHP Fatal error:  Class 'Mako\Log' not found in /var/www/m/app/controllers/song.php on line 96
+[03-Aug-2013 04:39:51] ErrorException: Fatal Error: Class 'Mako\Log' not found in /var/www/m/app/controllers/song.php at line 96
+[03-Aug-2013 04:39:53 UTC] PHP Fatal error:  Class 'Mako\Log' not found in /var/www/m/app/controllers/song.php on line 96
+[03-Aug-2013 04:39:53] ErrorException: Fatal Error: Class 'Mako\Log' not found in /var/www/m/app/controllers/song.php at line 96
+[03-Aug-2013 04:40:22 UTC] PHP Fatal error:  Class 'app\controllers\mako\Log' not found in /var/www/m/app/controllers/song.php on line 96
+[03-Aug-2013 04:40:22] ErrorException: Fatal Error: Class 'app\controllers\mako\Log' not found in /var/www/m/app/controllers/song.php at line 96
+[03-Aug-2013 04:40:23 UTC] PHP Fatal error:  Class 'app\controllers\mako\Log' not found in /var/www/m/app/controllers/song.php on line 96
+[03-Aug-2013 04:40:23] ErrorException: Fatal Error: Class 'app\controllers\mako\Log' not found in /var/www/m/app/controllers/song.php at line 96
+[03-Aug-2013 04:40:23 UTC] PHP Fatal error:  Class 'app\controllers\mako\Log' not found in /var/www/m/app/controllers/song.php on line 96
+[03-Aug-2013 04:40:23] ErrorException: Fatal Error: Class 'app\controllers\mako\Log' not found in /var/www/m/app/controllers/song.php at line 96
+[03-Aug-2013 04:40:36] select id from song order by id desc
+[03-Aug-2013 04:40:45] select 
+                    s.id 
+                    from song s
+                    join album al
+                    on   s.album_id = al.id
+                     where true  and al.name like '%我们%'  order by id desc 
+[03-Aug-2013 04:40:45] select 
+                    s.id 
+                    from song s
+                    join album al
+                    on   s.album_id = al.id
+                     where false  or al.name like '%我们%'  order by id desc 
+[03-Aug-2013 04:42:39] select 
+                    s.id 
+                    from song s
+                    join album al
+                    on   s.album_id = al.id
+                     where true  and al.name like '%我%'  order by id desc 
+[03-Aug-2013 04:42:39] select 
+                    s.id 
+                    from song s
+                    join album al
+                    on   s.album_id = al.id
+                     where false  or al.name like '%我%'  order by id desc 

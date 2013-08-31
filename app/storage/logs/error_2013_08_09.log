@@ -1,0 +1,18 @@
+[09-Aug-2013 13:46:03] ReflectionException: Class \app\controllers\artist does not exist in /var/www/m/libraries/mako/Request.php at line 343
+[09-Aug-2013 13:46:33] ErrorException: Warning: array_push() expects parameter 1 to be array, null given in /var/www/m/app/controllers/artist.php at line 102
+[09-Aug-2013 13:46:58] PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.name, i.name as image_name
+            from image i
+            join artist ar
+' at line 2 in /var/www/m/libraries/mako/database/Connection.php at line 218
+[09-Aug-2013 13:48:54] ErrorException: Notice: Undefined index: artist_id in /var/www/m/app/views/artist/data.php at line 3
+[09-Aug-2013 13:49:14] ErrorException: Notice: Undefined variable: albums in /var/www/m/app/views/artist/data.php at line 12
+[09-Aug-2013 13:50:05] ErrorException: Notice: Undefined variable: songs in /var/www/m/app/views/artist/data.php at line 23
+[09-Aug-2013 13:50:28] ErrorException: Notice: Undefined index: id in /var/www/m/app/views/artist/data.php at line 28
+[09-Aug-2013 13:50:44] ErrorException: Notice: Undefined index: id in /var/www/m/app/views/artist/data.php at line 28
+[09-Aug-2013 13:50:45] ErrorException: Notice: Undefined index: id in /var/www/m/app/views/artist/data.php at line 28
+[09-Aug-2013 13:50:46] ErrorException: Notice: Undefined index: id in /var/www/m/app/views/artist/data.php at line 28
+[09-Aug-2013 13:51:08] ErrorException: Notice: Undefined index: name in /var/www/m/app/views/artist/data.php at line 29
+[09-Aug-2013 14:30:03] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/artist.php at line 137
+[09-Aug-2013 14:30:16] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/artist.php at line 137
+[09-Aug-2013 14:30:19] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/artist.php at line 137
+[09-Aug-2013 14:30:36] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/artist.php at line 137

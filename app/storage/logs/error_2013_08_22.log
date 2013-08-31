@@ -1,0 +1,39 @@
+[22-Aug-2013 12:11:26] ErrorException: Notice: Undefined variable: songs in /var/www/m/app/controllers/music.php at line 20
+[22-Aug-2013 12:11:42 UTC] PHP Fatal error:  Class 'app\controllers\Session' not found in /var/www/m/app/controllers/music.php on line 29
+[22-Aug-2013 12:11:42] ErrorException: Fatal Error: Class 'app\controllers\Session' not found in /var/www/m/app/controllers/music.php at line 29
+[22-Aug-2013 12:12:19] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.log_id' in 'field list' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[22-Aug-2013 12:12:30] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/music.php at line 25
+[22-Aug-2013 12:13:43] ErrorException: Warning: file_get_contents(/music/光良/不会分离/I miss you.mp3): failed to open stream: No such file or directory in /var/www/m/app/controllers/music.php at line 27
+[22-Aug-2013 12:31:36] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'l.is_deleted' in 'where clause' in /var/www/m/libraries/mako/database/Connection.php at line 218
+[22-Aug-2013 14:57:11] 10453296
+[22-Aug-2013 14:57:14] 10453296
+[22-Aug-2013 14:57:14] 0
+[22-Aug-2013 14:57:14] bytes=0-
+[22-Aug-2013 14:59:41] 10453296
+[22-Aug-2013 14:59:41] 10453296
+[22-Aug-2013 14:59:41] 0
+[22-Aug-2013 14:59:41] bytes=0-
+[22-Aug-2013 15:05:33] 10453296
+[22-Aug-2013 15:05:34] 10453296
+[22-Aug-2013 15:05:34] 0
+[22-Aug-2013 15:05:34] bytes=0-10453295
+[22-Aug-2013 15:05:40] 10453296
+[22-Aug-2013 15:05:40] 0
+[22-Aug-2013 15:05:40] bytes=4262401-
+[22-Aug-2013 15:05:52] 10453296
+[22-Aug-2013 15:05:52] 10453296
+[22-Aug-2013 15:05:52] 0
+[22-Aug-2013 15:05:52] bytes=0-
+[22-Aug-2013 15:07:19] 10453296
+[22-Aug-2013 15:07:19] 10453296
+[22-Aug-2013 15:07:19] 0
+[22-Aug-2013 15:07:19] bytes=0-
+[22-Aug-2013 15:08:44] 10453296
+[22-Aug-2013 15:08:44 UTC] PHP Fatal error:  Call to undefined function app\controllers\write() in /var/www/m/app/controllers/music.php on line 58
+[22-Aug-2013 15:08:44] ErrorException: Call to undefined function app\controllers\write() in /var/www/m/app/controllers/music.php at line 58
+[22-Aug-2013 15:08:55] 10453296
+[22-Aug-2013 15:08:55] 
+[22-Aug-2013 15:08:56] 10453296
+[22-Aug-2013 15:08:56] 0
+[22-Aug-2013 15:08:56] bytes=0-
+[22-Aug-2013 15:08:56] 

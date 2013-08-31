@@ -1,0 +1,12 @@
+[17-Jul-2013 14:22:31 UTC] PHP Fatal error:  Class 'app\controllers\Database' not found in /var/www/m/app/controllers/playutils.php on line 23
+[17-Jul-2013 14:22:31] ErrorException: Fatal Error: Class 'app\controllers\Database' not found in /var/www/m/app/controllers/playutils.php at line 23
+[17-Jul-2013 14:24:27 UTC] PHP Fatal error:  Class 'app\controllers\View' not found in /var/www/m/app/controllers/playutils.php on line 24
+[17-Jul-2013 14:24:27] ErrorException: Fatal Error: Class 'app\controllers\View' not found in /var/www/m/app/controllers/playutils.php at line 24
+[17-Jul-2013 14:27:28 UTC] PHP Fatal error:  Class 'app\controllers\Database' not found in /var/www/m/app/controllers/playutils.php on line 23
+[17-Jul-2013 14:27:28] ErrorException: Fatal Error: Class 'app\controllers\Database' not found in /var/www/m/app/controllers/playutils.php at line 23
+[17-Jul-2013 14:33:34 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /var/www/m/app/controllers/playutils.php on line 30
+[17-Jul-2013 14:33:34] ErrorException: Fatal Error: Cannot use object of type stdClass as array in /var/www/m/app/controllers/playutils.php at line 30
+[17-Jul-2013 14:41:19 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /var/www/m/app/controllers/playutils.php on line 32
+[17-Jul-2013 14:41:19] ErrorException: Fatal Error: Cannot use object of type stdClass as array in /var/www/m/app/controllers/playutils.php at line 32
+[17-Jul-2013 14:42:08 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /var/www/m/app/controllers/playutils.php on line 32
+[17-Jul-2013 14:42:08] ErrorException: Fatal Error: Cannot use object of type stdClass as array in /var/www/m/app/controllers/playutils.php at line 32

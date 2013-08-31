@@ -35,7 +35,6 @@
                         <?php include 'updateinfo.php'; ?>
                     </div>
                 </div>
-                </div>
             </div>
         </div>
     </body>

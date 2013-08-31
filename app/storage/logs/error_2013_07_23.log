@@ -1,0 +1,4 @@
+[23-Jul-2013 13:54:32] ErrorException: Warning: Invalid argument supplied for foreach() in /var/www/m/app/controllers/album.php at line 60
+[23-Jul-2013 13:55:03] ErrorException: Recoverable Error: Argument 1 passed to app\controllers\Album::queryAlbumIds() must be of the type array, string given, called in /var/www/m/app/controllers/album.php on line 34 and defined in /var/www/m/app/controllers/album.php at line 57
+[23-Jul-2013 13:55:04] ErrorException: Recoverable Error: Argument 1 passed to app\controllers\Album::queryAlbumIds() must be of the type array, string given, called in /var/www/m/app/controllers/album.php on line 34 and defined in /var/www/m/app/controllers/album.php at line 57
+[23-Jul-2013 13:55:49] ErrorException: Warning: preg_split(): Delimiter must not be alphanumeric or backslash in /var/www/m/app/controllers/album.php at line 29

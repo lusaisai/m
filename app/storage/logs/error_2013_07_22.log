@@ -1,0 +1,11 @@
+[22-Jul-2013 14:27:49 UTC] PHP Fatal error:  Call to undefined function app\controllers\searchAlbums() in /var/www/m/app/controllers/album.php on line 18
+[22-Jul-2013 14:27:49] ErrorException: Fatal Error: Call to undefined function app\controllers\searchAlbums() in /var/www/m/app/controllers/album.php at line 18
+[22-Jul-2013 14:28:05] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/album.php at line 38
+[22-Jul-2013 14:28:18] ErrorException: Notice: Trying to get property of non-object in /var/www/m/app/controllers/album.php at line 21
+[22-Jul-2013 14:34:52 UTC] PHP Fatal error:  Class 'app\controllers\PDO' not found in /var/www/m/app/controllers/album.php on line 30
+[22-Jul-2013 14:34:52] ErrorException: Fatal Error: Class 'app\controllers\PDO' not found in /var/www/m/app/controllers/album.php at line 30
+[22-Jul-2013 14:36:22 UTC] PHP Fatal error:  Non-static method PDO::quote() cannot be called statically, assuming $this from incompatible context in /var/www/m/app/controllers/album.php on line 31
+[22-Jul-2013 14:36:22] ErrorException: Fatal Error: Non-static method PDO::quote() cannot be called statically, assuming $this from incompatible context in /var/www/m/app/controllers/album.php at line 31
+[22-Jul-2013 14:37:19] ErrorException: Notice: Undefined variable: connection in /var/www/m/app/controllers/album.php at line 30
+[22-Jul-2013 14:37:47] PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '徐若瑄'%'
+                order by id desc limit 0, 5' at line 6 in /var/www/m/libraries/mako/database/Connection.php at line 218
