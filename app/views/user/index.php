@@ -28,11 +28,14 @@
                 <div class="span8">
                     <div id="side" class="span2">
                         <ul class="nav nav-tabs nav-stacked">
-                          <li class="active"><a href="javascript:;">My Information</a></li>
+                          <li><a href="javascript:;">My Information</a></li>
+                          <?php if ( Session::get( "role", "" ) == "admin" ): ?>
+                              <li class="active"><a href="javascript:;">Admin</a></li>
+                          <?php endif ?>
                         </ul>
                     </div>
                     <div id="content" class="span6">
-                        <?php include 'updateinfo.php'; ?>
+                        <?php include 'admin.php'; ?>
                     </div>
                 </div>
             </div>

@@ -30,9 +30,9 @@ class User extends \mako\Controller
     {
         $row = Database::first( "select * from users where id = ? ", array( Session::get('userid', -1) ) );
         if ($row) {
-            return array( 'id' => $row->id, 'name' => $row->username, 'email' => $row->email );
+            return array( 'id' => $row->id, 'name' => $row->username, 'email' => $row->email, 'role' => $row->role );
         } else {
-            return array( 'id' => '-1', 'name' => '', 'email' => '' );
+            return array( 'id' => '-1', 'name' => '', 'email' => '', 'role' => '' );
         }
 
     }
@@ -125,6 +125,7 @@ class User extends \mako\Controller
                 Session::remember( "isLogin", true );
                 Session::remember( "username", $username );
                 Session::remember( "userid", $row->id );
+                Session::remember( "role", $row->role );
                 $data += $this->userInfo();
                 return new View("user.index", $data);
             } else {

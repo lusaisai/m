@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
-use mako\Database;
-use mako\Session;
+use \mako\Database;
+use \mako\Session;
+use \mako\Config;
 
 
 class Music extends \mako\Controller
@@ -23,8 +24,8 @@ class Music extends \mako\Controller
 		// $log = \mako\Log::instance();
 
 		if ($row) {
-
-			$file = "C:/wamp/www/music/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
+			$musicDir = Config::get( "music.dir" );
+			$file = "{$musicDir}/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
 			$file = mb_convert_encoding( $file, "cp936" );
 			$filesize = filesize($file);
 			$offset = 0;

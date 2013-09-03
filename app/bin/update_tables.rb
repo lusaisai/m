@@ -5,7 +5,7 @@ require 'mysql'
 class UpdateTables
   @@IMAGE_SUFFIXES = [ "jpg", "jpeg", "png" ]
   @@MUSIC_SUFFIXES = [ "mp3", "m4a" ]
-  @@MUSIC_DIR = "/var/www/music"
+  @@MUSIC_DIR = "/cygdrive/c/wamp/www/music"
 
   attr_reader :client
 
