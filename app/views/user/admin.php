@@ -1,6 +1,5 @@
 <button id="db-update" class="btn btn-large btn-danger" type="button">Update Database</button>
 <div id="info" style="margin-top: 10px;">
-	
 </div>
 
 <script>
