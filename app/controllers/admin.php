@@ -157,8 +157,8 @@ class Admin extends \mako\Controller
             $new_width = floor( $width * ( $size / $height ) );
         }
         $tmp_img = imagecreatetruecolor( $new_width, $new_height );
-        imagecopyresized( $tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
-        imagejpeg( $tmp_img, $newImgName );
+        imagecopyresampled( $tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
+        imagejpeg( $tmp_img, $newImgName, 100 );
     }
 
     private function createTables()

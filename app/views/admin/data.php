@@ -11,7 +11,7 @@
 		<table class="table">
 		<tr><th>Artist</th><th>Album</th><th>Song</th></tr>
 		<?php foreach ($newsongs as $newsong): ?>
-			<tr><th><?php echo $newsong->artist_name ?></th><th><?php echo $newsong->album_name ?></th><th><?php $newsong->song_name ?></th></tr>
+			<tr><th><?php echo $newsong->artist_name ?></th><th><?php echo $newsong->album_name ?></th><th><?php echo $newsong->song_name ?></th></tr>
 		<?php endforeach ?>
 		</table>
 	<?php endif ?>

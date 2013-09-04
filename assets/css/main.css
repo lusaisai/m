@@ -1,3 +1,13 @@
+@charset "UTF-8";
+
+h1,h2,h3,h4,h5,h6,blockquote {
+  color: #99CC66; 
+}
+
+.span8 {
+  font-family: 微软雅黑,宋体,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
 .album-image {
   overflow: hidden;
   max-width: 620px;
@@ -32,3 +42,4 @@
 .recpatcha div {
   margin: auto;
 }
+
