@@ -11,7 +11,7 @@ use \mako\ReCaptcha;
 class User extends \mako\Controller
 {
 	public function action_index() {
-        $data = $this->userInfo() + array('errors' => "", 'successes' => "");
+        $data = $this->userInfo() + $this->getPlaylists() + array('errors' => "", 'successes' => "");
         if ($this->checkLogin()) {
             return new View("user.index", $data);
         }
@@ -37,30 +37,49 @@ class User extends \mako\Controller
 
     }
 
-    public function action_palylist()
+    public function action_showplaylist( $pageid = 1 )
+    {
+        return new View( 'user.playlist', $this->getPlaylists() );
+    }
+
+    private function getPlaylists( $pageid = 1 )
     {
         $this->checkLogin();
         $user = $this->userInfo();
+        $limit = 9;
+        $offset = ($pageid - 1) * $limit;
 
-        $limit = 50;
-        $data = array();
+        $query = "select count(*) from playlists where user_id = ?";
+        $count = Database::column( $query, array( $user['id'] ) );
+        $query = "select id, name, song_ids from playlists where user_id = ? limit ? offset ?";
+        $playlists = Database::query( $query, array( $user['id'], $limit, $offset ) );
+
+        return array( 'pageid'=>$pageid, 'count'=>$count, 'limit'=>$limit, 'data'=>$playlists );
     }
 
     public function action_saveplaylist($songids, $playlistName, $playlistid = 0)
     {
         $this->checkLogin();
         $user = $this->userInfo();
-        $query = "select count(*) from playlists where id = ?";
-        $isPlaylistExist = Database::column( $query, array($playlistid) );
+        $query = "select count(*) from playlists where id = ? and user_id = ?";
+        $isPlaylistExist = Database::column( $query, array($playlistid, $user['id']) );
         if ($isPlaylistExist) {
-            $query = "update playlists set song_ids = ? where id = ?";
-            Database::query( $query, array( $songids, $playlistid ) );
+            $query = "update playlists set song_ids = ?, name = ? where id = ?";
+            Database::query( $query, array( $songids, $playlistName, $playlistid ) );
         } else {
             $query = "insert into playlists
             ( name, user_id, song_ids ) values ( ?,?,? )
             ";
             Database::query( $query, array( $playlistName, $user['id'], $songids ) );
         }
+    }
+
+    public function action_deleteplaylist($id=0)
+    {
+        $this->checkLogin();
+        $user = $this->userInfo();
+        $query = "delete from playlists where id = ? and user_id = ?";
+        Database::query( $query, array( $id, $user['id'] ) );
     }
 
     public function action_updateinfo()

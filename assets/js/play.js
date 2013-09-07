@@ -184,6 +184,11 @@ $(document).ready(function(){
 
         });
 
+        $("#content").on( 'click', '.playlist-play', function () {
+            var songs = $(this).attr("songids");
+            $.getJSON( base + 'playutils/songplay/' + songs, play );
+        } )
+
         $("#searching form").submit(function(){
             var pagetype = $("#data").attr("pagetype");
             reloadGif();

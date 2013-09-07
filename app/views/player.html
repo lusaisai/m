@@ -92,6 +92,7 @@
         $.get('/m/user/saveplaylist/' + songids + "/" + playlistName, function(data) {
         	$("#newplaylist .alert").hide();
         	$("#newplaylist .alert-success").show();
+        	$('#content').load('/m/user/showplaylist');
         }).fail( function() {
         	$("#newplaylist .alert").hide();
         	$("#newplaylist .alert-error").html("failed to save the playlist, please try later");

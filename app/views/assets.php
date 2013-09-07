@@ -12,6 +12,7 @@
 
     Assets::add('bootstrap-css', '/bootstrap/css/bootstrap.css');
     Assets::add('bootstrap-js', '/bootstrap/js/bootstrap.min.js');
+    Assets::add('bootbox-js', '/js/bootbox.min.js');
 
     Assets::add('main-css', '/css/main.css');
 
