@@ -28,16 +28,33 @@
                 <div class="span8">
                     <div id="side" class="span2">
                         <ul class="nav nav-tabs nav-stacked">
-                            <li class="active"><a href="javascript:;">My Playlists</a></li>
-                            <li><a href="javascript:;">My Information</a></li>
+                            <li id="playlist" class="active"><a href="javascript:;">My Playlists</a></li>
+                            <li id="info"><a href="javascript:;">My Information</a></li>
                             <?php if ( Session::get( "role", "" ) == "admin" ): ?>
-                                <li><a href="javascript:;">Admin</a></li>
+                                <li id="admin"><a href="javascript:;">Admin</a></li>
                             <?php endif ?>
                         </ul>
                     </div>
                     <div id="content" class="span6">
                         <?php include 'playlist.php'; ?>
                     </div>
+                    <script>
+                        $('#playlist').click(function(event) {
+                            $("#side li").removeClass('active');
+                            $(this).addClass('active');
+                            $('#content').load('/m/user/showplaylist');
+                        });
+                        $('#info').click(function(event) {
+                            $("#side li").removeClass('active');
+                            $(this).addClass('active');
+                            $('#content').load('/m/user/updateinfo');
+                        });
+                        $('#admin').click(function(event) {
+                            $("#side li").removeClass('active');
+                            $(this).addClass('active');
+                            $('#content').load('/m/user/showadmin');
+                        });
+                    </script>
                 </div>
             </div>
         </div>

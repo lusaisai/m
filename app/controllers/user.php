@@ -37,6 +37,11 @@ class User extends \mako\Controller
 
     }
 
+    public function action_showadmin()
+    {
+        return new View('user.admin');
+    }
+
     public function action_showplaylist( $pageid = 1 )
     {
         return new View( 'user.playlist', $this->getPlaylists() );
@@ -90,8 +95,12 @@ class User extends \mako\Controller
             'newpassword' => 'required|min_length:8',
         );
 
-        $validation = new Validate($_POST, $rules);
         $data = $this->userInfo() + array('errors' => "", 'successes' => "");
+        if ($this->request->method() == 'GET') {
+           return new View("user.updateinfo", $data);
+        }
+
+        $validation = new Validate($_POST, $rules);
         if($validation->successful()) {
             $oldpassword = $_POST['oldpassword'];
             $newpassword = Password::hash( $_POST['newpassword'] );
