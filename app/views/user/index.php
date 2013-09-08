@@ -35,24 +35,24 @@
                             <?php endif ?>
                         </ul>
                     </div>
-                    <div id="content" class="span6">
+                    <div id="data" class="span6">
                         <?php include 'playlist.php'; ?>
                     </div>
                     <script>
                         $('#playlist').click(function(event) {
                             $("#side li").removeClass('active');
                             $(this).addClass('active');
-                            $('#content').load('/m/user/showplaylist');
+                            $('#data').load('/m/user/showplaylist');
                         });
                         $('#info').click(function(event) {
                             $("#side li").removeClass('active');
                             $(this).addClass('active');
-                            $('#content').load('/m/user/updateinfo');
+                            $('#data').load('/m/user/updateinfo');
                         });
                         $('#admin').click(function(event) {
                             $("#side li").removeClass('active');
                             $(this).addClass('active');
-                            $('#content').load('/m/user/showadmin');
+                            $('#data').load('/m/user/showadmin');
                         });
                     </script>
                 </div>

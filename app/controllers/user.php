@@ -37,13 +37,38 @@ class User extends \mako\Controller
 
     }
 
+    public function action_playlistdetail($id=0)
+    {
+        $this->checkLogin();
+        $user = $this->userInfo();
+        $songids = Database::column( "select song_ids from playlists where id = ? and user_id = ?", array( $id, $user['id'] ) );
+        if (! $songids) {
+            return;
+        }
+
+        $query = "select
+                  s.id, s.name as song_name, ar.name as artist_name, al.name as album_name
+                  from song s
+                  join album al
+                  on   s.album_id = al.id
+                  join artist ar
+                  on   al.artist_id = ar.id
+                  where s.id in ( $songids ) 
+            ";
+        $songs = Database::all( $query );    
+        return new View( 'user/playlistdetail', array( 'songs' => $songs ) );
+
+    }
+
     public function action_showadmin()
     {
+        $this->checkLogin();
         return new View('user.admin');
     }
 
     public function action_showplaylist( $pageid = 1 )
     {
+        $this->checkLogin();
         return new View( 'user.playlist', $this->getPlaylists() );
     }
 
@@ -154,7 +179,7 @@ class User extends \mako\Controller
                 Session::remember( "username", $username );
                 Session::remember( "userid", $row->id );
                 Session::remember( "role", $row->role );
-                $data += $this->userInfo();
+                $data = $data + $this->userInfo() + $this->getPlaylists();
                 return new View("user.index", $data);
             } else {
                 $data['errors'] = "Incorrect username or password";
