@@ -4,4 +4,3 @@ composer.lock
 /vendor
 /app/storage/console_history
 /app/storage/offline
-m.sublime-workspace

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .jp-audio {
   width: 238px;
   background: -webkit-radial-gradient(ellipse at center, #feffff 0%,#d2ebf9 100%);
@@ -13,6 +15,7 @@
 .jp-toggles li,
 .jp-playlist li {
   display: inline;
+  font-family: 微软雅黑,宋体,Arial,sans-serif;
 }
 
 .jp-controls,

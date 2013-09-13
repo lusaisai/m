@@ -184,7 +184,7 @@ $(document).ready(function(){
 
         });
 
-        $("#content").on( 'click', '.playlist-play', function () {
+        $("#data").on( 'click', '.playlist-play', function () {
             var songs = $(this).attr("songids");
             $.getJSON( base + 'playutils/songplay/' + songs, play );
         } )

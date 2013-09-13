@@ -44,7 +44,7 @@
 <script>
 $('#updateform').submit(function(event) {
     $.post( "<?php echo URL::to('user/updateinfo') ?>", $('#updateform').serialize(), function (data) {
-        $('#content').empty().append(data);
+        $('#data').empty().append(data);
     });
     return false;
 });
