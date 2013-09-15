@@ -131,7 +131,7 @@ class Admin extends \mako\Controller
 
 	private static function isImage($name)
 	{
-		return preg_match('/(jpg|jpeg|png)$/', $name);
+		return $name != "AlbumArtSmall.jpg" && $name != "Folder.jpg" && preg_match('/(jpg|jpeg|png)$/', $name); // tmp solution to skip winodws thumbnail
 	}
 
 	private static function isSong($name)
