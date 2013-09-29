@@ -10,8 +10,8 @@
     <file path="/App.java" changelist="2291866b-7a89-40e0-8259-ce911c4e44ac" time="1380426777570" ignored="false" />
     <file path="/Dummy.txt" changelist="2291866b-7a89-40e0-8259-ce911c4e44ac" time="1380381508502" ignored="false" />
     <file path="/fragment.java" changelist="2291866b-7a89-40e0-8259-ce911c4e44ac" time="1380388209941" ignored="false" />
-    <file path="/DBTalker.java" changelist="2291866b-7a89-40e0-8259-ce911c4e44ac" time="1380431664295" ignored="false" />
-    <file path="/AppTest.java" changelist="2291866b-7a89-40e0-8259-ce911c4e44ac" time="1380427583059" ignored="false" />
+    <file path="/DBTalker.java" changelist="2291866b-7a89-40e0-8259-ce911c4e44ac" time="1380435552846" ignored="false" />
+    <file path="/AppTest.java" changelist="2291866b-7a89-40e0-8259-ce911c4e44ac" time="1380435304620" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +76,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="5" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,7 +84,16 @@
       <file leaf-file-name="Search.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Search.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="20" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.0">
+            <state line="47" column="31" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="38" selection-start="947" selection-end="947" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,7 +102,7 @@
       <file leaf-file-name="DBTalker.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="32" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.7613843">
+            <state line="94" column="33" selection-start="3200" selection-end="3200" vertical-scroll-proportion="0.6885246">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#595#601#0" expanded="true" />
@@ -115,10 +122,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/Search.java" />
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" />
+        <option value="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" />
       </list>
     </option>
   </component>
@@ -273,11 +280,11 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.AppTest">
     <configuration default="false" name="App" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -370,19 +377,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -409,6 +403,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -453,8 +460,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.App" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.AppTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AppTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.App" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -507,7 +514,7 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924694" sideWeight="0.67007965" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283713" sideWeight="0.67007965" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19089317" sideWeight="0.67007965" order="0" side_tool="false" content_ui="combo" />
@@ -587,9 +594,31 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Search.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="20" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="32" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#595#601#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -610,9 +639,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -628,32 +655,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="88" selection-start="691" selection-end="691" vertical-scroll-proportion="0.6885246">
+        <state line="16" column="5" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Search.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="20" selection-start="1873" selection-end="1873" vertical-scroll-proportion="0.0">
+        <state line="47" column="31" selection-start="1595" selection-end="1595" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="5" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="39" column="38" selection-start="947" selection-end="947" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="32" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.7613843">
+        <state line="94" column="33" selection-start="3200" selection-end="3200" vertical-scroll-proportion="0.6885246">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#595#601#0" expanded="true" />

@@ -90,7 +90,9 @@ public class DBTalker {
         return input.replaceAll("^.*-","").trim()
                     .replaceAll("[0-9]+\\.*", "").trim()
                     .replaceAll("\\[.*\\]", "").trim()
+                    .replaceAll("【.*】", "").trim()
                     .replaceAll("\\(.*\\)", "").trim()
+                    .replaceAll("（.*）", "").trim()
                     .replaceAll("\\..*$", "").trim();
     }
 

@@ -56,6 +56,7 @@ class Admin extends \mako\Controller
 
     public function action_lyric()
     {
+        set_time_limit(1800);
         $data = array( 'error' => '', 'success' => '', 'newsongs' => '' );
 
         if ( Session::get( "role", "" ) != "admin" ) {
