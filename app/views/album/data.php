@@ -6,7 +6,7 @@
         </blockquote>
         <div><img src="<?php echo "/music/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" class="img-rounded album-image"></div>
         <div class="slide songs">
-            <table class="table table-bordered table-hover table-condensed">
+            <table class="table table-bordered table-hover table-condensed table-striped">
                 <?php foreach ($album["songs"] as $song): ?>
                     <tr>
                         <td><label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["id"] ?>"><?php echo $song["name"] ?></label></td>

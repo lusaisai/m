@@ -31,6 +31,16 @@ class Playutils extends \mako\Controller {
         return json_encode($song_array);
     }
 
+    public function action_showlyric($id=0)
+    {
+        $query = "select lyric from song where id = ?";
+        $lyric = Database::column($query, array($id));
+        if (! empty($lyric)) {
+            return $lyric;
+        } else {
+            return "Sorry, Lyric not found.";
+        }
+    }
 }
 
 ?>

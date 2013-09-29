@@ -28,7 +28,7 @@ where w.album_name is null
 ;
 
 insert into song_new
-select t.id, w.name, t.lyric, al.id, t.insert_ts, t.update_ts
+select t.id, w.name, t.lyric, t.lrc_lyric, al.id, t.insert_ts, t.update_ts
 from song_w w
 left join artist_new ar
 on   w.artist_name = ar.name

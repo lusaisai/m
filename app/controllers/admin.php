@@ -54,6 +54,21 @@ class Admin extends \mako\Controller
         return $this->connection->all( $query );
     }
 
+    public function action_lyric()
+    {
+        $data = array( 'error' => '', 'success' => '', 'newsongs' => '' );
+
+        if ( Session::get( "role", "" ) != "admin" ) {
+            $data['error'] = "You are not authorized to perform this action!";
+            return new View( "admin.lyric", $data );
+        }
+
+        $jarFile = MAKO_APPLICATION_PATH . "/LyricSearch/target/LyricSearch-1.0-SNAPSHOT-jar-with-dependencies.jar";
+        $command = "java -jar $jarFile";
+        $data['success'] = `$command`;
+        return new View( "admin.data", $data );
+    }
+
 	private function stageTableClean()
 	{
 		$tables = array( "artist_new", "artist_w", "album_new", "album_w", "song_new", "song_w", "image_new", "image_w" );

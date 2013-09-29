@@ -1,5 +1,5 @@
 <div class="songs">
-    <table class="table table-bordered table-hover table-condensed">
+    <table class="table table-bordered table-hover table-condensed table-striped">
         <?php foreach ($data as $song): ?>
             <tr>
                 <td><label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["id"] ?>"><?php echo $song["song_name"] ?></label></td>

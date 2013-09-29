@@ -13,7 +13,7 @@
                     </div>
                     <div id="<?php echo "collapse{$album["album_id"]}" ?>" class="accordion-body <?php if ($i==1) echo "in"; ?> collapse">
                         <div class="accordion-inner songs">
-                            <table class="table table-bordered table-hover table-condensed">
+                            <table class="table table-bordered table-hover table-condensed table-striped">
                                 <?php foreach ($album["songs"] as $song): ?>
                                     <tr>
                                         <td><label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["song_id"] ?>"><?php echo $song["song_name"] ?></label></td>

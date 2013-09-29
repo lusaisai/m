@@ -48,6 +48,9 @@
 		<a class="btn <?php if (! Session::get( 'isLogin', false )) echo 'disabled'?>" href="#newplaylist" data-toggle="modal" title="<?php if (! Session::get( 'isLogin', false )) echo 'login and' ?> save the current playlist"   >
 			<i class="icon-download-alt"></i>
 		</a>
+		<a class="btn" id="show-lyric" title="show the lyric">
+			<i class="icon-list-alt"></i>
+		</a>
 		<script>$("#userpanel a").tooltip("hide");</script>
 	</div>
 </div>
@@ -71,6 +74,12 @@
 	</div>
 </div>
 <script type="text/javascript">
+	$("#show-lyric").click(function(event) {
+		var id = $('.jp-playlist-current').attr("songid");
+		$.get('/m/playutils/showlyric/' + id, function(data) {
+			bootbox.alert(data);
+		});
+	});
 	$("#newplaylist #close").click(function(event) {
 		$("#newplaylist .alert").hide();
 	});
