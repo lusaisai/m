@@ -37,6 +37,7 @@ $(document).ready(function(){
                 textHeight : 25,
                 outlineColour : '#ff9999',
                 maxSpeed : 0.03,
+                minSpeed : 0.005,
                 minBrightness : 0.2,
                 depth : 0.92,
                 pulsateTo : 0.6,
