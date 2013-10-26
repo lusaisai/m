@@ -26,11 +26,12 @@
 .jp-volume-bar,
 .jp-volume-bar-value {
   display: inline-block;
-  width: 158px;
+  width: 156px;
   margin-bottom: 0;
   vertical-align: text-bottom;
   height: 15px;
   cursor: pointer;
+  margin-left: 2px;
 }
 
 .jp-progress,
@@ -77,4 +78,12 @@
 
 .jp-type-playlist li a:hover {
   color: #000;
+}
+
+.jp-volume-max {
+  float: right;
+}
+
+.jp-unmute,.jp-mute {
+  float: left;
 }
