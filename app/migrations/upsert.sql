@@ -34,6 +34,7 @@ left join artist_new ar
 on   w.artist_name = ar.name
 left join album_new al
 on   w.album_name = al.name
+and  ar.id = al.artist_id
 left join (
 select s.*, a.artist_id
 from song s
