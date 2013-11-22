@@ -26,12 +26,11 @@
 .jp-volume-bar,
 .jp-volume-bar-value {
   display: inline-block;
-  width: 156px;
+  width: 158px;
   margin-bottom: 0;
   vertical-align: text-bottom;
   height: 15px;
   cursor: pointer;
-  margin-left: 2px;
 }
 
 .jp-progress,
@@ -67,23 +66,16 @@
   margin: 5px;
 }
 
-.jp-playlist-current div a {
-  color: black;
-  text-shadow: 0 0 9px rgba(150, 150, 150, 1);
+.jp-playlist-current div a, .jp-playlist-current div a:hover {
+color: #fff;
+text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #ff2d95, 0 0 6px #ff2d95, 0 0 8px #ff2d95, 0 0 10px #ff2d95, 0 0 13px #ff2d95;
+font: 'MisoRegular';
 }
 
 .jp-playlist-item-remove {
   float: right;
 }
 
-.jp-type-playlist li a:hover {
-  color: #000;
-}
-
-.jp-volume-max {
+.jp-volume-max,.jp-repeat-off,.jp-repeat {
   float: right;
-}
-
-.jp-unmute,.jp-mute {
-  float: left;
 }

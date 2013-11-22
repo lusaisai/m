@@ -17,7 +17,7 @@ public class Search {
 
     public static String findSongUrl( String artist, String title ) {
         String url = URL_PRE + artist.replaceAll("\\s+", "+") + "+" + title.replaceAll("\\s+", "+");
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(url)
                     .userAgent(AGENT)
@@ -25,13 +25,14 @@ public class Search {
                     .get();
         } catch (Exception e) {
             // silent skip if there's any error
+            //System.err.println(e.getMessage());
             return "";
         }
         Elements songs = doc.select(".search_result .result_main tbody td.song_name a");
         for (Element song : songs) {
             String href = song.attr("href");
-            if ( href.startsWith("/song") ) {
-                return SITE + href.replaceAll("\\?.*$", "");
+            if ( href.contains("/song") ) {
+                return href.replaceAll("\\?.*$", "");
             }
         }
         return "";
@@ -39,14 +40,14 @@ public class Search {
 
     public static String findLyric(String url) {
         if ( ! url.contains(SITE) ) return "";
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(url)
                     .userAgent(AGENT)
                     .timeout(10000)
                     .get();
         } catch (Exception e) {
-            // silent skip if there's any error
+            //System.err.println(e.getMessage());
             return "";
         }
         String lyric = "";
