@@ -12,7 +12,7 @@ class Music extends \mako\Controller
 	public function action_song($id = 0, $iflog = true)
 	{
 		$query = "select
-		s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
+		s.id as song_id, s.file_name as song_name, al.name as album_name, ar.name as artist_name
 		from song s
 		join album al
 		on   s.album_id = al.id

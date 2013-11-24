@@ -11,8 +11,12 @@ use mako\Session;
 class Playutils extends \mako\Controller {
     public function action_songplay($songs = 0, $iflog = false) {
         $query = "select
-            s.id as song_id, s.name as song_name
+            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
             from song s
+            join album al
+            on   s.album_id = al.id
+            join artist ar
+            on   al.artist_id = ar.id
             where s.id in ( $songs )
             order by field ( s.id, $songs )
             ";
@@ -23,6 +27,7 @@ class Playutils extends \mako\Controller {
             $song = array();
             $song["songid"] = $row->song_id;
             $song["title"] = $row->song_name;
+            $song["song_info"] = "From: " . $row->artist_name . " - " . $row->album_name;
             $song["mp3"] = "/m/music/song/{$row->song_id}/$iflog";
             array_push($song_array, $song);
         }

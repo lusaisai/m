@@ -237,7 +237,7 @@
 			var self = this;
 
 			// Wrap the <li> contents in a <div>
-			var listItem = "<li" + ( media.songid ? " songid='" + media.songid +"'" : "") + "><div>";
+			var listItem = "<li data-toggle='tooltip' title='" + media.song_info + "'" + ( media.songid ? " songid='" + media.songid +"'" : "") + "><div>";
 
 			// Create remove control
 			listItem += "<a href='javascript:;' class='" + this.options.playlistOptions.removeItemClass + "'>&times;</a>";

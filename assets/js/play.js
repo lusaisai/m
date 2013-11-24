@@ -15,6 +15,10 @@ $(document).ready(function(){
     var play = function(data) {
         myPlaylist.setPlaylist(data);
         myPlaylist.option("autoPlay", true);
+        setTimeout(function function_name () {
+            $('#the_player li').tooltip('hide');
+        }, 2000);
+        
     };
 
     var loadPlaylist = function () {

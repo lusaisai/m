@@ -110,7 +110,7 @@ class Admin extends \mako\Controller
         			while (false !== ($songName = readdir($albumHandle))) {
         				if ( $songName == "." || $songName == ".." ) continue;
         				if ( static::isSong($songName) ) {
-        					$this->connection->query("insert into song_w (name, artist_name, album_name) values(?,?,?)", array(static::toUtf8($songName), static::toUtf8($artistName), static::toUtf8($albumName)));
+        					$this->connection->query("insert into song_w (name, file_name, artist_name, album_name) values(?,?,?,?)", array( static::toUtf8( static::songClean($songName) ), static::toUtf8($songName), static::toUtf8($artistName), static::toUtf8($albumName)));
         				} elseif (static::isImage($songName)) {
         					$albumImage = $songName;
                             $this->connection->query("insert into image_w (name, artist_name, album_name) values(?,?,?)", array(static::toUtf8($albumImage), static::toUtf8($artistName), static::toUtf8($albumName) ));
@@ -142,6 +142,19 @@ class Admin extends \mako\Controller
     private static function toUtf8($value)
     {
         return mb_convert_encoding( $value , "utf8", "cp936");
+    }
+
+    private static function songClean($value)
+    {
+        $value = trim( preg_replace('/^.*-/', '', $value) );
+        $value = trim( preg_replace('/[0-9]+\.*/', '', $value) );
+        $value = trim( preg_replace('/\[.*\]/', '', $value) );
+        $value = trim( preg_replace('/【.*】/', '', $value) );
+        $value = trim( preg_replace('/\(.*\)/', '', $value) );
+        $value = trim( preg_replace('/（.*）/', '', $value) );
+        $value = trim( preg_replace('/\..*$/', '', $value) );
+
+        return $value;
     }
 
 

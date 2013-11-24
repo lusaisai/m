@@ -33,6 +33,7 @@ create table if not exists song
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+file_name varchar(255) not null,
 lyric text,
 lrc_lyric text,
 album_id integer,
@@ -97,6 +98,7 @@ create table if not exists song_new
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+file_name varchar(255) not null,
 lyric text,
 lrc_lyric text,
 album_id integer,
@@ -145,6 +147,7 @@ char set utf8
 create table if not exists song_w
 (
 name varchar(255) not null,
+file_name varchar(255) not null,
 artist_name varchar(255) not null,
 album_name varchar(255) not null
 )
