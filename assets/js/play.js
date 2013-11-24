@@ -12,13 +12,16 @@ $(document).ready(function(){
         setTimeout( setPlaylistCookie, 30 * 1000 );
     };
 
-    var play = function(data) {
-        myPlaylist.setPlaylist(data);
-        myPlaylist.option("autoPlay", true);
+    var playlistTooltip = function () {
         setTimeout(function function_name () {
             $('#the_player li').tooltip('hide');
         }, 2000);
-        
+    };
+
+    var play = function(data) {
+        myPlaylist.setPlaylist(data);
+        myPlaylist.option("autoPlay", true);
+        playlistTooltip();       
     };
 
     var loadPlaylist = function () {
@@ -116,6 +119,7 @@ $(document).ready(function(){
 
     var add = function(data) {
         myPlaylist.add(data[0]);
+        playlistTooltip();
     };
 
     var reloadGif = function(){
