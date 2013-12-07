@@ -1,6 +1,0 @@
-[20-Jul-2013 09:51:15] ErrorException: Notice: Undefined index: id in /var/www/m/app/views/album/index.php at line 35
-[20-Jul-2013 10:32:29 UTC] PHP Fatal error:  Function name must be a string in /var/www/m/app/controllers/playutils.php on line 42
-[20-Jul-2013 10:32:29] ErrorException: Fatal Error: Function name must be a string in /var/www/m/app/controllers/playutils.php at line 42
-[20-Jul-2013 10:33:09] ErrorException: Notice: Undefined index: ids in /var/www/m/app/controllers/playutils.php at line 42
-[20-Jul-2013 10:38:22] ErrorException: Notice: Undefined index: ids in /var/www/m/app/controllers/playutils.php at line 42
-[20-Jul-2013 10:39:42] ErrorException: Notice: Undefined index: ids in /var/www/m/app/controllers/playutils.php at line 42

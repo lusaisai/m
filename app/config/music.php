@@ -1,7 +1,7 @@
 <?php 
 
 return  array(
-	'dir' => 'C:/wamp/www/music', 
+	'dir' => '/mnt/ent/Music', 
 	);
 
  ?>

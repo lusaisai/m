@@ -1,4 +1,0 @@
-[12-Aug-2013 14:14:58] ErrorException: Notice: Undefined index: id in /var/www/m/app/views/artist/data.php at line 18
-[12-Aug-2013 14:22:48] ErrorException: Notice: Undefined index: name in /var/www/m/app/views/song/data.php at line 5
-[12-Aug-2013 14:23:12] ErrorException: Notice: Undefined variable: album in /var/www/m/app/views/song/data.php at line 18
-[12-Aug-2013 14:41:33] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'undefined' in 'where clause' in /var/www/m/libraries/mako/database/Connection.php at line 218

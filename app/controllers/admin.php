@@ -141,7 +141,7 @@ class Admin extends \mako\Controller
 
     private static function toUtf8($value)
     {
-        return mb_convert_encoding( $value , "utf8", "cp936");
+        return mb_convert_encoding( $value , "utf8", "utf8");
     }
 
     private static function songClean($value)
@@ -213,4 +213,3 @@ class Admin extends \mako\Controller
 }
 
  ?>
-
