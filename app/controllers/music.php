@@ -26,7 +26,7 @@ class Music extends \mako\Controller
 		if ($row) {
 			$musicDir = Config::get( "music.dir" );
 			$file = "{$musicDir}/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
-			//$file = mb_convert_encoding( $file, "cp936" );
+			$file = mb_convert_encoding( $file, "cp936" );
 			$filesize = filesize($file);
 			$offset = 0;
 			$length = $filesize;
