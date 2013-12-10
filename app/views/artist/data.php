@@ -4,7 +4,11 @@
         <blockquote>
             <h3><?php echo $artist["artist_name"] ?></h3>
         </blockquote>
-        <div><img src="<?php echo "/music/{$artist["artist_name"]}/{$artist["image_name"]}" ?>" class="img-rounded album-image"></div>
+        <div>
+            <a data-lightbox="lightbox-image" href="<?php echo "/music/{$artist["artist_name"]}/{$artist["image_name"]}" ?>">
+                <img src="<?php echo "/music/{$artist["artist_name"]}/{$artist["image_name"]}" ?>" class="img-rounded album-image">
+            </a>
+        </div>
         <div id="<?php echo "accordion{$artist["artist_id"]}" ?>" class="slide accordion">
             <?php foreach ($artist["albums"] as $album): ?>
                 <div class="accordion-group">

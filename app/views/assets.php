@@ -1,6 +1,9 @@
 <?php
     Assets::add('jquery-js', '/js/jquery-1.10.2.min.js');
 
+    Assets::add('jquery-lightbox-js', '/lightbox/js/lightbox-2.6.min.js');
+    Assets::add('jquery-lightbox-css', '/lightbox/css/lightbox.css');
+
     Assets::add('jquery-cookie-js', '/js/jquery.cookie.js');
 
     Assets::add('jplayer-js', '/jplayer/js/jquery.jplayer.min.js');

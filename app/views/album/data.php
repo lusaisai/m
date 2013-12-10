@@ -4,7 +4,11 @@
             <p><?php echo $album["album_name"] ?></p>
             <small><?php echo $album["artist_name"] ?></small>
         </blockquote>
-        <div><img src="<?php echo "/music/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" class="img-rounded album-image"></div>
+        <div>
+            <a href="<?php echo "/music/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" data-lightbox="lightbox-image">
+                <img src="<?php echo "/music/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" class="img-rounded album-image">
+            </a>
+        </div>
         <div class="slide songs">
             <table class="table table-bordered table-hover table-condensed table-striped">
                 <?php foreach ($album["songs"] as $song): ?>

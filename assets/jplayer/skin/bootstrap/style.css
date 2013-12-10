@@ -15,7 +15,8 @@
 .jp-toggles li,
 .jp-playlist li {
   display: inline;
-  font-family: 微软雅黑,宋体,Arial,sans-serif;
+  font-family: "Microsoft YaHei","Hiragino Sans GB W3",Tahoma,Arial;
+  text-shadow: 0 0 1px #EEEEEE;
 }
 
 .jp-controls,
