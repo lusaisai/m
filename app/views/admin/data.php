@@ -16,3 +16,5 @@
 		</table>
 	<?php endif ?>
 <?php endif ?>
+
+<script><?php include dirname(__FILE__) . '/../common.js' ?></script>

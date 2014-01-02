@@ -69,20 +69,20 @@ public class DBTalker {
         setSongs();
         PreparedStatement ps = con.prepareStatement("update song set lyric = ? where id = ?");
         con.setAutoCommit(false);
-        PrintStream out = null;
         try {
-            out = new PrintStream( System.out, true, "UTF-8");
+            PrintStream out = new PrintStream( System.out, true, "UTF-8");
+            for ( Song s : songs ) {
+                out.println("Updated: \n" + s.toString());
+                String songUrl = Search.findSongUrl( s.artist, s.name );
+                String songLyric = Search.findLyric(songUrl);
+                ps.setString(1,songLyric);
+                ps.setInt(2,s.id);
+                ps.executeUpdate();
+            }
         } catch (UnsupportedEncodingException e) {
 //            Silent skip
         }
-        for ( Song s : songs ) {
-            out.println("Updated: \n" + s.toString());
-            String songUrl = Search.findSongUrl( s.artist, s.name );
-            String songLyric = Search.findLyric(songUrl);
-            ps.setString(1,songLyric);
-            ps.setInt(2,s.id);
-            ps.executeUpdate();
-        }
+
         con.commit();
     }
 

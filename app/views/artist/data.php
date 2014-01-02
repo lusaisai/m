@@ -45,3 +45,5 @@
 <?php endforeach ?>
 
 <?php include dirname(__FILE__) . '/../pagination.php' ?>
+
+<script><?php include dirname(__FILE__) . '/../common.js' ?></script>

@@ -3,15 +3,6 @@ $(document).ready(function(){
     var base = "/m/";
     var playerY = $("#the_player").position().top;
 
-    var noFocus = function () {
-        $('button').focus(function () {
-            that = this;
-            setTimeout( function () {
-                $(that).blur();
-            }, 200 );
-        })
-    };
-
     var setPlaylistCookie = function() {
         var songs = [];
         $(".jp-playlist li[songid]").each(function () {
@@ -236,7 +227,6 @@ $(document).ready(function(){
         setTimeout( setPlaylistCookie, 30 * 1000 );
         setTagCanvas( "#topSongs", "topSongsTags" );
         setTagCanvas( "#topArtists", "topArtistsTags" );
-        noFocus();
     };
 
     run();

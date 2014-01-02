@@ -152,7 +152,7 @@ class Admin extends \mako\Controller
         $value = trim( preg_replace('/【.*】/', '', $value) );
         $value = trim( preg_replace('/\(.*\)/', '', $value) );
         $value = trim( preg_replace('/（.*）/', '', $value) );
-        $value = trim( preg_replace('/\..*$/', '', $value) );
+        $value = trim( preg_replace('/\.[^.]*$/', '', $value) );
 
         return $value;
     }
