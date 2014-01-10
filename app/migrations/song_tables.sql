@@ -3,6 +3,7 @@ create table if not exists artist
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+name_pinyin varchar(255),
 region varchar(255),
 info text,
 insert_ts timestamp not null default current_timestamp,
@@ -17,6 +18,7 @@ create table if not exists album
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+name_pinyin varchar(255),
 language varchar(255),
 info text,
 artist_id integer,
@@ -33,6 +35,7 @@ create table if not exists song
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+name_pinyin varchar(255),
 file_name varchar(255) not null,
 lyric text,
 lrc_lyric text,
@@ -68,6 +71,7 @@ create table if not exists artist_new
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+name_pinyin varchar(255),
 region varchar(255),
 info text,
 insert_ts timestamp not null default current_timestamp,
@@ -82,6 +86,7 @@ create table if not exists album_new
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+name_pinyin varchar(255),
 language varchar(255),
 info text,
 artist_id integer,
@@ -98,6 +103,7 @@ create table if not exists song_new
 (
 id integer not null AUTO_INCREMENT,
 name varchar(255) not null,
+name_pinyin varchar(255),
 file_name varchar(255) not null,
 lyric text,
 lrc_lyric text,

@@ -1,12 +1,12 @@
 insert into artist_new
-select t.id, w.name, t.region, t.info, t.insert_ts, t.update_ts
+select t.id, w.name, t.name_pinyin, t.region, t.info, t.insert_ts, t.update_ts
 from artist_w w
 left join artist t
 on   w.name = t.name
 ;
 
 insert into album_new
-select t.id, w.name, t.language, t.info, a.id, t.insert_ts, t.update_ts
+select t.id, w.name, t.name_pinyin, t.language, t.info, a.id, t.insert_ts, t.update_ts
 from album_w w
 left join artist_new a
 on   w.artist_name = a.name
@@ -28,7 +28,7 @@ where w.album_name is null
 ;
 
 insert into song_new
-select t.id, w.name, w.file_name, t.lyric, t.lrc_lyric, al.id, t.insert_ts, t.update_ts
+select t.id, w.name, t.name_pinyin, w.file_name, t.lyric, t.lrc_lyric, al.id, t.insert_ts, t.update_ts
 from song_w w
 left join artist_new ar
 on   w.artist_name = ar.name

@@ -34,11 +34,13 @@ class Album extends \mako\Controller
             return array( 'pageid'=>$pageid, 'count'=>$count, 'limit'=>$limit, 'data'=>$data);
         }
 
-        private function searchAlbums(){
-            $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : "";
+        public function searchAlbums(){
+            $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : array();
             $type = isset($_GET['type']) ? trim($_GET['type']) : "artistname";
+            $rlike_pinyin = Database::connection()->pdo->quote(implode(",", $words));
+            $like_pinyin = Database::connection()->pdo->quote('%'.implode(",", $words).'%');
 
-            if( $words == "" ){
+            if( empty($words) ){
                 $query = "select id from album order by id desc";
                 return $this->queryAlbumIds(array($query));
             } elseif ( $type == "artistname" ) {
@@ -48,6 +50,8 @@ class Album extends \mako\Controller
                 join artist ar
                 on   al.artist_id = ar.id
                 ";
+                $pinyinRlikeQuery = $query . " where " . $rlike_pinyin . " rlike ar.name_pinyin";
+                $pinyinLikeQuery = $query . " where REPLACE( REPLACE(ar.name_pinyin, '(', ''), ')', '' ) like " . $like_pinyin;
                 $andQuery = $query . " where true ";
                 $orQuery = $query . " where false ";
 
@@ -60,6 +64,8 @@ class Album extends \mako\Controller
                 $orQuery .= " order by id desc ";
             } elseif ( $type == "albumname" ) {
                 $query = "select al.id from album al";
+                $pinyinRlikeQuery = $query . " where " . $rlike_pinyin . " rlike al.name_pinyin";
+                $pinyinLikeQuery = $query . " where REPLACE( REPLACE(al.name_pinyin, '(', ''), ')', '' ) like " . $like_pinyin;
                 $andQuery = $query . " where true ";
                 $orQuery = $query . " where false ";
 
@@ -76,6 +82,8 @@ class Album extends \mako\Controller
                 from song s
                 join album al
                 on   s.album_id = al.id";
+                $pinyinRlikeQuery = $query . " where " . $rlike_pinyin . " rlike s.name_pinyin";
+                $pinyinLikeQuery = $query . " where REPLACE( REPLACE(s.name_pinyin, '(', ''), ')', '' ) like " . $like_pinyin;
                 $andQuery = $query . " where true ";
                 $orQuery = $query . " where false ";
 
@@ -88,7 +96,7 @@ class Album extends \mako\Controller
                 $orQuery .= " group by id order by id desc ";
             }
 
-            return $this->queryAlbumIds( array( $andQuery, $orQuery ) );
+            return $this->queryAlbumIds( array( $pinyinRlikeQuery, $pinyinLikeQuery, $andQuery, $orQuery ) );
         }
 
         private function queryAlbumIds( $queries ) {

@@ -10,7 +10,6 @@ use \mako\Config;
 class Admin extends \mako\Controller
 {
 
-
 	public function before()
 	{
 		$this->connection = Database::connection();
@@ -54,6 +53,76 @@ class Admin extends \mako\Controller
         return $this->connection->all( $query );
     }
 
+    public function action_pinyin()
+    {
+        set_time_limit(1800);
+        $data = array( 'error' => '', 'success' => '', 'newsongs' => '' );
+
+        if ( Session::get( "role", "" ) != "admin" ) {
+            $data['error'] = "You are not authorized to perform this action!";
+            return new View( "admin.data", $data );
+        }
+
+        // update the artist
+        $query = "select id, name from artist where name_pinyin is null";
+        $update_query = "update artist set name_pinyin = ? where id = ?";
+        $data['success'] .= static::pinyinUpd($query, $update_query);
+
+        // update the album
+        $query = "select id, name from album where name_pinyin is null";
+        $update_query = "update album set name_pinyin = ? where id = ?";
+        $data['success'] .= static::pinyinUpd($query, $update_query);
+
+        // update the song
+        $query = "select id, name from song where name_pinyin is null";
+        $update_query = "update song set name_pinyin = ? where id = ?";
+        $data['success'] .= static::pinyinUpd($query, $update_query);
+
+        return new View( "admin.data", $data );
+    }
+
+    private static function pinyinUpd($query, $update_query)
+    {
+        $data = '';
+        $rows = Database::all($query);
+
+        foreach ($rows as $row) {
+            $id = $row->id;
+            $name = $row->name;
+            $name_pinyin = static::toPinyin($name);
+            $name_pinyin = Database::connection()->pdo->quote($name_pinyin);
+            Database::query( $update_query, array( $name_pinyin, $id ) );
+            $data .= $name . ' - ' . $name_pinyin . '<br />';
+        }
+
+        return $data;
+    }
+
+    private static function toPinyin($word='')
+    {
+        $pinyin = "";
+        foreach (static::mbSplit($word) as $char) {
+            $quoted_char = Database::connection()->pdo->quote($char);
+            $query = "SELECT
+                  concat_ws( '|', pinyin1,pinyin2,pinyin3,pinyin4,pinyin5,pinyin6 ) as pinyin
+                  FROM pinyin_map
+                  where chinese_word = {$quoted_char}";
+            $char_pinyin = Database::column($query);
+            if ($char_pinyin == '') {
+                $char_pinyin = $char;
+            }
+            $pinyin .= '(' . preg_replace('/\|+$/', '', $char_pinyin) . ')';
+        }
+
+        
+        return $pinyin;
+    }
+
+    private static function mbSplit($word)
+    {
+        return preg_split('/(?<!^)(?!$)/u', $word );
+    }
+
     public function action_lyric()
     {
         set_time_limit(1800);
@@ -61,7 +130,7 @@ class Admin extends \mako\Controller
 
         if ( Session::get( "role", "" ) != "admin" ) {
             $data['error'] = "You are not authorized to perform this action!";
-            return new View( "admin.lyric", $data );
+            return new View( "admin.data", $data );
         }
 
         $jarFile = MAKO_APPLICATION_PATH . "/LyricSearch/target/LyricSearch-1.0-SNAPSHOT-jar-with-dependencies.jar";

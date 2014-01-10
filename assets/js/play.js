@@ -149,10 +149,6 @@ $(document).ready(function(){
     };
 
     function plays(){
-        $('#rplay').click(function(){
-            $.getJSON( base + 'playutils/randomplay', play);
-        });
-
         $("#data").on( 'click','.album-play', playSongs("input"));
 
         $("#data").on( 'click','.artist-play', playSongs(".in input"));

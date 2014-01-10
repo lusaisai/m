@@ -32,10 +32,14 @@ class Song extends \mako\Controller {
     }
 
     public function searchSongs(){
-            $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : "";
+            $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : array();
+            $rlike_pinyin = Database::connection()->pdo->quote(implode(",", $words));
+            $like_pinyin = Database::connection()->pdo->quote('%'.implode(",", $words).'%');
+
+
             $type = isset($_GET['type']) ? trim($_GET['type']) : "songname";
 
-            if( $words == "" ){
+            if( empty($words) ){
                 $query = "select id from song order by id desc";
                 return $this->querySongIds(array($query));
             } elseif ( $type == "artistname" ) {
@@ -47,6 +51,8 @@ class Song extends \mako\Controller {
                 join artist ar
                 on   al.artist_id = ar.id
                 ";
+                $pinyinRlikeQuery = $query . " where " . $rlike_pinyin . " rlike ar.name_pinyin";
+                $pinyinLikeQuery = $query . " where REPLACE( REPLACE(ar.name_pinyin, '(', ''), ')', '' ) like " . $like_pinyin;
                 $andQuery = $query . " where true ";
                 $orQuery = $query . " where false ";
 
@@ -64,6 +70,8 @@ class Song extends \mako\Controller {
                     join album al
                     on   s.album_id = al.id
                     ";
+                $pinyinRlikeQuery = $query . " where " . $rlike_pinyin . " rlike al.name_pinyin";
+                $pinyinLikeQuery = $query . " where REPLACE( REPLACE(al.name_pinyin, '(', ''), ')', '' ) like " . $like_pinyin;
                 $andQuery = $query . " where true ";
                 $orQuery = $query . " where false ";
 
@@ -76,6 +84,8 @@ class Song extends \mako\Controller {
                 $orQuery .= " order by id desc ";
             } elseif ( $type == "songname" ) {
                 $query = "select s.id from song s";
+                $pinyinRlikeQuery = $query . " where " . $rlike_pinyin . " rlike s.name_pinyin";
+                $pinyinLikeQuery = $query . " where REPLACE( REPLACE(s.name_pinyin, '(', ''), ')', '' ) like " . $like_pinyin;
                 $andQuery = $query . " where true ";
                 $orQuery = $query . " where false ";
 
@@ -88,7 +98,7 @@ class Song extends \mako\Controller {
                 $orQuery .= " group by id order by id desc ";
             }
 
-            return $this->querySongIds( array( $andQuery, $orQuery ) );
+            return $this->querySongIds( array( $pinyinRlikeQuery, $pinyinLikeQuery, $andQuery, $orQuery ) );
         }
 
         private function querySongIds( $queries ) {

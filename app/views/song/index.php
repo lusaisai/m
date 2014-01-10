@@ -29,9 +29,9 @@
                 <div class="span8">
                     <div id="searching">
                         <form class="form-search" method="get">
-                            <input name="words" type="text" class="input-xlarge" placeholder="后来的我们">
+                            <input name="words" type="text" class="typeahead input-xlarge" placeholder="后来的我们">
                             <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
-                            <select name="type" style="width:120px">
+                            <select class="type" name="type" style="width:120px">
                                 <option value="artistname">Artist Name</option>
                                 <option value="albumname">Album Name</option>
                                 <option value="songname" selected="selected">Song Name</option>
