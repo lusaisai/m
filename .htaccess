@@ -13,3 +13,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
 
 </IfModule>
+
+<ifModule mod_headers.c>
+Header set Connection keep-alive
+</ifModule>

@@ -13,6 +13,8 @@ $(document).ready(function(){
 
   		matcher : function (item) {
   			return true;
-  		}
+  		},
+
+  		items: 15
 	});
 });

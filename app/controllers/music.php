@@ -21,15 +21,17 @@ class Music extends \mako\Controller
 		where s.id = $id
 		";
 		$row = Database::first( $query );
+
+		
 		// $log = \mako\Log::instance();
 
 		if ($row) {
 			$musicDir = Config::get( "music.dir" );
-			$file = "{$musicDir}/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
-			$file = mb_convert_encoding( $file, "cp936" );
-			$filesize = filesize($file);
+			$musicUrlPre = Config::get( "music.url" );
+			$file = "{$row->artist_name}/{$row->album_name}/{$row->song_name}";
+			// $file = mb_convert_encoding( $file, "cp936" );
+			$fileUrl = $musicUrlPre . "/" . $file;
 			$offset = 0;
-			$length = $filesize;
 
 			if ( isset($_SERVER['HTTP_RANGE']) ) {
 				preg_match('/bytes=(\d+)-(\d+)?/', $_SERVER['HTTP_RANGE'], $matches);
@@ -39,17 +41,8 @@ class Music extends \mako\Controller
 				$this->playlog($id);
 			}
 
-			$this->response->type('audio/mpeg');
-			$this->response->header("Accept-Ranges", "bytes");
-			$this->response->header("Content-Length", $filesize);
-			$this->response->header("Content-Range", 'bytes ' . $offset . '-' . ($offset + $length) . '/' . $filesize);
-
-			$file = fopen($file, 'r');
-			fseek($file, $offset);
-			$data = fread($file, $length);
-			fclose($file);
-
-			return $data;
+			// redirect to the mp3 file
+			$this->response->redirect($fileUrl);
 		} else {
 			return "";
 		}

@@ -109,6 +109,7 @@ $(document).ready(function(){
                 smoothPlayBar: true,
                 keyEnabled: true,
                 volume: 0.88,
+                preload: "auto",
                 playlistOptions: {
                     autoPlay: false,
                     enableRemoveControls: true

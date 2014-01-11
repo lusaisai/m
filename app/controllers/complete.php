@@ -13,7 +13,7 @@ class Complete extends \mako\Controller
 	{
 		$artist = new Artist( $this->request, $this->response );
 		$ids = implode(',', $artist->searchArtists());
-		$query = "select GROUP_CONCAT(name) as names from artist where id in ( $ids )";
+		$query = "select GROUP_CONCAT(name) as names from artist where id in ( $ids ) limit 15";
 		$names = Database::column($query);
 
 		$this->response->type('application/json');
@@ -24,7 +24,7 @@ class Complete extends \mako\Controller
 	{
 		$album = new Album( $this->request, $this->response );
 		$ids = implode(',', $album->searchAlbums());
-		$query = "select GROUP_CONCAT(name) as names from album where id in ( $ids )";
+		$query = "select GROUP_CONCAT(name) as names from album where id in ( $ids ) limit 15";
 		$names = Database::column($query);
 
 		$this->response->type('application/json');
@@ -35,7 +35,7 @@ class Complete extends \mako\Controller
 	{
 		$song = new Song( $this->request, $this->response );
 		$ids = implode(',', $song->searchSongs());
-		$query = "select GROUP_CONCAT(name) as names from song where id in ( $ids )";
+		$query = "select GROUP_CONCAT(name) as names from song where id in ( $ids ) limit 15";
 		$names = Database::column($query);
 
 		$this->response->type('application/json');
