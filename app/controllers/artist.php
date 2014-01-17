@@ -41,7 +41,7 @@ class Artist extends \mako\Controller
     }
 
     public function searchArtists(){
-        $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : array();
+        $words = isset($_GET['words']) && trim($_GET['words']) != '' ? preg_split( "/\s+/", trim($_GET['words']) ) : array();
         $type = isset($_GET['type']) ? trim($_GET['type']) : "artistname";
         $rlike_pinyin = Database::connection()->pdo->quote(implode(",", $words));
         $like_pinyin = Database::connection()->pdo->quote('%'.implode(",", $words).'%');

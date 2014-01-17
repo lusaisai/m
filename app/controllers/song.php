@@ -32,7 +32,7 @@ class Song extends \mako\Controller {
     }
 
     public function searchSongs(){
-            $words = isset($_GET['words']) ? preg_split( "/\s+/", trim($_GET['words']) ) : array();
+            $words = isset($_GET['words']) && trim($_GET['words']) != '' ? preg_split( "/\s+/", trim($_GET['words']) ) : array();
             $rlike_pinyin = Database::connection()->pdo->quote(implode(",", $words));
             $like_pinyin = Database::connection()->pdo->quote('%'.implode(",", $words).'%');
 

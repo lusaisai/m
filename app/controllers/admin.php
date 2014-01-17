@@ -90,7 +90,7 @@ class Admin extends \mako\Controller
             $id = $row->id;
             $name = $row->name;
             $name_pinyin = static::toPinyin($name);
-            $name_pinyin = Database::connection()->pdo->quote($name_pinyin);
+            // $name_pinyin = Database::connection()->pdo->quote($name_pinyin);
             Database::query( $update_query, array( $name_pinyin, $id ) );
             $data .= $name . ' - ' . $name_pinyin . '<br />';
         }
@@ -215,8 +215,9 @@ class Admin extends \mako\Controller
 
     private static function songClean($value)
     {
+        $value = trim( preg_replace('/\.[^.]*$/', '', $value) ); // remove file extension
         $value = trim( preg_replace('/^.*-/', '', $value) );
-        $value = trim( preg_replace('/[0-9]+\.*/', '', $value) );
+        $value = trim( preg_replace('/[0-9]+[. ]/', '', $value) );
         $value = trim( preg_replace('/\[.*\]/', '', $value) );
         $value = trim( preg_replace('/【.*】/', '', $value) );
         $value = trim( preg_replace('/\(.*\)/', '', $value) );

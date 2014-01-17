@@ -9,7 +9,8 @@ create table if not exists pinyin_map
 		pinyin4 varchar(255),
 		pinyin5 varchar(255),
 		pinyin6 varchar(255),
-		primary key (id)
+		primary key (id),
+		index(chinese_word)
 )
 char set utf8
 ;

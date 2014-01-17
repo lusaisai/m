@@ -76,7 +76,9 @@ region varchar(255),
 info text,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
-primary key (id)
+primary key (id),
+index(name),
+index(name_pinyin)
 )
 char set utf8,
 ENGINE = INNODB
@@ -93,7 +95,9 @@ artist_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id),
-index(artist_id)
+index(artist_id),
+index(name),
+index(name_pinyin)
 )
 char set utf8,
 ENGINE = INNODB
@@ -111,7 +115,9 @@ album_id integer,
 insert_ts timestamp not null default current_timestamp,
 update_ts timestamp,
 primary key (id),
-index(album_id)
+index(album_id),
+index(name),
+index(name_pinyin)
 )
 char set utf8,
 ENGINE = INNODB

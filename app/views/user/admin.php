@@ -1,6 +1,6 @@
 <button id="db-update" class="btn btn-large btn-danger" type="button">Update Database</button>
 <button id="lyric-update" class="btn btn-large btn-danger" type="button">Update Lyrics</button>
-<button id="pinyin-update" class="btn btn-large btn-danger" type="button">Update Lyrics</button>
+<button id="pinyin-update" class="btn btn-large btn-danger" type="button">Update Pinyin</button>
 <div id="update-data" style="margin-top: 10px;">
 </div>
 
