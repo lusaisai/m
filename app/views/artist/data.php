@@ -20,7 +20,14 @@
                             <table class="table table-bordered table-hover table-condensed table-striped">
                                 <?php foreach ($album["songs"] as $song): ?>
                                     <tr>
-                                        <td><label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["song_id"] ?>"><?php echo $song["song_name"] ?></label></td>
+                                        <td>
+                                            <label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["song_id"] ?>">
+                                                <?php echo $song["song_name"] ?>
+                                                <?php if ( $song["is_hot"] ): ?>
+                                                    <span class="badge badge-important">Hot</span>
+                                                <?php endif ?>
+                                            </label>
+                                        </td>
                                         <td style="text-align:center"><button class="btn btn-mini song-play" type="button" songid="<?php echo $song["song_id"] ?>"><i class="icon-headphones"></i></button></td>
                                         <td style="text-align:center"><button class="btn btn-mini song-add" type="button" songid="<?php echo $song["song_id"] ?>"><i class="icon-plus"></i></button></td>
                                    </tr>

@@ -118,12 +118,22 @@ class Song extends \mako\Controller {
 
         private function songInfo($songId) {
             $query = "select
-            s.id, s.name as song_name, ar.name as artist_name, al.name as album_name
+            s.id, s.name as song_name, ar.name as artist_name, al.name as album_name,
+            case when hot.song_id is not null then 1 else 0 end as is_hot
             from song s
             join album al
             on   s.album_id = al.id
             join artist ar
             on   al.artist_id = ar.id
+            left join (
+                select l.song_id, s.name as song_name, count(*) as cnt
+                from playlogs l
+                join song s
+                on   l.song_id = s.id
+                group by 1,2
+                order by cnt desc
+                limit 200) hot
+            on  s.id = hot.song_id
             where s.id = $songId
             ";
             $row = Database::first($query);
@@ -132,7 +142,8 @@ class Song extends \mako\Controller {
                 'id' => $row->id,
                 'song_name'=> $row->song_name,
                 'artist_name'=> $row->artist_name,
-                'album_name'=>$row->album_name
+                'album_name'=>$row->album_name,
+                'is_hot' => $row->is_hot
             );
         }
 

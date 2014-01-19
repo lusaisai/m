@@ -142,11 +142,25 @@ class Artist extends \mako\Controller
         $albums = array();
 
         foreach ($albumRows as $albumRow) {
-            $query = "select id as song_id, name as song_name from song where album_id = {$albumRow->album_id}";
+            $query = "select 
+            s.id as song_id, 
+            s.name as song_name, 
+            case when hot.song_id is not null then 1 else 0 end as is_hot
+            from song s
+            left join (
+                select l.song_id, s.name as song_name, count(*) as cnt
+                from playlogs l
+                join song s
+                on   l.song_id = s.id
+                group by 1,2
+                order by cnt desc
+                limit 200) hot
+            on  s.id = hot.song_id
+            where s.album_id = {$albumRow->album_id}";
             $songRows = Database::all($query);
             $songs = array();
             foreach( $songRows as $songRow ) {
-                array_push($songs, array( 'song_id'=>$songRow->song_id, 'song_name'=>$songRow->song_name ));
+                array_push($songs, array( 'song_id'=>$songRow->song_id, 'song_name'=>$songRow->song_name, 'is_hot' => $songRow->is_hot  ));
             }
             array_push($albums, array( 'album_id'=>$albumRow->album_id, 'album_name'=>$albumRow->album_name, 'songs'=>$songs ));
         }
