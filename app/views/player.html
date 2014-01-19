@@ -45,7 +45,7 @@
 		</div>
 	</div>
 	<div id="userpanel">
-		<a class="btn <?php if (! Session::get( 'isLogin', false )) echo 'disabled'?>" href="#newplaylist" data-toggle="modal" title="<?php if (! Session::get( 'isLogin', false )) echo 'login and' ?> save the current playlist"   >
+		<a class="btn <?php if (! Session::get( 'isLogin', false )) echo 'disabled'?>" href="#newplaylist" data-toggle="<?php if ( Session::get( 'isLogin', false )) echo 'modal'?>" title="<?php if (! Session::get( 'isLogin', false )) echo 'login and' ?> save the current playlist"   >
 			<i class="icon-list"></i>
 		</a>
 		<a class="btn" id="show-lyric" title="show the lyric">

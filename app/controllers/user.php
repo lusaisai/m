@@ -6,7 +6,7 @@ use mako\View;
 use mako\Validate;
 use mako\Session;
 use mako\security\Password;
-use \mako\ReCaptcha;
+use mako\I18n;
 
 class User extends \mako\Controller
 {
@@ -202,11 +202,10 @@ class User extends \mako\Controller
     }
 
     public function action_register() {
-        $recaptcha = new ReCaptcha();
         $rules = array (
-            'username' => 'required|min_length:4|max_length:20',
+            'username' => 'required|unique:users,username|min_length:4|max_length:20',
             'password' => 'required|min_length:8',
-            'email'    => 'required|email',
+            'email'    => 'required|unique:users,email|email',
         );
 
         $validation = new Validate($_POST, $rules);
@@ -214,24 +213,20 @@ class User extends \mako\Controller
             $username = $_POST['username'];
             $password = Password::hash( $_POST['password'] );
             $email = $_POST['email'];
-            $isuserExist = Database::column( "select count(*) from users where username = ? ", array($username) ) > 0 ;
-            $isemailExist = Database::column( "select count(*) from users where email = ? ", array($email) ) > 0 ;
 
-            if ($isuserExist) {
-                $data = array('errors' => "The username has already been registered", 'page' =>'register');
-            } elseif ($isemailExist) {
-                $data = array('errors' => "The email has already been registered", 'page' =>'register');
-            } elseif ( $recaptcha->validate() && $recaptcha->failed() ) {
-                $data = array('errors' => "The ReCaptcha inputs are incorrect", 'page' =>'register');
-            }
-            else {
-                Database::query( "insert into users (username, password, email) values(?,?,?)", array($username,$password,$email) );
-                $data = array('errors' => "", 'page' =>'login');
-            }
+            Database::query( "insert into users (username, password, email) values(?,?,?)", array($username,$password,$email) );
+            $data = array('errors' => "", 'page' =>'login');
+            
             return new View("user.login", $data);
         }
         else {
-            $errors = implode( "<br/>", array_values($validation->errors()) );
+            $messages = I18n::get('validate');
+            $errors = '';
+            foreach ($validation->errors() as $field => $rule) {
+                $errors .= sprintf( $messages[$rule], $field );
+                $errors .= "<br/>";
+            }
+            
             $data = array('errors' => $errors, 'page' =>'register');
 
             return new View("user.login", $data);

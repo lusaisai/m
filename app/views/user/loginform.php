@@ -47,12 +47,6 @@
             <input type="text" id="inputEmail" name="email" placeholder="Email">
           </div>
         </div>
-        <div class="recpatcha">
-          <?php
-          $recaptcha = new \mako\ReCaptcha();
-          echo $recaptcha->render();
-           ?>
-        </div>
         <div class="control-group">
           <div class="controls">
             <button type="submit" class="btn btn-primary">Register</button>

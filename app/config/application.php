@@ -87,7 +87,6 @@ return array
 
 	'packages' => array
 	(
-		'recaptcha'
 	),
 
 	/**
