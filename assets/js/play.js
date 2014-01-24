@@ -1,7 +1,8 @@
 $(document).ready(function(){
     var myPlaylist;
     var base = "/m/";
-    var playerY = $("#the_player").position().top;
+    // var playerY = $("#the_player").position().top;
+    var playerY = 40;
 
     var setPlaylistCookie = function() {
         var songs = [];
@@ -67,28 +68,28 @@ $(document).ready(function(){
         $(window).focus(function(event) {
             $(canvasid).tagcanvas("resume");
         });
-        $("#topsongs .timeline button").click(function() {
+        $("#topsongs .timeline label").click(function() {
             var time = $(this).attr("time");
             var user = $("#topsongs .userstatus .active").attr("user");
             $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
                 $(canvasid).tagcanvas("reload");
             });
         });
-        $('#topsongs .userstatus button').not(".disabled").click(function() {
+        $('#topsongs .userstatus label').not(".disabled").click(function() {
             var user = $(this).attr("user");
             var time = $("#topsongs .timeline .active").attr("time");
             $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
                 $(canvasid).tagcanvas("reload");
             });
         });
-        $("#topartists .timeline button").click(function() {
+        $("#topartists .timeline label").click(function() {
             var time = $(this).attr("time");
             var user = $("#topartists .userstatus .active").attr("user");
             $("#topArtistsTags").load(base + "home/topartistdata/" + user + "/" + time + "/" , function () {
                 $(canvasid).tagcanvas("reload");
             });
         });
-        $('#topartists .userstatus button').not(".disabled").click(function() {
+        $('#topartists .userstatus label').not(".disabled").click(function() {
             var user = $(this).attr("user");
             var time = $("#topartists .timeline .active").attr("time");
             $("#topArtistsTags").load(base + "home/topartistdata/" + user + "/" + time + "/" , function () {

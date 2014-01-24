@@ -23,15 +23,15 @@
                 </li>
             </ul>
             <div class="row">
-                <div class="span4">
+                <div class="col-md-3">
                     <?php include dirname(__FILE__).'/../player.html'; ?>
                 </div>
-                <div class="span8">
+                <div class="col-md-8">
                     <div id="searching">
-                        <form class="form-search" method="get">
-                            <input name="words" type="text" class="typeahead input-xlarge" placeholder="品冠">
-                            <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
-                            <select class="type" name="type" style="width:120px">
+                        <form class="form-inline form-search" method="get">
+                            <input name="words" style="width:350px" type="text" class="form-control" placeholder="品冠">
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+                            <select class="type form-control" name="type" style="width:138px">
                                 <option value="artistname">Artist Name</option>
                                 <option value="albumname" selected="selected">Album Name</option>
                                 <option value="songname">Song Name</option>

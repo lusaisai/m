@@ -1,8 +1,8 @@
 <h3>The Randoms</h3>
-<form class="form-search" method="get">
-    <input name="words" type="text" class="input-xlarge typeahead" placeholder="品冠">
-    <button type="submit" class="btn"><i class="icon-search"></i> Random</button>
-    <select name="type" class="type" style="width:120px">
+<form role="form" class="form-inline form-search" method="get">
+    <input name="words" style="width:350px" type="text" class="form-control" placeholder="品冠">
+    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Random</button>
+    <select name="type" class="type form-control" style="width:135px">
         <option value="artistname">Artist Name</option>
         <option value="albumname">Album Name</option>
         <option value="songname">Song Name</option>

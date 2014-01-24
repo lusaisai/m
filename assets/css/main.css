@@ -1,12 +1,20 @@
 @charset "UTF-8";
 
-h1,h2,h3,h4,h5,h6,blockquote {
+/*h1,h2,h3,h4,h5,h6,blockquote {
   color: #99CC66; 
-}
+}*/
 
-.span8 {
+.col-md-8 {
   font-family: "Microsoft YaHei","Hiragino Sans GB W3",Tahoma,Arial;
   text-shadow: 0 0 1px #EEEEEE;
+}
+
+.badge-hot {
+  background-color: #ff6666;
+}
+
+label.checkbox {
+  margin: 0;
 }
 
 .album-image {
@@ -50,4 +58,8 @@ h1,h2,h3,h4,h5,h6,blockquote {
 
 select, .btn:focus {
    outline-color: transparent !important;
+}
+
+#the_player {
+  z-index: 99;
 }

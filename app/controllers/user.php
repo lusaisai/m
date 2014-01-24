@@ -148,7 +148,12 @@ class User extends \mako\Controller
             }
         }
         else {
-            $errors = implode( "<br/>", array_values($validation->errors()) );
+            $messages = I18n::get('validate');
+            $errors = '';
+            foreach ($validation->errors() as $field => $rule) {
+                $errors .= sprintf( $messages[$rule], $field );
+                $errors .= "<br/>";
+            }
             $data['errors'] = $errors;
         }
         return new View("user.updateinfo", $data);

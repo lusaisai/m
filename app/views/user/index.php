@@ -22,12 +22,12 @@
                 </li>
             </ul>
             <div class="row">
-                <div class="span4">
+                <div class="col-md-3">
                     <?php include dirname(__FILE__).'/../player.html'; ?>
                 </div>
-                <div class="span8">
-                    <div id="side" class="span2">
-                        <ul class="nav nav-tabs nav-stacked">
+                <div class="col-md-8">
+                    <div id="side" class="col-md-3">
+                        <ul class="nav nav-pills nav-stacked">
                             <li id="playlist" class="active"><a href="javascript:;">My Playlists</a></li>
                             <li id="info"><a href="javascript:;">My Information</a></li>
                             <?php if ( Session::get( "role", "" ) == "admin" ): ?>
@@ -35,7 +35,7 @@
                             <?php endif ?>
                         </ul>
                     </div>
-                    <div id="data" class="span6">
+                    <div id="data" class="col-md-8">
                         <?php include 'playlist.php'; ?>
                     </div>
                     <script>

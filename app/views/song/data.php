@@ -5,23 +5,23 @@
                 <td><label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["id"] ?>">
                     <?php echo $song["song_name"] ?>
                     <?php if ( $song["is_hot"] ): ?>
-                            <span class="badge badge-important">Hot</span>
+                            <span class="badge badge-hot">Hot</span>
                     <?php endif ?>
                 </label></td>
                 <td><?php echo $song['artist_name']; ?></td>
                 <td><?php echo $song['album_name']; ?></td>
-                <td style="text-align:center"><button class="btn btn-mini song-play" type="button" songid="<?php echo $song["id"] ?>"><i class="icon-headphones"></i></button></td>
-                <td style="text-align:center"><button class="btn btn-mini song-add" type="button" songid="<?php echo $song["id"] ?>"><i class="icon-plus"></i></button></td>
+                <td style="text-align:center"><button class="btn btn-default btn-sm song-play" type="button" songid="<?php echo $song["id"] ?>"><span class="glyphicon glyphicon-headphones"></span></button></td>
+                <td style="text-align:center"><button class="btn btn-default btn-sm song-add" type="button" songid="<?php echo $song["id"] ?>"><span class="glyphicon glyphicon-plus"></span></button></td>
             </tr>
         <?php endforeach ?>
     </table>
     <div class="btn-group">
-        <button class="btn reverse-check">Reverse Check</button>
-        <button class="btn check-all">Check All</button>
-        <button class="btn uncheck-all">Uncheck All</button>
+        <button class="btn btn-default reverse-check">Reverse Check</button>
+        <button class="btn btn-default check-all">Check All</button>
+        <button class="btn btn-default uncheck-all">Uncheck All</button>
     </div>
     <div class="btn-group">
-        <button class="btn btn-primary album-play"><i class='icon-music icon-white'></i> Play</button>
+        <button class="btn btn-primary album-play"><span class="glyphicon glyphicon-music"></span> Play</button>
     </div>
 </div>
 

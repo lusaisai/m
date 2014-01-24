@@ -24,10 +24,10 @@
                 </li>
             </ul>
             <div class="row">
-                <div class="span4">
+                <div class="col-md-3">
                     <?php include dirname(__FILE__).'/../player.html'; ?>
                 </div>
-                <div class="span8">
+                <div class="col-md-8">
                     <div id="randoms">
                         <?php include 'randoms.php'; ?>
                     </div>

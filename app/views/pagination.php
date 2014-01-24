@@ -6,24 +6,22 @@
 	$endid = $pageid + 4 < $toalPages ? $pageid + 4 : $toalPages;
 ?>
 
-<div class="pagination">
-	<ul>
-		<?php if ($startid > 1): ?>
-			<li><a href="javascript:;" pageid="1">First</a></li>
-			<li><a>...</a></li>
-		<?php endif ?>
+<ul class="pagination">
+	<?php if ($startid > 1): ?>
+		<li><a href="javascript:;" pageid="1">First</a></li>
+		<li><a>...</a></li>
+	<?php endif ?>
 
-		<?php for( $i = $startid; $i <= $endid; $i++ ): ?>
-			<?php if ($i == $pageid): ?>
-				<li class="active"><a><?php echo $i?></a></li>
-			<?php else: ?>
-				<li><a href="javascript:;" pageid="<?php echo $i?>"><?php echo $i?></a></li>
-			<?php endif ?>
-		<?php endfor ?>
-
-		<?php if ($endid < $toalPages): ?>
-			<li><a>...</a></li>
-			<li><a href="javascript:;" pageid="<?php echo $toalPages?>">Last</a></li>
+	<?php for( $i = $startid; $i <= $endid; $i++ ): ?>
+		<?php if ($i == $pageid): ?>
+			<li class="active"><a><?php echo $i?></a></li>
+		<?php else: ?>
+			<li><a href="javascript:;" pageid="<?php echo $i?>"><?php echo $i?></a></li>
 		<?php endif ?>
-	</ul>
-</div>
+	<?php endfor ?>
+
+	<?php if ($endid < $toalPages): ?>
+		<li><a>...</a></li>
+		<li><a href="javascript:;" pageid="<?php echo $toalPages?>">Last</a></li>
+	<?php endif ?>
+</ul>

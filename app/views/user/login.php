@@ -15,12 +15,12 @@
                 <li class="active pull-right"><a href="<?php echo URL::to('user/login'); ?>">Login</a></li>
             </ul>
             <div class="row">
-                <div class="span4">
+                <div class="col-md-3">
                     <?php include dirname(__FILE__).'/../player.html'; ?>
                 </div>
-                <div class="span8">
+                <div class="col-md-8">
                     <?php if ($errors != ""): ?>
-                        <div class="alert alert-error"><?php echo $errors; ?></div>
+                        <div class="alert alert-danger"><?php echo $errors; ?></div>
                     <?php endif ?>
                     <div id="data" pagetype="login">
                         <?php include 'loginform.php';?>

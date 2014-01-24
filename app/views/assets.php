@@ -12,9 +12,9 @@
     Assets::add('tagcanvas-js', '/js/jquery.tagcanvas.min.js');
 
     Assets::add('play-js', '/js/play.js');
-    Assets::add('complete-js', '/js/complete.js');
+    // Assets::add('complete-js', '/js/complete.js');
 
-    Assets::add('bootstrap-css', '/bootstrap/css/bootstrap.css');
+    Assets::add('bootstrap-css', '/bootstrap/css/bootstrap.min.css');
     Assets::add('bootstrap-js', '/bootstrap/js/bootstrap.min.js');
     Assets::add('bootbox-js', '/js/bootbox.min.js');
 

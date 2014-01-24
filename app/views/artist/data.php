@@ -1,42 +1,41 @@
 <?php foreach ($data as $artist): ?>
     <?php $i = 1 ?>
-    <div id="<?php echo $artist["artist_id"] ?>" class="album">
-        <blockquote>
-            <h3><?php echo $artist["artist_name"] ?></h3>
-        </blockquote>
+    <div id="<?php echo $artist["artist_id"] ?>" class="album panel panel-primary">
+        <div class="panel-heading"><h3><?php echo $artist["artist_name"] ?></h3></div>
+        <div class="panel-body">
         <div>
             <a data-lightbox="lightbox-image" href="<?php echo "/music/{$artist["artist_name"]}/{$artist["image_name"]}" ?>">
                 <img src="<?php echo "/music/{$artist["artist_name"]}/{$artist["image_name"]}" ?>" class="img-rounded album-image">
             </a>
         </div>
-        <div id="<?php echo "accordion{$artist["artist_id"]}" ?>" class="slide accordion">
+        <div id="<?php echo "accordion{$artist["artist_id"]}" ?>" class="panel-group slide">
             <?php foreach ($artist["albums"] as $album): ?>
-                <div class="accordion-group">
-                    <div class="accordion-heading">
-                        <a class="accordion-toggle" data-toggle="collapse" data-parent="<?php echo "#accordion{$artist["artist_id"]}" ?>" href="<?php echo "#collapse{$album["album_id"]}" ?>"><?php echo $album["album_name"] ?></a>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="panel-title" data-toggle="collapse" data-parent="<?php echo "#accordion{$artist["artist_id"]}" ?>" href="<?php echo "#collapse{$album["album_id"]}" ?>"><?php echo $album["album_name"] ?></a>
                     </div>
-                    <div id="<?php echo "collapse{$album["album_id"]}" ?>" class="accordion-body <?php if ($i==1) echo "in"; ?> collapse">
-                        <div class="accordion-inner songs">
-                            <table class="table table-bordered table-hover table-condensed table-striped">
+                    <div id="<?php echo "collapse{$album["album_id"]}" ?>" class="panel-collapse collapse <?php if ($i==1) echo "in"; ?>">
+                        <div class="panel-body songs">
+                            <table class="table table-condensed table-bordered table-hover table-striped">
                                 <?php foreach ($album["songs"] as $song): ?>
                                     <tr>
                                         <td>
                                             <label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song["song_id"] ?>">
                                                 <?php echo $song["song_name"] ?>
                                                 <?php if ( $song["is_hot"] ): ?>
-                                                    <span class="badge badge-important">Hot</span>
+                                                    <span class="badge badge-hot">Hot</span>
                                                 <?php endif ?>
                                             </label>
                                         </td>
-                                        <td style="text-align:center"><button class="btn btn-mini song-play" type="button" songid="<?php echo $song["song_id"] ?>"><i class="icon-headphones"></i></button></td>
-                                        <td style="text-align:center"><button class="btn btn-mini song-add" type="button" songid="<?php echo $song["song_id"] ?>"><i class="icon-plus"></i></button></td>
+                                        <td style="text-align:center"><button class="btn btn-default btn-sm song-play" type="button" songid="<?php echo $song["song_id"] ?>"><span class="glyphicon glyphicon-headphones"></span></button></td>
+                                        <td style="text-align:center"><button class="btn btn-default btn-sm song-add" type="button" songid="<?php echo $song["song_id"] ?>"><span class="glyphicon glyphicon-plus"></span></button></td>
                                    </tr>
                                 <?php endforeach ?>
                             </table>
                             <div class="btn-group">
-                                <button class="btn reverse-check">Reverse Check</button>
-                                <button class="btn check-all">Check All</button>
-                                <button class="btn uncheck-all">Uncheck All</button>
+                                <button class="btn btn-default reverse-check">Reverse Check</button>
+                                <button class="btn btn-default check-all">Check All</button>
+                                <button class="btn btn-default uncheck-all">Uncheck All</button>
                             </div>
                         </div>
                     </div>
@@ -45,8 +44,9 @@
             <?php endforeach ?>
         </div>
         <div class="btn-group">
-            <button class="btn btn-primary song-list"><i class="icon-list icon-white"></i></button>
-            <button artist_id="<?php echo $artist["artist_id"] ?>" class="btn btn-primary artist-play"><i class='icon-music icon-white'></i> Play</button>
+            <button class="btn btn-primary song-list"><span class="glyphicon glyphicon-list"></span></button>
+            <button artist_id="<?php echo $artist["artist_id"] ?>" class="btn btn-primary artist-play"><span class="glyphicon glyphicon-music"></span> Play</button>
+        </div>
         </div>
     </div>
 <?php endforeach ?>
