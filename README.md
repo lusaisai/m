@@ -1,1 +1,1 @@
-My home music station
+My home music web app.
