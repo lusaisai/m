@@ -15,6 +15,8 @@ $(document).ready(function(){
   			return true;
   		},
 
-  		items: 15
+  		items: 15,
+
+      autoSelect: false
 	});
 });

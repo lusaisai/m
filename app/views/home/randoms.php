@@ -1,6 +1,6 @@
 <h3>The Randoms</h3>
 <form role="form" class="form-inline form-search" method="get">
-    <input name="words" style="width:350px" type="text" class="form-control" placeholder="品冠">
+    <input data-provide="typeahead" name="words" style="width:350px" type="text" class="typeahead form-control" placeholder="品冠">
     <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Random</button>
     <select name="type" class="type form-control" style="width:135px">
         <option value="artistname">Artist Name</option>

@@ -29,7 +29,7 @@
                 <div class="col-md-8">
                     <div id="searching">
                         <form class="form-inline form-search" method="get">
-                            <input name="words" style="width:350px" type="text" class="form-control" placeholder="品冠">
+                            <input data-provide="typeahead" name="words" style="width:350px" type="text" class="typeahead form-control" placeholder="品冠">
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
                             <select class="type form-control" name="type" style="width:138px">
                                 <option value="artistname">Artist Name</option>
@@ -42,7 +42,6 @@
                     <div id="data" pagetype="album">
                         <?php include 'data.php';?>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
