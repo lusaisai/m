@@ -20,8 +20,8 @@
                                     <span class="badge badge-hot">Hot</span>
                             <?php endif ?>
                         </label></td>
-                        <td style="text-align:center"><button class="btn btn-default btn-sm song-play" type="button" songid="<?php echo $song["id"] ?>"><span class="glyphicon glyphicon-headphones"></span></button></td>
-                        <td style="text-align:center"><button class="btn btn-default btn-sm song-add" type="button" songid="<?php echo $song["id"] ?>"><span class="glyphicon glyphicon-plus"></span></button></td>
+                        <td style="text-align:center"><button class="btn btn-default btn-xs song-play" type="button" songid="<?php echo $song["id"] ?>"><span class="glyphicon glyphicon-headphones"></span></button></td>
+                        <td style="text-align:center"><button class="btn btn-default btn-xs song-add" type="button" songid="<?php echo $song["id"] ?>"><span class="glyphicon glyphicon-plus"></span></button></td>
                     </tr>
                 <?php endforeach ?>
             </table>
