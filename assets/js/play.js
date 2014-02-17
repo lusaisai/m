@@ -20,7 +20,12 @@ $(document).ready(function(){
         $.cookie('playlist', songs.join(","), { expires: 30 });
         $.cookie('currentsong', currentSong, { expires: 30 });
         $.cookie('currenttime', currentTime, { expires: 30 });
-        
+    };
+
+    var setPlayCookie = function (status) {
+        return function (argument) {
+                $.cookie('isplay', status, { expires: 30 });
+        };
     };
 
     var playlistTooltip = function () {
@@ -42,10 +47,20 @@ $(document).ready(function(){
             $.getJSON( base + 'playutils/songplay/' + playlist + "/0", function (data) {
                 play(data);
                 var index = $.cookie('currentsong');
-                var time = $.cookie('currenttime')
+                var time = $.cookie('currenttime');
+                var isPlay = $.cookie('isplay')
                 if ( typeof index != "undefined" ) { myPlaylist.select( parseInt(index) ) };
-                if ( typeof time != "undefined" ) { $(playerID).jPlayer( 'play', parseFloat(time) ) };
+                if ( typeof time != "undefined" ) {
+                    if ( isPlay == 1 ) {
+                        $(playerID).jPlayer( 'play', parseFloat(time) );
+                    } else {
+                        $(playerID).jPlayer( 'pause', parseFloat(time) );
+                    }
+                    
+                };
                 $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
+                $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
+                $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
             } );
         } else {
             play([]);
