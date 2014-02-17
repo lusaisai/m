@@ -5,8 +5,8 @@
                 <td><label class="checkbox"><input type="checkbox" checked="checked" songid="<?php echo $song->id ?>"><?php echo $song->song_name ?></label></td>
                 <td><?php echo $song->artist_name; ?></td>
                 <!-- <td><?php echo $song->album_name; ?></td> -->
-                <td style="text-align:center"><button class="btn btn-default btn-sm song-play" type="button" songid="<?php echo $song->id ?>"><span class="glyphicon glyphicon-headphones"></span></button></td>
-                <td style="text-align:center"><button class="btn btn-default btn-sm song-add" type="button" songid="<?php echo $song->id ?>"><span class="glyphicon glyphicon-plus"></span></button></td>
+                <td style="text-align:center"><button class="btn btn-default btn-xs song-play" type="button" songid="<?php echo $song->id ?>"><span class="glyphicon glyphicon-headphones"></span></button></td>
+                <td style="text-align:center"><button class="btn btn-default btn-xs song-add" type="button" songid="<?php echo $song->id ?>"><span class="glyphicon glyphicon-plus"></span></button></td>
             </tr>
         <?php endforeach ?>
     </table>

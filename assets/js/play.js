@@ -4,17 +4,27 @@ $(document).ready(function(){
     // var playerY = $("#the_player").position().top;
     var playerY = 40;
 
-    var setPlaylistCookie = function() {
+    var savePlayStatus = function(event) {
         var songs = [];
+        var currentSong = 0;
         $(".jp-playlist li[songid]").each(function () {
             songs.push($(this).attr('songid'));
         });
+
+        $('.jp-playlist li').each( function (index) {
+            if ($(this).hasClass('jp-playlist-current')) { currentSong = index; return false };
+        } )
+
+        var currentTime = event.jPlayer.status.currentTime;
+
         $.cookie('playlist', songs.join(","), { expires: 30 });
-        setTimeout( setPlaylistCookie, 30 * 1000 );
+        $.cookie('currentsong', currentSong, { expires: 30 });
+        $.cookie('currenttime', currentTime, { expires: 30 });
+        
     };
 
     var playlistTooltip = function () {
-        setTimeout(function function_name () {
+        setTimeout(function () {
             $('#the_player li').tooltip('hide');
         }, 2000);
     };
@@ -25,12 +35,21 @@ $(document).ready(function(){
         playlistTooltip();       
     };
 
-    var loadPlaylist = function () {
+    var readPlayStatus = function () {
+        var playerID = "#jquery_jplayer_1";
         if (typeof $.cookie('playlist') != "undefined" && $.cookie('playlist') !== "") {
             var playlist = $.cookie('playlist');
-            $.getJSON( base + 'playutils/songplay/' + playlist + "/0", play );
+            $.getJSON( base + 'playutils/songplay/' + playlist + "/0", function (data) {
+                play(data);
+                var index = $.cookie('currentsong');
+                var time = $.cookie('currenttime')
+                if ( typeof index != "undefined" ) { myPlaylist.select( parseInt(index) ) };
+                if ( typeof time != "undefined" ) { $(playerID).jPlayer( 'play', parseFloat(time) ) };
+                $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
+            } );
         } else {
             play([]);
+            $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
         }
     };
 
@@ -115,7 +134,7 @@ $(document).ready(function(){
                     autoPlay: false,
                     enableRemoveControls: true
                 },
-                ready: loadPlaylist
+                ready: readPlayStatus
             }
     );
 
@@ -217,12 +236,13 @@ $(document).ready(function(){
                 $("#the_player").css({ "position": "relative" });
             }
         });
+
+        $('.jp-shuffle').click(playlistTooltip);
     }
 
     var run= function () {
         songListToggle();
         plays();
-        setTimeout( setPlaylistCookie, 30 * 1000 );
         setTagCanvas( "#topSongs", "topSongsTags" );
         setTagCanvas( "#topArtists", "topArtistsTags" );
     };
