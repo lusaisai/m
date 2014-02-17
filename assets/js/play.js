@@ -17,14 +17,14 @@ $(document).ready(function(){
 
         var currentTime = event.jPlayer.status.currentTime;
 
-        $.cookie('playlist', songs.join(","), { expires: 30 });
-        $.cookie('currentsong', currentSong, { expires: 30 });
-        $.cookie('currenttime', currentTime, { expires: 30 });
+        $.cookie('playlist', songs.join(","), { expires: 30, path: '/' });
+        $.cookie('currentsong', currentSong, { expires: 30, path: '/' });
+        $.cookie('currenttime', currentTime, { expires: 30, path: '/' });
     };
 
     var setPlayCookie = function (status) {
         return function (argument) {
-                $.cookie('isplay', status, { expires: 30 });
+                $.cookie('isplay', status, { expires: 30, path: '/' });
         };
     };
 
@@ -46,6 +46,8 @@ $(document).ready(function(){
             var playlist = $.cookie('playlist');
             $.getJSON( base + 'playutils/songplay/' + playlist + "/0", function (data) {
                 play(data);
+                $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
+                $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
                 var index = $.cookie('currentsong');
                 var time = $.cookie('currenttime');
                 var isPlay = $.cookie('isplay')
@@ -59,11 +61,12 @@ $(document).ready(function(){
                     
                 };
                 $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
-                $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
-                $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
+                
             } );
         } else {
             play([]);
+            $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
+            $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
             $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
         }
     };
