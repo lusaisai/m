@@ -1,5 +1,5 @@
 <?php
-    Assets::add('jquery-js', '/js/jquery-1.10.2.min.js');
+    Assets::add('jquery-js', '/js/jquery-2.1.0.min.js');
 
     Assets::add('jquery-lightbox-js', '/lightbox/js/lightbox-2.6.min.js');
     Assets::add('jquery-lightbox-css', '/lightbox/css/lightbox.css');

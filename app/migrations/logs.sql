@@ -2,11 +2,9 @@ drop table if exists playlogs_old;
 
 create table if not exists playlogs
 (
-	id integer not null AUTO_INCREMENT,
 	user_id integer not null default -1,
 	song_id integer not null,
 	play_ts timestamp not null default current_timestamp,
-	primary key (id),
 	index(song_id),
 	index(user_id),
 	index(play_ts)
@@ -16,11 +14,9 @@ char set utf8
 
 create table if not exists playlogs_new
 (
-	id integer not null AUTO_INCREMENT,
 	user_id integer not null default -1,
 	song_id integer not null,
 	play_ts timestamp not null default current_timestamp,
-	primary key (id),
 	index(song_id),
 	index(user_id),
 	index(play_ts)

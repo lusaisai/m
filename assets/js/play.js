@@ -13,7 +13,7 @@ $(document).ready(function(){
 
         $('.jp-playlist li').each( function (index) {
             if ($(this).hasClass('jp-playlist-current')) { currentSong = index; return false };
-        } )
+        } );
 
         var currentTime = event.jPlayer.status.currentTime;
 
@@ -44,7 +44,7 @@ $(document).ready(function(){
         var playerID = "#jquery_jplayer_1";
         if (typeof $.cookie('playlist') != "undefined" && $.cookie('playlist') !== "") {
             var playlist = $.cookie('playlist');
-            $.getJSON( base + 'playutils/songplay/' + playlist + "/0", function (data) {
+            $.getJSON( base + 'playutils/songplay/' + playlist + "/1", function (data) {
                 play(data);
                 $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
                 $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
@@ -69,6 +69,7 @@ $(document).ready(function(){
             $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
             $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
         }
+        window.mPlayList = myPlaylist; // exposed to window object for other javascripts to use
     };
 
     var setTagCanvas = function ( canvasid, tagid ) {

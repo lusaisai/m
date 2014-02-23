@@ -4,6 +4,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.IOException;
+
 /**
  * Unit test for simple App.
  */
@@ -31,12 +33,10 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
-    {
-        assertEquals("test name cleanup", "回忆里的疯狂", DBTalker.nameCleanUp("光良 - 01.回忆里的疯狂.mp3") );
-        assertEquals("test name cleanup", "Angel", DBTalker.nameCleanUp("Angel（天使）.mp3") );
-        String songUrl = Search.findSongUrl( "阿桑", "Angel" );
-        String songLyric = Search.findLyric(songUrl);
-        System.out.println(songLyric);
+    public void testApp() throws IOException {
+//        assertEquals("test name cleanup", "回忆里的疯狂", DBTalker.nameCleanUp("光良 - 01.回忆里的疯狂.mp3") );
+//        assertEquals("test name cleanup", "Angel", DBTalker.nameCleanUp("Angel（天使）.mp3") );
+        System.out.println(Search.findLrcLyric("品冠", "疼你的责任"));
+        System.out.println(Search.findTextLyric("无印良品", "掌心"));
     }
 }

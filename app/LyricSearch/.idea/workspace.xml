@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2291866b-7a89-40e0-8259-ce911c4e44ac" name="Default" comment="">
+    <list default="true" id="2291866b-7a89-40e0-8259-ce911c4e44ac" name="Default" comment="update lyric searching&#10;">
+      <change type="DELETED" beforePath="C:\wamp\www\m\assets\js\jquery-1.10.2.min.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" afterPath="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LyricSearch.iml" afterPath="$PROJECT_DIR$/LyricSearch.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LyricSearch/Search.java" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/Search.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../views/assets.php" afterPath="$PROJECT_DIR$/../views/assets.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../migrations/logs.sql" afterPath="$PROJECT_DIR$/../migrations/logs.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../assets/js/play.js" afterPath="$PROJECT_DIR$/../../assets/js/play.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../assets/jplayer/skin/bootstrap/style.css" afterPath="$PROJECT_DIR$/../../assets/jplayer/skin/bootstrap/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LyricSearch.iws" />
@@ -65,7 +75,48 @@
     <favorites_list name="LyricSearch" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Search.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Search.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="39" selection-start="1588" selection-end="1588" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1683">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="5" selection-start="974" selection-end="974" vertical-scroll-proportion="0.69545454" vertical-offset="0" max-vertical-offset="880">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DBTalker.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="13" selection-start="3002" selection-end="3002" vertical-scroll-proportion="0.0" vertical-offset="973" max-vertical-offset="1853">
+              <folding>
+                <marker date="1393181549331" expanded="true" signature="1282:1653" placeholder="select\ns.id..song..." />
+                <marker date="1393181549331" expanded="true" signature="1282:1650" placeholder="select\ns.id..song..." />
+                <marker date="1393181549331" expanded="true" signature="2268:2321" placeholder="update song ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="25" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -83,10 +134,10 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/LyricSearch/App.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/Search.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LyricSearch/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" />
       </list>
     </option>
@@ -103,11 +154,25 @@
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
       </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="LyricSearch" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="643" />
-    <option name="width" value="1204" />
+    <option name="x" value="735" />
+    <option name="width" value="1187" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -145,6 +210,104 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="LyricSearch" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LyricSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -445,6 +608,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -462,12 +631,6 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <list size="2">
@@ -514,6 +677,7 @@
       <workItem from="1388746147366" duration="642000" />
       <workItem from="1392290226218" duration="665000" />
       <workItem from="1392291004249" duration="873000" />
+      <workItem from="1393170464359" duration="11884000" />
     </task>
     <task id="LOCAL-00001" summary="update lyric searching">
       <created>1385139075774</created>
@@ -527,11 +691,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5424000" />
+    <option name="totallyTimeSpent" value="17308000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="643" y="0" width="1204" height="1040" extended-state="0" />
-    <editor active="false" />
+    <frame x="735" y="0" width="1187" height="1040" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -540,18 +704,19 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.398641" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39801544" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32992035" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35078534" sideWeight="0.69309175" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3507529" sideWeight="0.69309175" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19720767" sideWeight="0.69309175" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19595142" sideWeight="0.69309175" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30650496" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -559,7 +724,6 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -614,10 +778,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="69" column="29" selection-start="2194" selection-end="2194" vertical-scroll-proportion="0.0" vertical-offset="1173" max-vertical-offset="1717">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -645,10 +806,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="29" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1717">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -676,10 +834,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="29" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1785">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -707,10 +862,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="13" selection-start="1658" selection-end="1658" vertical-scroll-proportion="0.0" vertical-offset="952" max-vertical-offset="1785">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -738,10 +890,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="24" selection-start="1277" selection-end="1277" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -769,10 +918,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="95" column="39" selection-start="3251" selection-end="3257" vertical-scroll-proportion="0.0" vertical-offset="1805" max-vertical-offset="1919">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -793,10 +939,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="94" column="33" selection-start="3200" selection-end="3200" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -817,10 +960,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="78" column="32" selection-start="2555" selection-end="2555" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -852,46 +992,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="34" selection-start="1033" selection-end="1033" vertical-scroll-proportion="0.5942029" vertical-offset="0" max-vertical-offset="0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../assets/js/play.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="195" column="8" selection-start="6746" selection-end="6746" vertical-scroll-proportion="6.071429" vertical-offset="0" max-vertical-offset="4063" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+        <state line="38" column="19" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.82512736" vertical-offset="160" max-vertical-offset="1241">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Search.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="698" selection-end="698" vertical-scroll-proportion="0.33256617" vertical-offset="0" max-vertical-offset="1105">
+        <state line="44" column="39" selection-start="1588" selection-end="1588" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1683">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="25" selection-start="596" selection-end="596" vertical-scroll-proportion="0.6064442" vertical-offset="0" max-vertical-offset="869">
+        <state line="13" column="25" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="19" selection-start="2327" selection-end="2327" vertical-scroll-proportion="1.3302647" vertical-offset="0" max-vertical-offset="1717">
+        <state line="88" column="13" selection-start="3002" selection-end="3002" vertical-scroll-proportion="0.0" vertical-offset="973" max-vertical-offset="1853">
           <folding>
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="select\ns.id..song..." />
-            <marker date="1388672175242" expanded="true" signature="-1:-1" placeholder="update song ..." />
+            <marker date="1393181549331" expanded="true" signature="1282:1653" placeholder="select\ns.id..song..." />
+            <marker date="1393181549331" expanded="true" signature="1282:1650" placeholder="select\ns.id..song..." />
+            <marker date="1393181549331" expanded="true" signature="2268:2321" placeholder="update song ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="5" selection-start="974" selection-end="974" vertical-scroll-proportion="0.69545454" vertical-offset="0" max-vertical-offset="880">
+          <folding />
         </state>
       </provider>
     </entry>

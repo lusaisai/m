@@ -35,7 +35,7 @@ public class DBTalker {
                     "id=" + id +
                     ", artist='" + artist + '\'' +
                     ", name='" + name + '\'' +
-                    '}';
+                    "}<br/>";
         }
     }
 
@@ -51,7 +51,8 @@ public class DBTalker {
                 "on   s.album_id = al.id\n" +
                 "join artist ar\n" +
                 "on   al.artist_id = ar.id\n" +
-                "where s.lyric is null\n"
+                "where s.lyric is null\n" +
+                "or s.lrc_lyric is null\n"
                 ;
         songs.clear();
         try {
@@ -67,17 +68,24 @@ public class DBTalker {
 
     public void lyricUpdate() throws SQLException {
         setSongs();
-        PreparedStatement ps = con.prepareStatement("update song set lyric = ? where id = ?");
+        PreparedStatement ps = con.prepareStatement("update song set lyric = ?, lrc_lyric = ? where id = ?");
         con.setAutoCommit(false);
         try {
             PrintStream out = new PrintStream( System.out, true, "UTF-8");
+            int i = 0;
             for ( Song s : songs ) {
-                out.println("Updated: \n" + s.toString());
-                String songUrl = Search.findSongUrl( s.artist, s.name );
-                String songLyric = Search.findLyric(songUrl);
-                ps.setString(1,songLyric);
-                ps.setInt(2,s.id);
+                out.println(s.toString());
+                String textLyric = Search.findTextLyric(s.artist, s.name);
+                String lrcLyric = Search.findLrcLyric(s.artist, s.name);
+                ps.setString(1,textLyric);
+                ps.setString(2,lrcLyric);
+                ps.setInt(3,s.id);
                 ps.executeUpdate();
+                if ( i == 100 ) {
+                    con.commit();
+                    i = 0;
+                }
+                i++;
             }
         } catch (UnsupportedEncodingException e) {
 //            Silent skip

@@ -81,3 +81,7 @@ font: 'MisoRegular';
 .jp-volume-max,.jp-repeat-off,.jp-repeat {
   float: right;
 }
+
+div.jp-seeking-bg {
+  background: url("seeking.gif");
+}

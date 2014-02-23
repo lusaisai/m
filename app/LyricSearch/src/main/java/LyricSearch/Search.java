@@ -1,9 +1,16 @@
 package LyricSearch;
 
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,12 +18,12 @@ import org.jsoup.select.Elements;
  * Date: 13-9-28
  */
 public class Search {
-    private static final String SITE = "http://www.xiami.com";
-    private static final String URL_PRE = SITE + "/search?key=";
-    private static final String AGENT = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:25.0) Gecko/20100101 Firefox/24.0";
+    private static final String SITE = "http://music.baidu.com";
+    private static final String URL_PRE = SITE + "/search/lrc?key=";
+    private static final String AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36";
 
-    public static String findSongUrl( String artist, String title ) {
-        String url = URL_PRE + artist.replaceAll("\\s+", "+") + "+" + title.replaceAll("\\s+", "+");
+    public static String findTextLyric(String artist, String title) {
+        String url = URL_PRE + title.replaceAll("\\s+", "+") + "+" + artist.replaceAll("\\s+", "+");
         Document doc;
         try {
             doc = Jsoup.connect(url)
@@ -24,22 +31,27 @@ public class Search {
                     .timeout(10000)
                     .get();
         } catch (Exception e) {
-            // silent skip if there's any error
-            //System.err.println(e.getMessage());
             return "";
         }
-        Elements songs = doc.select(".search_result .result_main tbody td.song_name a");
-        for (Element song : songs) {
-            String href = song.attr("href");
-            if ( href.contains("/song") ) {
-                return href.replaceAll("\\?.*$", "");
+        Elements contents = doc.select("#lrc_list li");
+        String defaultLyric = "";
+        for( Element e : contents ) {
+            Elements songTitles = e.select(".song-title a");
+            Elements songLyrics = e.select(".lrc-content p");
+            if ( songTitles.isEmpty() || songLyrics.isEmpty() ) {
+                continue;
+            } else {
+                String songTitle = songTitles.first().attr("title");
+                String songLyric = songLyrics.first().html().replace("<em>", "").replace("</em>", "");
+                if ( defaultLyric.equals("") ) defaultLyric = songLyric;
+                if ( title.toLowerCase().equals(songTitle.toLowerCase()) ) return songLyric;
             }
         }
-        return "";
+        return defaultLyric;
     }
 
-    public static String findLyric(String url) {
-        if ( ! url.contains(SITE) ) return "";
+    public static String findLrcLyric( String artist, String title ) {
+        String url = URL_PRE + title.replaceAll("\\s+", "+") + "+" + artist.replaceAll("\\s+", "+");
         Document doc;
         try {
             doc = Jsoup.connect(url)
@@ -47,16 +59,45 @@ public class Search {
                     .timeout(10000)
                     .get();
         } catch (Exception e) {
-            //System.err.println(e.getMessage());
             return "";
         }
-        String lyric = "";
-        try {
-            lyric = doc.select(".lrc_main").first().html().trim();
-        } catch (Exception e) {
-            //silent skip
+        Elements contents = doc.select("#lrc_list li");
+        String defaultLyric = "";
+        int i = 0;
+        for( Element e : contents ) {
+            Elements songTitles = e.select(".song-title a");
+            Elements songLyrics = e.select(".lrc-content p");
+            if ( songTitles.isEmpty() || songLyrics.isEmpty() ) {
+                continue;
+            } else {
+                String songTitle = songTitles.first().attr("title");
+                if ( title.toLowerCase().equals(songTitle.toLowerCase()) || i == 0 ) {
+                    Elements lrcs = e.select(".down-lrc-btn");
+                    if (lrcs.isEmpty()) {
+                        continue;
+                    }
+                    Element lrc = lrcs.first();
+                    Pattern pattern = Pattern.compile(".*href.*:'(.*)'.*");
+                    Matcher matcher = pattern.matcher(lrc.className());
+                    if ( matcher.matches() ) {
+                        String lrcUrl = SITE + matcher.group(1);
+                        try {
+                            File tmp = File.createTempFile("LyricSearch", "lrcFile");
+                            FileUtils.copyURLToFile(new URL(lrcUrl), tmp);
+                            tmp.deleteOnExit();
+                            defaultLyric = FileUtils.readFileToString(tmp);
+                            if ( title.toLowerCase().equals(songTitle.toLowerCase()) ) {
+                                return FileUtils.readFileToString(tmp);
+                            }
+                        } catch (IOException ignored) {}
+                    }
+                    i++;
+                }
+            }
         }
-        return lyric;
+
+        return defaultLyric;
     }
+
 
 }
