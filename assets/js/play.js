@@ -3,22 +3,38 @@ $(document).ready(function(){
     var base = "/m/";
     // var playerY = $("#the_player").position().top;
     var playerY = 40;
+    var lrc = new Lyricer();
 
-    var savePlayStatus = function(event) {
+    var doWhenTimeUpdates = function(event) {
         var songs = [];
         var currentSong = 0;
+        var currentSongId = 0;
         $(".jp-playlist li[songid]").each(function () {
             songs.push($(this).attr('songid'));
         });
 
         $('.jp-playlist li').each( function (index) {
-            if ($(this).hasClass('jp-playlist-current')) { currentSong = index; return false };
+            if ($(this).hasClass('jp-playlist-current')) { 
+                currentSong = index; 
+                currentSongId = $(this).attr("songid");
+                return false;
+            };
         } );
 
         var currentTime = event.jPlayer.status.currentTime;
 
+        if ( currentSongId !== $.cookie('currentsongid') ) {
+            $.get('/m/playutils/showdynamiclyric/' + currentSongId, function(data) {
+                lrc.setLrc(data);
+                lrc.move(currentTime);
+            });
+        } else {
+            lrc.move(currentTime);
+        };
+
         $.cookie('playlist', songs.join(","), { expires: 30, path: '/' });
         $.cookie('currentsong', currentSong, { expires: 30, path: '/' });
+        $.cookie('currentsongid', currentSongId, { expires: 30, path: '/' });
         $.cookie('currenttime', currentTime, { expires: 30, path: '/' });
     };
 
@@ -40,6 +56,7 @@ $(document).ready(function(){
         playlistTooltip();       
     };
 
+
     var readPlayStatus = function () {
         var playerID = "#jquery_jplayer_1";
         if (typeof $.cookie('playlist') != "undefined" && $.cookie('playlist') !== "") {
@@ -50,7 +67,8 @@ $(document).ready(function(){
                 $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
                 var index = $.cookie('currentsong');
                 var time = $.cookie('currenttime');
-                var isPlay = $.cookie('isplay')
+                var isPlay = $.cookie('isplay');
+                var currentSongId = $.cookie('currentsongid');
                 if ( typeof index != "undefined" ) { myPlaylist.select( parseInt(index) ) };
                 if ( typeof time != "undefined" ) {
                     if ( isPlay == 1 ) {
@@ -60,14 +78,20 @@ $(document).ready(function(){
                     }
                     
                 };
-                $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
+                if (  typeof currentSongId != "undefined" ) {
+                    $.get(base + 'playutils/showdynamiclyric/' + currentSongId, function(data) {
+                        lrc.setLrc(data);
+                    });
+                };
+                
+                $(playerID).bind( $.jPlayer.event.timeupdate, doWhenTimeUpdates );
                 
             } );
         } else {
             play([]);
             $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
             $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
-            $(playerID).bind( $.jPlayer.event.timeupdate, savePlayStatus );
+            $(playerID).bind( $.jPlayer.event.timeupdate, doWhenTimeUpdates );
         }
         window.mPlayList = myPlaylist; // exposed to window object for other javascripts to use
     };

@@ -49,11 +49,12 @@
 		<a class="btn btn-default btn-sm <?php if (! Session::get( 'isLogin', false )) echo 'disabled'?>" id="newplaylist" title="<?php if (! Session::get( 'isLogin', false )) echo 'login and' ?> save the current playlist"   >
 			<span class="glyphicon glyphicon-list"></span>
 		</a>
-		<a class="btn btn-default btn-sm" id="show-lyric" title="show the lyric">
+		<a class="btn btn-default btn-sm" id="show-lyric" title="show the text lyric">
 			<span class="glyphicon glyphicon-list-alt"></span>
 		</a>
 		<script>$("#userpanel a").tooltip("hide");</script>
 	</div>
+	<div id="lyricer"></div>
 </div>
 <script type="text/javascript">
 	$("#show-lyric").click(function(event) {

@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2291866b-7a89-40e0-8259-ce911c4e44ac" name="Default" comment="update lyric searching&#10;">
-      <change type="DELETED" beforePath="C:\wamp\www\m\assets\js\jquery-1.10.2.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" afterPath="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LyricSearch.iml" afterPath="$PROJECT_DIR$/LyricSearch.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LyricSearch/Search.java" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/Search.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../views/assets.php" afterPath="$PROJECT_DIR$/../views/assets.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../migrations/logs.sql" afterPath="$PROJECT_DIR$/../migrations/logs.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../assets/js/play.js" afterPath="$PROJECT_DIR$/../../assets/js/play.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../assets/jplayer/skin/bootstrap/style.css" afterPath="$PROJECT_DIR$/../../assets/jplayer/skin/bootstrap/style.css" />
+    <list default="true" id="2291866b-7a89-40e0-8259-ce911c4e44ac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LyricSearch.iws" />
@@ -677,7 +667,7 @@
       <workItem from="1388746147366" duration="642000" />
       <workItem from="1392290226218" duration="665000" />
       <workItem from="1392291004249" duration="873000" />
-      <workItem from="1393170464359" duration="11884000" />
+      <workItem from="1393170464359" duration="11940000" />
     </task>
     <task id="LOCAL-00001" summary="update lyric searching">
       <created>1385139075774</created>
@@ -687,15 +677,19 @@
       <created>1388672337046</created>
       <updated>1388672337046</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="get text/lrc lyric from baidu search">
+      <created>1393184509029</created>
+      <updated>1393184509029</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17308000" />
+    <option name="totallyTimeSpent" value="17364000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="735" y="0" width="1187" height="1040" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -740,7 +734,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="update lyric searching" />
-    <option name="LAST_COMMIT_MESSAGE" value="update lyric searching" />
+    <MESSAGE value="get text/lrc lyric from baidu search" />
+    <option name="LAST_COMMIT_MESSAGE" value="get text/lrc lyric from baidu search" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
