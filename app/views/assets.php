@@ -1,8 +1,8 @@
 <?php
     Assets::add('jquery-js', '/js/jquery-2.1.0.min.js');
 
-    Assets::add('lyricer-js', '/Lyricer/lyricer-1.0.0.js');
-    Assets::add('lyricer-css', '/Lyricer/lyricer-1.0.0.css');
+    Assets::add('lyricer-js', '/Lyricer/lyricer-1.0.0.min.js');
+    Assets::add('lyricer-css', '/Lyricer/lyricer-1.0.0.min.css');
 
 
     Assets::add('jquery-lightbox-js', '/lightbox/js/lightbox-2.6.min.js');
