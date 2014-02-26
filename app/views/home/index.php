@@ -40,6 +40,7 @@
                 </div>
             </div>
         </div>
+        <?php include dirname(__FILE__) . '/../common.php' ?>
         <script><?php include dirname(__FILE__) . '/../common.js' ?></script>
     </body>
 </html>

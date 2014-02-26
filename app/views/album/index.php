@@ -43,6 +43,7 @@
                         <?php include 'data.php';?>
                     </div>
                 </div>
+                <?php include dirname(__FILE__) . '/../common.php' ?>
             </div>
         </div>
     </body>

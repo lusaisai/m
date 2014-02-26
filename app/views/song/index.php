@@ -44,6 +44,7 @@
                     </div>
                 </div>
             </div>
+            <?php include dirname(__FILE__) . '/../common.php' ?>
         </div>
     </body>
 </html>
