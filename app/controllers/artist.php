@@ -145,17 +145,10 @@ class Artist extends \mako\Controller
             $query = "select 
             s.id as song_id, 
             s.name as song_name, 
-            case when hot.song_id is not null then 1 else 0 end as is_hot
+            case when hot.id is not null then 1 else 0 end as is_hot
             from song s
-            left join (
-                select l.song_id, s.name as song_name, count(*) as cnt
-                from playlogs l
-                join song s
-                on   l.song_id = s.id
-                group by 1,2
-                order by cnt desc
-                limit 200) hot
-            on  s.id = hot.song_id
+            left join topsongs hot
+            on  s.id = hot.id
             where s.album_id = {$albumRow->album_id}";
             $songRows = Database::all($query);
             $songs = array();
