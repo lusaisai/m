@@ -166,9 +166,9 @@ $(document).ready(function(){
                 cssSelectorAncestor: "#jp_container_1"
             }, [],
             {
-                supplied: "mp3,m4a",
+                supplied: "m4a, mp3",
                 swfPath: "/m/assets/jplayer/js",
-                wmode: "window",
+                solution: 'html, flash',
                 smoothPlayBar: true,
                 keyEnabled: true,
                 volume: 0.88,
