@@ -49,20 +49,27 @@
 		<a class="btn btn-default btn-sm <?php if (! Session::get( 'isLogin', false )) echo 'disabled'?>" id="newplaylist" title="<?php if (! Session::get( 'isLogin', false )) echo 'login and' ?> save the current playlist"   >
 			<span class="glyphicon glyphicon-list"></span>
 		</a>
+		<a class="btn btn-default btn-sm <?php if (! Session::get( 'isLogin', false )) echo 'disabled'?>" id="downloadplaylist" title="<?php if (! Session::get( 'isLogin', false )) echo 'login and' ?> download the current playlist"   >
+			<span class="glyphicon glyphicon-download"></span>
+		</a>
 		<script>$("#userpanel a").tooltip("hide");</script>
 	</div>
 	<div id="lyricer"></div>
 </div>
 <script type="text/javascript">
+(function(){
+	var gatherList = function(){
+		var songs = [];
+		$(".jp-playlist li[songid]").each(function () {
+		    songs.push($(this).attr('songid'));
+		});
+		return songs.join(",");
+	};
+
 	$('#newplaylist').click(function(event) {
 		bootbox.prompt("Please enter the playlist name", function(playlistName) {                
 			if (playlistName !== null && $.trim(playlistName) !== "" ) {
-				var songs = [];
-		        $(".jp-playlist li[songid]").each(function () {
-		            songs.push($(this).attr('songid'));
-		        });
-		        var songids = songs.join(",");
-		        $.get('/m/user/saveplaylist/' + songids + "/" + playlistName, function(data) {
+		        $.get('/m/user/saveplaylist/' + gatherList() + "/" + playlistName, function(data) {
 		        	bootbox.alert("Playlist saved");
 		        }).fail( function() {
 		        	bootbox.alert("Failed to save the playlist, please try later");
@@ -70,4 +77,10 @@
 			}
 		});
 	});
+
+	$('#downloadplaylist').click(function(){
+		window.location = '/m/playutils/download/' + gatherList();
+	});
+})();	
+
 </script>

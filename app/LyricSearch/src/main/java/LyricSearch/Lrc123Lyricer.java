@@ -10,9 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-/**
- * Created by lusaisai on 14-3-16.
- */
 public class Lrc123Lyricer extends Lyricer {
     private static final String SITE = "http://www.lrc123.com";
     private static final String URL_PRE = SITE + "/?field=all&keyword=";

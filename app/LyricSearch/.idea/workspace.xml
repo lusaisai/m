@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2291866b-7a89-40e0-8259-ce911c4e44ac" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/Lyricer.java" />
-      <change type="MOVED" beforePath="C:\wamp\www\m\app\LyricSearch\src\main\java\LyricSearch\Search.java" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/BaiduLyricer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" afterPath="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java" afterPath="$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java" />
     </list>
     <ignored path="LyricSearch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,10 +66,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BaiduLyricer.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BaiduLyricer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/BaiduLyricer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="20" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1122">
+            <state line="56" column="28" selection-start="2499" selection-end="2499" vertical-scroll-proportion="0.7079796" vertical-offset="365" max-vertical-offset="1122">
               <folding />
             </state>
           </provider>
@@ -83,7 +78,7 @@
       <file leaf-file-name="Lrc123Lyricer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="40" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1020">
+            <state line="11" column="0" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,10 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBTalker.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DBTalker.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="70" selection-start="2664" selection-end="2664" vertical-scroll-proportion="0.4516129" vertical-offset="992" max-vertical-offset="1887">
+            <state line="80" column="64" selection-start="2773" selection-end="2773" vertical-scroll-proportion="0.0" vertical-offset="890" max-vertical-offset="1887">
               <folding>
                 <marker date="1394970500381" expanded="true" signature="1282:1612" placeholder="select\ns.id..song..." />
                 <marker date="1394970500381" expanded="true" signature="1282:1612" placeholder="select\ns.id..song..." />
@@ -117,8 +112,10 @@
       <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="5" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <folding />
+            <state line="4" column="0" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,8 +144,8 @@
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/Lyricer.java" />
         <option value="$PROJECT_DIR$/src/test/java/LyricSearch/AppTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/BaiduLyricer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java" />
         <option value="$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java" />
       </list>
     </option>
   </component>
@@ -690,7 +687,7 @@
       <workItem from="1392290226218" duration="665000" />
       <workItem from="1392291004249" duration="873000" />
       <workItem from="1393170464359" duration="11940000" />
-      <workItem from="1394967118629" duration="3467000" />
+      <workItem from="1394967118629" duration="6395000" />
     </task>
     <task id="LOCAL-00001" summary="update lyric searching">
       <created>1385139075774</created>
@@ -708,11 +705,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20831000" />
+    <option name="totallyTimeSpent" value="23759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="569" y="0" width="1353" height="1040" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -734,7 +731,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35057914" sideWeight="0.69309175" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17065637" sideWeight="0.69309175" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30650496" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30650496" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -801,14 +798,18 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="25" selection-start="305" selection-end="305" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="374">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -841,7 +842,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -874,7 +877,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="17" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -907,7 +912,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -940,7 +947,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="374">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -973,7 +982,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="304" max-vertical-offset="418">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1032,7 +1043,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1058,7 +1071,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1079,7 +1094,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1102,17 +1119,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/BaiduLyricer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="20" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="5" selection-start="311" selection-end="311" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <folding />
+        <state line="4" column="0" selection-start="97" selection-end="97" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1123,24 +1135,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="40" selection-start="1111" selection-end="1111" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1020">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/DBTalker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="70" selection-start="2664" selection-end="2664" vertical-scroll-proportion="0.4516129" vertical-offset="992" max-vertical-offset="1887">
+        <state line="80" column="64" selection-start="2773" selection-end="2773" vertical-scroll-proportion="0.0" vertical-offset="890" max-vertical-offset="1887">
           <folding>
             <marker date="1394970500381" expanded="true" signature="1282:1612" placeholder="select\ns.id..song..." />
             <marker date="1394970500381" expanded="true" signature="1282:1612" placeholder="select\ns.id..song..." />
             <marker date="1394970500381" expanded="true" signature="1282:1609" placeholder="select\ns.id..song..." />
             <marker date="1394970500381" expanded="true" signature="2227:2269" placeholder="update song ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/Lrc123Lyricer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/LyricSearch/BaiduLyricer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="28" selection-start="2499" selection-end="2499" vertical-scroll-proportion="0.7079796" vertical-offset="365" max-vertical-offset="1122">
+          <folding />
         </state>
       </provider>
     </entry>

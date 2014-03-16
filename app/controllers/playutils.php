@@ -1,8 +1,10 @@
 <?php
 
 namespace app\controllers;
+use mako\Config;
 use mako\Database;
 use mako\Session;
+use mako\File;
 /**
  * Description of PlayUtils
  *
@@ -22,7 +24,7 @@ class Playutils extends \mako\Controller {
             ";
 
         $song_array = array();
-        $rows = Database::query($query);
+        $rows = Database::all($query);
         foreach ($rows as $row) {
             $song = array();
             $song["songid"] = $row->song_id;
@@ -34,6 +36,36 @@ class Playutils extends \mako\Controller {
 
         $this->response->type('application/json');
         return json_encode($song_array);
+    }
+
+    public function action_download($songs = 0)
+    {
+        $query = "select
+        s.id as song_id, s.file_name as song_name, al.name as album_name, ar.name as artist_name
+        from song s
+        join album al
+        on   s.album_id = al.id
+        join artist ar
+        on   al.artist_id = ar.id
+        where s.id in ([?])
+        ";
+        $dir = Config::get( "music.dir" );
+        $downloadFileName = $dir . "/" . time() . $_SERVER['REMOTE_ADDR'] . '.zip';
+
+        
+        $rows = Database::all($query, array( explode(',', $songs) ));
+        $zip = new \ZipArchive;
+        $zip->open($downloadFileName, \ZipArchive::CREATE);
+        foreach ($rows as $row) {
+            $fileName = mb_convert_encoding( "{$dir}/{$row->artist_name}/{$row->album_name}/{$row->song_name}", 'cp936', 'utf8');
+            $zip->addFile($fileName, basename($fileName));
+        }
+        $zip->close();
+        File::download( $downloadFileName, null, null, 0, function($file)
+        {
+            unlink($file);
+        });
+
     }
 
     public function action_showlyric($id=0)
