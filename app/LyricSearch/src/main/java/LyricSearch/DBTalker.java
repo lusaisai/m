@@ -51,8 +51,7 @@ public class DBTalker {
                 "on   s.album_id = al.id\n" +
                 "join artist ar\n" +
                 "on   al.artist_id = ar.id\n" +
-                "where s.lyric is null\n" +
-                "or s.lrc_lyric is null\n"
+                "where s.lrc_lyric is null\n"
                 ;
         songs.clear();
         try {
@@ -68,18 +67,21 @@ public class DBTalker {
 
     public void lyricUpdate() throws SQLException {
         setSongs();
-        PreparedStatement ps = con.prepareStatement("update song set lyric = ?, lrc_lyric = ? where id = ?");
+        PreparedStatement ps = con.prepareStatement("update song set lrc_lyric = ? where id = ?");
         con.setAutoCommit(false);
         try {
             PrintStream out = new PrintStream( System.out, true, "UTF-8");
             int i = 0;
+            Lyricer blrc = new BaiduLyricer();
+            Lyricer llrc = new Lrc123Lyricer();
             for ( Song s : songs ) {
                 out.println(s.toString());
-                String textLyric = Search.findTextLyric(s.artist, s.name);
-                String lrcLyric = Search.findLrcLyric(s.artist, s.name);
-                ps.setString(1,textLyric);
-                ps.setString(2,lrcLyric);
-                ps.setInt(3,s.id);
+                String lrcLyric = blrc.findLrcLyric(s.artist, s.name);
+                if( lrcLyric.equals("") ) {
+                    lrcLyric = llrc.findLrcLyric(s.artist, s.name);
+                }
+                ps.setString(1,lrcLyric);
+                ps.setInt(2,s.id);
                 ps.executeUpdate();
                 if ( i == 100 ) {
                     con.commit();
