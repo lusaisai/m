@@ -96,11 +96,15 @@ $(document).ready(function(){
         window.mPlayList = myPlaylist; // exposed to window object for other javascripts to use
     };
 
-    var setTagCanvas = function ( canvasid, tagid ) {
+    var canvasClick = function (argument) {
         $("#topSongsTags").on( 'click','li.topsongs a', function() {
             var songid = $(this).attr("songid");
             $.getJSON( base + 'playutils/songplay/' + songid + "/0", play );
         });
+    }
+
+    var setTagCanvas = function ( canvasid, tagid ) {
+        canvasClick();
 
         if(! $(canvasid).tagcanvas({
                 textColour : '#00f',
@@ -160,6 +164,15 @@ $(document).ready(function(){
         });
     };
 
+    var playerSolution = function (argument) {
+        if ( navigator.userAgent.search('Chrome') >= 0 ) {
+            return 'flash, html'; //Chrome latest versions have seeking issues
+        } else {
+            return 'html, flash';
+        }
+    };
+
+
     myPlaylist = new jPlayerPlaylist(
             {
                 jPlayer: "#jquery_jplayer_1",
@@ -168,7 +181,7 @@ $(document).ready(function(){
             {
                 supplied: "m4a, mp3",
                 swfPath: "/m/assets/jplayer/js",
-                solution: 'html, flash',
+                solution: playerSolution(),
                 smoothPlayBar: true,
                 keyEnabled: true,
                 volume: 0.88,
