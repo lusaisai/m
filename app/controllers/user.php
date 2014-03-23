@@ -201,6 +201,7 @@ class User extends \mako\Controller
 
     public function action_logout()
     {
+        Hash::clear_cache();
         Session::destroy();
         Session::regenerate();
         $this->response->redirect('user/login');

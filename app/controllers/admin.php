@@ -37,7 +37,7 @@ class Admin extends \mako\Controller
 
         $data['success'] = 'Update Completed';
         $data['newsongs'] = $this->newSong();
-        if (Config::get('music.use_cache')) Hash::clear_cache();
+        if (Config::get('music.use_cache')) Hash::clear_cache_all();
         return new View( "admin.data", $data );
 	}
 
