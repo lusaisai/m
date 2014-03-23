@@ -29,7 +29,6 @@ public class BaiduLyricer extends Lyricer {
             return "";
         }
         Elements contents = doc.select("#lrc_list li");
-        String defaultLyric = "";
         int i = 0;
         for( Element e : contents ) {
             Elements songTitles = e.select(".song-title a");
@@ -52,7 +51,6 @@ public class BaiduLyricer extends Lyricer {
                             File tmp = File.createTempFile("BaiduLyricer", "lrcFile");
                             FileUtils.copyURLToFile(new URL(lrcUrl), tmp);
                             tmp.deleteOnExit();
-                            defaultLyric = FileUtils.readFileToString(tmp);
                             if ( title.toLowerCase().equals(songTitle.toLowerCase()) ) {
                                 return FileUtils.readFileToString(tmp);
                             }
@@ -63,7 +61,7 @@ public class BaiduLyricer extends Lyricer {
             }
         }
 
-        return defaultLyric;
+        return "";
     }
 
 

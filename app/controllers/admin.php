@@ -135,7 +135,7 @@ class Admin extends \mako\Controller
         }
 
         $jarFile = MAKO_APPLICATION_PATH . "/LyricSearch/target/LyricSearch-1.0-SNAPSHOT-jar-with-dependencies.jar";
-        $command = "java -jar $jarFile";
+        $command = "LANG=en_US.UTF-8; java -jar $jarFile";
         $data['success'] = `$command`;
         return new View( "admin.data", $data );
     }

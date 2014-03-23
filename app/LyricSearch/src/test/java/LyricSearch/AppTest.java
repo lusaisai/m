@@ -37,9 +37,9 @@ public class AppTest
 //        assertEquals("test name cleanup", "回忆里的疯狂", DBTalker.nameCleanUp("光良 - 01.回忆里的疯狂.mp3") );
 //        assertEquals("test name cleanup", "Angel", DBTalker.nameCleanUp("Angel（天使）.mp3") );
 
-//        System.out.println(BaiduLyricer.findLrcLyric("品冠", "疼你的责任"));
-//        System.out.println(BaiduLyricer.findTextLyric("无印良品", "掌心"));
         Lyricer lrc = new Lrc123Lyricer();
+        System.out.println(lrc.findLrcLyric("品冠", "疼你的责任"));
+        lrc = new Lrc123Lyricer();
         System.out.println(lrc.findLrcLyric("品冠", "疼你的责任"));
     }
 }
