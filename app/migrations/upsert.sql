@@ -62,3 +62,12 @@ and  al.id = t.album_id
 
 where w.album_name is not null
 ;
+
+delete from topsongs;
+insert into topsongs
+select song_id
+from playlogs
+group by 1
+order by count(*) desc
+limit 200
+;

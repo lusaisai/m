@@ -57,7 +57,7 @@ class Playutils extends \mako\Controller {
         $zip = new \ZipArchive;
         $zip->open($downloadFileName, \ZipArchive::CREATE);
         foreach ($rows as $row) {
-            $fileName = mb_convert_encoding( "{$dir}/{$row->artist_name}/{$row->album_name}/{$row->song_name}", 'cp936', 'utf8');
+            $fileName = "{$dir}/{$row->artist_name}/{$row->album_name}/{$row->song_name}";
             $zip->addFile($fileName, basename($fileName));
         }
         $zip->close();
