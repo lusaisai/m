@@ -4,8 +4,8 @@
         <div class="panel-heading"><h3><?php echo $artist["artist_name"] ?></h3></div>
         <div class="panel-body">
         <div>
-            <a data-lightbox="lightbox-image" href="<?php echo "/music/{$artist["artist_name"]}/{$artist["image_name"]}" ?>">
-                <img src="<?php echo "/music/{$artist["artist_name"]}/{$artist["image_name"]}" ?>" class="img-rounded album-image">
+            <a data-lightbox="lightbox-image" href="<?php echo Config::get('music.url')."/{$artist["artist_name"]}/{$artist["image_name"]}" ?>">
+                <img src="<?php echo Config::get('music.url')."/{$artist["artist_name"]}/{$artist["image_name"]}" ?>" class="img-rounded album-image">
             </a>
         </div>
         <div id="<?php echo "accordion{$artist["artist_id"]}" ?>" class="panel-group slide">

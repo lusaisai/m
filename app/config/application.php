@@ -10,9 +10,9 @@ return array
 	 * Base url of your application (without trailing slash).
 	 * The framework will try to autodetect the url if the value is left empty.
 	 */
-
-	'base_url' => 'http://localhost/m',
-
+	
+	'base_url' => 'http://ubuntu/m',
+	
 	/**
 	 * Set to true to hide "index.php" from your urls (this requires mod_rewrite).
 	 */
@@ -29,7 +29,7 @@ return array
 	 * Secret used to provide cryptographic signing, and should be set to a unique, unpredictable value.
 	 * You should NOT use the secret included with the framework in a production environment!
 	 */
-
+	
 	'secret'   => 'xdIdQL2x0e5Fa8EV9PMUK0wjO/4LPsiLH6fCZ5k5e6I=',
 
 	/**
@@ -37,7 +37,7 @@ return array
 	 *
 	 * @see http://php.net/manual/en/timezones.php
 	 */
-
+	
 	'timezone' => 'Asia/Shanghai',
 
 	/**
@@ -48,19 +48,19 @@ return array
 
 	/**
 	 * Default language.
-	 *
+	 * 
 	 * Default language pack loaded by the i18n class.
 	 */
 
 	'default_language' => 'en_US',
-
+	
 	/**
 	 * Locale settings.
 	 *
 	 * locales   : Array of locales to try until success. You can also set the value to "NULL" to use the default locale.
 	 * lc_numeric: Set to true to set LC_NUMERIC to the locale you specified.
 	 */
-
+	
 	'locale' => array
 	(
 		'locales'    => array('en_US.UTF-8', 'en_US.utf8', 'C'),
@@ -79,6 +79,7 @@ return array
 		'Session' => 'mako\Session',
 		'View' => 'mako\View',
 		'UserAgent' => 'mako\UserAgent',
+		'Config' => 'mako\Config',
 	),
 
 	/**
@@ -87,6 +88,7 @@ return array
 
 	'packages' => array
 	(
+		
 	),
 
 	/**
@@ -116,18 +118,19 @@ return array
 	 */
 
 	'response_cache' => false,
-
+	
 	/**
 	 * Error handler settings.
 	 *
+	 * log_errors    : Set to true if you want to log errors caught by the Mako errors handler.
 	 * display_errors: Set to true to display errors caught by the mako error handlers.
-	 * log_errors    : Set to true if you want to log errors caught by the Mako errors handlers.
+	 * open_with     : Allows you to open the failing code with your preferred text editor.
 	 */
-
+	
 	'error_handler' => array
 	(
-		'display_errors' => true, // It is recommended to set this value to false when you are in production.
 		'log_errors'     => true,
+		'display_errors' => true, // It is recommended to set this value to false when you are in production.
 		'open_with'      => 'sublime',
 	),
 );

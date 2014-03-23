@@ -3,17 +3,35 @@
 namespace app\controllers;
 use mako\Database;
 use mako\View;
+use mako\Config;
 
 class Album extends \mako\Controller
 {
 	public function action_index($pageid = 1)
 	{
-            return new View("album.index", $this->fetchData($pageid));
+        $_GET['pageid'] = $pageid;
+        $isCache = Config::get('music.use_cache');
+        if ($isCache) {
+            $result = Hash::find_cache($this->request->controller(), $this->request->action(), $_GET );
+            if ($result) return $result;
+        }
+        $view = new View("album.index", $this->fetchData($pageid));
+        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
+        return $view;
 	}
 
         public function action_load($pageid = 1)
 	{
-            return new View("album.data", $this->fetchData($pageid));
+        $_GET['pageid'] = $pageid;
+        $isCache = Config::get('music.use_cache');
+        if ($isCache) {
+            $result = Hash::find_cache($this->request->controller(), $this->request->action(), $_GET );
+            if ($result) return $result;
+        }
+
+        $view = new View("album.data", $this->fetchData($pageid));
+        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
+        return $view;
 	}
 
         private function fetchData($pageid = 1) {

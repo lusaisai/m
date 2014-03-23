@@ -6,8 +6,8 @@
         </div>
         <div class="panel-body">
         <div>
-            <a href="<?php echo "/music/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" data-lightbox="lightbox-image">
-                <img src="<?php echo "/music/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" class="img-rounded album-image">
+            <a href="<?php echo Config::get('music.url')."/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" data-lightbox="lightbox-image">
+                <img src="<?php echo Config::get('music.url')."/{$album['artist_name']}/{$album['album_name']}/{$album['image']}" ?>" class="img-rounded album-image">
             </a>
         </div>
         <div class="slide songs">

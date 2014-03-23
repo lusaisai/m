@@ -37,6 +37,7 @@ class Admin extends \mako\Controller
 
         $data['success'] = 'Update Completed';
         $data['newsongs'] = $this->newSong();
+        if (Config::get('music.use_cache')) Hash::clear_cache();
         return new View( "admin.data", $data );
 	}
 
@@ -210,7 +211,8 @@ class Admin extends \mako\Controller
 
     private static function toUtf8($value)
     {
-        return mb_convert_encoding( $value , "utf8", "cp936");
+        return $value;
+        // return mb_convert_encoding( $value , "utf8", "cp936");
     }
 
     private static function songClean($value)

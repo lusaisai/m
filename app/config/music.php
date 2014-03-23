@@ -1,8 +1,9 @@
 <?php 
 
 return  array(
-	'dir' => 'c:/wamp/www/music',
-	'url' => 'http://localhost/music'
+	'dir' => '/mnt/hgfs/Music',
+	'url' => 'http://windowsai/music',
+	'use_cache' => true
 	);
 
  ?>

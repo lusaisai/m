@@ -6,13 +6,23 @@ use \mako\View;
 use mako\Request;
 use mako\Database;
 use mako\Session;
+use mako\Config;
 
 class Home extends \mako\Controller
 {
 	public function action_index()
 	{
+
+		$isCache = Config::get('music.use_cache');
+		if ($isCache) {
+			$result = Hash::find_cache($this->request->controller(), $this->request->action(), $_GET );
+			if ($result) return $result;
+		}
+
 		$data = array('topSongs' => $this->topSongs(), 'topArtists' => $this->topArtists() );
-		return new View( 'home.index', $data );
+		$view = new View( 'home.index', $data );
+		if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
+		return $view;
 	}
 
 	public function action_random()

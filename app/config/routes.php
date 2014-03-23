@@ -8,7 +8,7 @@ return array
 (
 	/**
 	 * Automatically map routes to controllers.
-	 *
+	 * 
 	 * Only routes matching one of the custom routes will be considered valid when set to FALSE.
 	 * Automapping will still be enabled for internal subrequests.
 	 */
@@ -32,8 +32,8 @@ return array
 
 	/**
 	 * Languages.
-	 *
-	 * If the first segment of the route matches the language
+	 * 
+	 * If the first segment of the route matches the language 
 	 * then the corresponding language pack will be loaded.
 	 */
 
@@ -45,8 +45,8 @@ return array
 
 	/**
 	 * Package base routes.
-	 *
-	 * The array key is the base route that you want the package
+	 * 
+	 * The array key is the base route that you want the package 
 	 * to respond to and the value is the package name.
 	 */
 

@@ -3,23 +3,48 @@
 namespace app\controllers;
 use mako\Database;
 use mako\View;
+use mako\Config;
 
 class Artist extends \mako\Controller
 {
 	public function action_index($pageid = 1)
 	{
-            return new View("artist.index", $this->fetchData($pageid));
+        $isCache = Config::get('music.use_cache');
+        if ($isCache) {
+            $result = Hash::find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
+            if ($result) return $result;
+        }
+
+        $view = new View("artist.index", $this->fetchData($pageid));
+        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
+        return $view;
 	}
 
     public function action_load($pageid = 1)
 	{
-            return new View("artist.data", $this->fetchData($pageid));
+        $isCache = Config::get('music.use_cache');
+        if ($isCache) {
+            $result = Hash::find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
+            if ($result) return $result;
+        }
+
+        $view = new View("artist.data", $this->fetchData($pageid));
+        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
+        return $view;
 	}
 
     public function action_id($id)
     {
+        $isCache = Config::get('music.use_cache');
+        if ($isCache) {
+            $result = Hash::find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
+            if ($result) return $result;
+        }
+
         $data = array( 'pageid'=>1, 'count'=>1, 'limit'=>1, 'data'=>array($this->artistInfo($id)) );
-        return new View("artist.index", $data);
+        $view = View("artist.index", $data);
+        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
+        return $view;
     }
 
     private function fetchData($pageid = 1) {
