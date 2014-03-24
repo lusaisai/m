@@ -70,9 +70,8 @@ class Hash
 			$redis->connect(static::REDIS_SERVER);
 			$entries = static::REDIS_ENTRY_PREFIX . '*'; 
 			$allKeys = $redis->keys($entries);
-			foreach ($allKeys as $key) {
-				$redis->del( $key );
-			}
+			array_push($allKeys, Complete::REDIS_ENTRY);
+			$redis->delete($allKeys);
 			return true;
 		} catch (Exception $e) {
 			return false;
