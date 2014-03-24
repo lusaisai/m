@@ -165,7 +165,7 @@ $(document).ready(function(){
     };
 
     var playerSolution = function (argument) {
-        if ( navigator.userAgent.search('Chrome') >= 0 ) {
+        if ( navigator.userAgent.search('Chrome/33') >= 0 ) {
             return 'flash, html'; //Chrome latest versions have seeking issues
         } else {
             return 'html, flash';
