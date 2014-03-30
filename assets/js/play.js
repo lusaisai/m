@@ -23,7 +23,7 @@ $(document).ready(function(){
 
         var currentTime = event.jPlayer.status.currentTime;
 
-        if ( currentSongId !== $.cookie('currentsongid') ) {
+        if ( currentSongId !== localStorage.getItem('currentsongid') ) {
             $.get('/m/playutils/showdynamiclyric/' + currentSongId, function(data) {
                 lrc.setLrc(data);
                 lrc.move(currentTime);
@@ -32,15 +32,15 @@ $(document).ready(function(){
             lrc.move(currentTime);
         };
 
-        $.cookie('playlist', songs.join(","), { expires: 30, path: '/' });
-        $.cookie('currentsong', currentSong, { expires: 30, path: '/' });
-        $.cookie('currentsongid', currentSongId, { expires: 30, path: '/' });
-        $.cookie('currenttime', currentTime, { expires: 30, path: '/' });
+        localStorage.setItem('playlist', songs.join(","));
+        localStorage.setItem('currentsong', currentSong);
+        localStorage.setItem('currentsongid', currentSongId);
+        localStorage.setItem('currenttime', currentTime);
     };
 
-    var setPlayCookie = function (status) {
+    var storePlayStatus = function (status) {
         return function (argument) {
-                $.cookie('isplay', status, { expires: 30, path: '/' });
+            localStorage.setItem('isplay', status);
         };
     };
 
@@ -59,16 +59,16 @@ $(document).ready(function(){
 
     var readPlayStatus = function () {
         var playerID = "#jquery_jplayer_1";
-        if (typeof $.cookie('playlist') != "undefined" && $.cookie('playlist') !== "") {
-            var playlist = $.cookie('playlist');
+        var playlist = localStorage.getItem('playlist');
+        if (playlist) {
             $.getJSON( base + 'playutils/songplay/' + playlist + "/1", function (data) {
                 play(data);
-                $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
-                $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
-                var index = $.cookie('currentsong');
-                var time = $.cookie('currenttime');
-                var isPlay = $.cookie('isplay');
-                var currentSongId = $.cookie('currentsongid');
+                $(playerID).bind( $.jPlayer.event.play, storePlayStatus(1));
+                $(playerID).bind( $.jPlayer.event.pause, storePlayStatus(0));
+                var index = localStorage.getItem('currentsong');
+                var time = localStorage.getItem('currenttime');
+                var isPlay = localStorage.getItem('isplay');
+                var currentSongId = localStorage.getItem('currentsongid');
                 if ( typeof index != "undefined" ) { myPlaylist.select( parseInt(index) ) };
                 if ( typeof time != "undefined" ) {
                     if ( isPlay == 1 ) {
@@ -89,8 +89,8 @@ $(document).ready(function(){
             } );
         } else {
             play([]);
-            $(playerID).bind( $.jPlayer.event.play,  setPlayCookie(1));
-            $(playerID).bind( $.jPlayer.event.pause,  setPlayCookie(0));
+            $(playerID).bind( $.jPlayer.event.play, storePlayStatus(1));
+            $(playerID).bind( $.jPlayer.event.pause, storePlayStatus(0));
             $(playerID).bind( $.jPlayer.event.timeupdate, doWhenTimeUpdates );
         }
         window.mPlayList = myPlaylist; // exposed to window object for other javascripts to use
@@ -164,15 +164,6 @@ $(document).ready(function(){
         });
     };
 
-    var playerSolution = function (argument) {
-        if ( navigator.userAgent.search('Chrome/33') >= 0 ) {
-            return 'flash, html'; //Chrome latest versions have seeking issues
-        } else {
-            return 'html, flash';
-        }
-    };
-
-
     myPlaylist = new jPlayerPlaylist(
             {
                 jPlayer: "#jquery_jplayer_1",
@@ -181,7 +172,7 @@ $(document).ready(function(){
             {
                 supplied: "m4a, mp3",
                 swfPath: "/m/assets/jplayer/js",
-                solution: playerSolution(),
+                solution: 'html, flash',
                 smoothPlayBar: true,
                 keyEnabled: true,
                 volume: 0.88,
