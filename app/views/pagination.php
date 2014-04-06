@@ -6,7 +6,7 @@
 	$endid = $pageid + 4 < $toalPages ? $pageid + 4 : $toalPages;
 ?>
 
-<ul class="pagination">
+<ul class="pagination data-pagination">
 	<?php if ($startid > 1): ?>
 		<li><a href="javascript:;" pageid="1">First</a></li>
 		<li><a>...</a></li>

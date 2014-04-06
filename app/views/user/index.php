@@ -37,6 +37,7 @@
                     </div>
                     <div id="data" class="col-md-8">
                         <?php include 'playlist.php'; ?>
+                        <div class="playlistdetail"></div>
                     </div>
                     <script>
                         $('#playlist').click(function(event) {

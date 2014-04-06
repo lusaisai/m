@@ -246,7 +246,7 @@ $(document).ready(function(){
             $(this).closest("div.songs").find("input[type='checkbox']").prop("checked", false);
         });
 
-        $("#data").on( 'click','.pagination a[pageid]', function(){
+        $("#data").on( 'click','.data-pagination a[pageid]', function(){
             var pageid = $(this).attr("pageid");
             var pagetype = $("#data").attr("pagetype");
 

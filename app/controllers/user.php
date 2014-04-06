@@ -69,7 +69,7 @@ class User extends \mako\Controller
     public function action_showplaylist( $pageid = 1 )
     {
         $this->checkLogin();
-        return new View( 'user.playlist', $this->getPlaylists() );
+        return new View( 'user.playlist', $this->getPlaylists($pageid) );
     }
 
     private function getPlaylists( $pageid = 1 )
