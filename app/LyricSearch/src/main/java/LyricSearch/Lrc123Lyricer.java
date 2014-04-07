@@ -17,6 +17,7 @@ public class Lrc123Lyricer extends Lyricer {
 
     public String findLrcLyric(String artist, String title) {
         String url = URL_PRE + title.replaceAll("\\s+", "+") + "+" + artist.replaceAll("\\s+", "+");
+        System.out.println(url);
         Document doc;
         int timeout = 20000;
         try {

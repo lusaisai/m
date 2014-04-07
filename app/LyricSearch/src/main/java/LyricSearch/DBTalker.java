@@ -1,9 +1,8 @@
 package LyricSearch;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,9 +13,9 @@ public class DBTalker {
     private static final String USERNAME = "mav";
     private static final String PASSWORD = "mav";
     private static final String DATABASE = "mav";
-    private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE + "?characterEncoding=UTF-8";
+    private static final String URL = "jdbc:mysql://ubuntu:3306/" + DATABASE + "?characterEncoding=UTF-8";
     private Connection con;
-    private List<Song> songs = new ArrayList<Song>();
+    private List<Song> songs = new LinkedList<Song>();
 
     private static class Song {
         int id;
@@ -51,6 +50,7 @@ public class DBTalker {
                 "on   s.album_id = al.id\n" +
                 "join artist ar\n" +
                 "on   al.artist_id = ar.id\n" +
+//                "limit 30"
                 "where s.lrc_lyric is null\n"
                 ;
         songs.clear();
@@ -65,35 +65,57 @@ public class DBTalker {
         }
     }
 
-    public void lyricUpdate() throws SQLException {
-        setSongs();
-        PreparedStatement ps = con.prepareStatement("update song set lrc_lyric = ? where id = ?");
-        con.setAutoCommit(false);
-        try {
-            PrintStream out = new PrintStream( System.out, true, "UTF-8");
-            int i = 0;
-            Lyricer blrc = new BaiduLyricer();
-            Lyricer llrc = new Lrc123Lyricer();
-            for ( Song s : songs ) {
-                out.println(s.toString());
-                String lrcLyric = blrc.findLrcLyric(s.artist, s.name);
-                if( lrcLyric.equals("") ) {
-                    lrcLyric = llrc.findLrcLyric(s.artist, s.name);
-                }
-                ps.setString(1,lrcLyric);
-                ps.setInt(2,s.id);
-                ps.executeUpdate();
-                if ( i == 100 ) {
-                    con.commit();
-                    i = 0;
-                }
-                i++;
-            }
-        } catch (UnsupportedEncodingException e) {
-//            Silent skip
+    private static class SearchLyrics implements Runnable {
+        private List<Song> songs;
+        private Connection conn;
+
+        private SearchLyrics(List<Song> songs, Connection conn) {
+            this.songs = songs;
+            this.conn = conn;
         }
 
-        con.commit();
+        @Override
+        public void run() {
+            try {
+                for(Song song: songs) {
+                    PreparedStatement ps = conn.prepareStatement("update song set lrc_lyric = ? where id = ?");
+                    conn.setAutoCommit(false);
+
+                    Lyricer blrc = new BaiduLyricer();
+                    Lyricer llrc = new Lrc123Lyricer();
+                    String lrcLyric = blrc.findLrcLyric(song.artist, song.name);
+                    if( lrcLyric.equals("") ) {
+                        lrcLyric = llrc.findLrcLyric(song.artist, song.name);
+                    }
+
+                    ps.setString(1,lrcLyric);
+                    ps.setInt(2,song.id);
+                    ps.executeUpdate();
+                }
+                conn.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    public void lyricUpdate() throws SQLException {
+        setSongs();
+        int threadCount = 10;
+        int songsPerThread = this.songs.size() / threadCount + 1;
+
+        ListIterator li = this.songs.listIterator();
+
+        while ( li.hasNext() ) {
+            List<Song> ls = new LinkedList<Song>();
+            for( int i = 0; i < songsPerThread; i++ ) {
+                if ( li.hasNext() ) ls.add((Song)li.next());
+            }
+            Thread t = new Thread(new SearchLyrics(ls, this.con));
+            t.start();
+        }
+
     }
 
     public static String nameCleanUp(String input) {
