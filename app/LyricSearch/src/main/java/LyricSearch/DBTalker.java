@@ -77,17 +77,16 @@ public class DBTalker {
         @Override
         public void run() {
             try {
+                Lyricer bLrc = new BaiduLyricer();
+                Lyricer lLrc = new Lrc123Lyricer();
+                PreparedStatement ps = conn.prepareStatement("update song set lrc_lyric = ? where id = ?");
+                conn.setAutoCommit(false);
+
                 for(Song song: songs) {
-                    PreparedStatement ps = conn.prepareStatement("update song set lrc_lyric = ? where id = ?");
-                    conn.setAutoCommit(false);
-
-                    Lyricer blrc = new BaiduLyricer();
-                    Lyricer llrc = new Lrc123Lyricer();
-                    String lrcLyric = blrc.findLrcLyric(song.artist, song.name);
+                    String lrcLyric = bLrc.findLrcLyric(song.artist, song.name);
                     if( lrcLyric.equals("") ) {
-                        lrcLyric = llrc.findLrcLyric(song.artist, song.name);
+                        lrcLyric = lLrc.findLrcLyric(song.artist, song.name);
                     }
-
                     ps.setString(1,lrcLyric);
                     ps.setInt(2,song.id);
                     ps.executeUpdate();

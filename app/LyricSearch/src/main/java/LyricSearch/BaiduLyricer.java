@@ -30,19 +30,15 @@ public class BaiduLyricer extends Lyricer {
             return "";
         }
         Elements contents = doc.select("#lrc_list li");
-        int i = 0;
         for( Element e : contents ) {
             Elements songTitles = e.select(".song-title a");
             Elements songLyrics = e.select(".lrc-content p");
-            if ( songTitles.isEmpty() || songLyrics.isEmpty() ) {
-                continue;
-            } else {
+            if ( songTitles.isEmpty() || songLyrics.isEmpty() ) continue;
+            else {
                 String songTitle = songTitles.first().attr("title");
-                if ( title.toLowerCase().equals(songTitle.toLowerCase()) || i == 0 ) {
+                if ( title.toLowerCase().equals(songTitle.toLowerCase()) ) {
                     Elements lrcs = e.select(".down-lrc-btn");
-                    if (lrcs.isEmpty()) {
-                        continue;
-                    }
+                    if (lrcs.isEmpty()) continue;
                     Element lrc = lrcs.first();
                     Pattern pattern = Pattern.compile(".*href.*:'(.*)'.*");
                     Matcher matcher = pattern.matcher(lrc.className());
@@ -52,12 +48,9 @@ public class BaiduLyricer extends Lyricer {
                             File tmp = File.createTempFile("BaiduLyricer", "lrcFile");
                             FileUtils.copyURLToFile(new URL(lrcUrl), tmp);
                             tmp.deleteOnExit();
-                            if ( title.toLowerCase().equals(songTitle.toLowerCase()) ) {
-                                return FileUtils.readFileToString(tmp);
-                            }
+                            return FileUtils.readFileToString(tmp);
                         } catch (IOException ignored) {}
                     }
-                    i++;
                 }
             }
         }
