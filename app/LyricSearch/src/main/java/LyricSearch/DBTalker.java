@@ -18,9 +18,9 @@ public class DBTalker {
     private List<Song> songs = new LinkedList<Song>();
 
     private static class Song {
-        int id;
-        String artist;
-        String name;
+        final int id;
+        final String artist;
+        final String name;
 
         Song(int id, String artist, String name) {
             this.id = id;
