@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-/*h1,h2,h3,h4,h5,h6,blockquote {
-  color: #99CC66; 
-}*/
-
 .col-md-8 {
   font-family: "Microsoft YaHei","Hiragino Sans GB W3",Tahoma,Arial;
   text-shadow: 0 0 1px #EEEEEE;
@@ -48,10 +44,6 @@ label.checkbox {
   text-align: center;
 }
 
-.recpatcha div {
-  margin: auto;
-}
-
 .playlist-name {
   width: 300px;
 }
@@ -62,4 +54,12 @@ select, .btn:focus {
 
 #the_player {
   z-index: 99;
+}
+
+.panel h3, .panel h6 {
+  color: white;
+}
+
+.panel-primary .panel-title {
+  color: black;
 }
