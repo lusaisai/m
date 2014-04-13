@@ -11,7 +11,7 @@ return array
 	 * The framework will try to autodetect the url if the value is left empty.
 	 */
 	
-	'base_url' => 'http://ubuntu/m',
+	'base_url' => 'http://localhost/m',
 	
 	/**
 	 * Set to true to hide "index.php" from your urls (this requires mod_rewrite).

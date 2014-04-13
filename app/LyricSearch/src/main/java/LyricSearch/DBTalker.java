@@ -13,7 +13,7 @@ public class DBTalker {
     private static final String USERNAME = "mav";
     private static final String PASSWORD = "mav";
     private static final String DATABASE = "mav";
-    private static final String URL = "jdbc:mysql://ubuntu:3306/" + DATABASE + "?characterEncoding=UTF-8";
+    private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE + "?characterEncoding=UTF-8";
     private Connection con;
     private List<Song> songs = new LinkedList<Song>();
 

@@ -64,6 +64,8 @@ class Admin extends \mako\Controller
             return new View( "admin.data", $data );
         }
 
+        $this->connection->pdo->beginTransaction();
+
         // update the artist
         $query = "select id, name from artist where name_pinyin is null";
         $update_query = "update artist set name_pinyin = ? where id = ?";
@@ -78,6 +80,8 @@ class Admin extends \mako\Controller
         $query = "select id, name from song where name_pinyin is null";
         $update_query = "update song set name_pinyin = ? where id = ?";
         $data['success'] .= static::pinyinUpd($query, $update_query);
+
+        $this->connection->pdo->commit();
 
         return new View( "admin.data", $data );
     }
