@@ -2,8 +2,8 @@
 
 return  array(
 	'dir' => '/mnt/hgfs/Music',
-	'url' => 'http://ubuntu/music',
-	'use_cache' => true
+	'url' => 'http://localhost/music',
+	'use_cache' => false
 	);
 
  ?>
