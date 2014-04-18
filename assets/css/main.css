@@ -56,10 +56,3 @@ select, .btn:focus {
   z-index: 99;
 }
 
-.panel h3, .panel h6 {
-  color: white;
-}
-
-.panel-primary .panel-title {
-  color: black;
-}
