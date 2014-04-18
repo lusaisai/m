@@ -2,7 +2,7 @@
 
 return  array(
 	'dir' => '/mnt/hgfs/Music',
-	'url' => 'http://ubuntu/music',
+	'url' => 'http://ubuntus/music',
 	'use_cache' => true
 	);
 
