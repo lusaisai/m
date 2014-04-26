@@ -32,19 +32,30 @@ class Song extends \mako\Controller {
     }
 
     private function fetchData($pageid = 1) {
+        // $log = \mako\Log::instance();
+        // $log->write("search songs starts");
+        // $log->write(microtime());
+
         $limit = 50;
-        $data = array();
 
         $songIds = $this->searchSongs();
+
+        // $log->write("search songs ends");
+        // $log->write(microtime());
+
         $count = count($songIds);
         $toalPages = ceil($count / $limit);
         if($pageid > $toalPages) $pageid = 1;
         $offset = ($pageid - 1) * $limit;
         $thisPageIds = array_slice($songIds, $offset, $limit);
 
-        foreach ($thisPageIds as $songId) {
-            array_push($data, $this->songInfo($songId));
-        }
+        // $log->write("get songs info starts");
+        // $log->write(microtime());
+
+        $data = $this->songsInfo($thisPageIds);
+
+        // $log->write("get songs info ends");
+        // $log->write(microtime());
 
         return array( 'pageid'=>$pageid, 'count'=>$count, 'limit'=>$limit, 'data'=>$data);
     }
@@ -58,11 +69,11 @@ class Song extends \mako\Controller {
             $type = isset($_GET['type']) ? trim($_GET['type']) : "songname";
 
             if( empty($words) ){
-                $query = "select id from song order by id desc";
+                $query = "select GROUP_CONCAT(id order by id desc) ids from song";
                 return $this->querySongIds(array($query));
             } elseif ( $type == "artistname" ) {
                 $query = "select
-                s.id
+                GROUP_CONCAT(s.id order by s.id desc) ids
                 from song s
                 join album al
                 on   s.album_id = al.id
@@ -79,11 +90,9 @@ class Song extends \mako\Controller {
                     $andQuery .= " and ar.name like $word ";
                     $orQuery .= " or ar.name like $word ";
                 }
-                $andQuery .= " order by id desc ";
-                $orQuery .= " order by id desc ";
             } elseif ( $type == "albumname" ) {
                 $query = "select
-                    s.id
+                    GROUP_CONCAT(s.id order by s.id desc) ids
                     from song s
                     join album al
                     on   s.album_id = al.id
@@ -98,10 +107,8 @@ class Song extends \mako\Controller {
                     $andQuery .= " and al.name like $word ";
                     $orQuery .= " or al.name like $word ";
                 }
-                $andQuery .= " order by id desc ";
-                $orQuery .= " order by id desc ";
             } elseif ( $type == "songname" ) {
-                $query = "select s.id from song s";
+                $query = "select GROUP_CONCAT(s.id order by s.id desc) ids from song s";
                 $pinyinRlikeQuery = $query . " where " . $rlike_pinyin . " rlike s.name_pinyin";
                 $pinyinLikeQuery = $query . " where REPLACE( REPLACE(s.name_pinyin, '(', ''), ')', '' ) like " . $like_pinyin;
                 $andQuery = $query . " where true ";
@@ -112,29 +119,50 @@ class Song extends \mako\Controller {
                     $andQuery .= " and s.name like $word ";
                     $orQuery .= " or s.name like $word ";
                 }
-                $andQuery .= " group by id order by id desc ";
-                $orQuery .= " group by id order by id desc ";
             }
 
             return $this->querySongIds( array( $pinyinRlikeQuery, $pinyinLikeQuery, $andQuery, $orQuery ) );
         }
 
         private function querySongIds( $queries ) {
-            $songIds = array();
-            //$log = \mako\Log::instance();
-
+            $ids = "";
+            // $log = \mako\Log::instance();
+            
             foreach( $queries as $query ) {
-                //$log->write($query);
-                $songs = Database::all($query);
-                foreach ($songs as $song) {
-                    array_push($songIds, $song->id);
-                }
+                // $log->write($query);
+                // $log->write("query starts");
+                // $log->write(microtime());
+                $ids .= Database::column($query);
+                // $log->write("query ends");
+                // $log->write(microtime());
             }
 
-            return array_unique($songIds);
+            // $log->write("array unique starts");
+            // $log->write(microtime());
+            $data = array_unique( explode(",", $ids) );
+            // $log->write("array unique ends");
+            // $log->write(microtime());
+
+            return $data;
         }
 
-        private function songInfo($songId) {
+        private function songsInfo($songIds) {
+            $query = "select
+            s.id, s.name as song_name, ar.name as artist_name, al.name as album_name,
+            case when hot.id is not null then 1 else 0 end as is_hot
+            from song s
+            join album al
+            on   s.album_id = al.id
+            join artist ar
+            on   al.artist_id = ar.id
+            left join topsongs hot
+            on  s.id = hot.id
+            where s.id in ([?])
+            ";
+            return Database::all($query, array($songIds));
+        }
+
+        private function singleSongInfo($songId) {
             $query = "select
             s.id, s.name as song_name, ar.name as artist_name, al.name as album_name,
             case when hot.id is not null then 1 else 0 end as is_hot
