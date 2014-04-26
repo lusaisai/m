@@ -241,7 +241,7 @@ class Admin extends \mako\Controller
 
 	private static function isSong($name)
 	{
-		return preg_match('/(mp3|m4a)$/', $name);
+		return preg_match('/(mp3|m4a)$/i', $name);
 	}
 
     private static function createThumbs($name, $overwrite = false)
