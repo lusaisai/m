@@ -10,7 +10,7 @@ return array
 	 * Default configuration to use.
 	 */
 	
-	'default' => 'native',
+	'default' => 'file',
 
 	/**
 	 * Session name. 

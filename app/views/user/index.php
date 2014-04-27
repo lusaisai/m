@@ -43,7 +43,10 @@
                         $('#playlist').click(function(event) {
                             $("#side li").removeClass('active');
                             $(this).addClass('active');
-                            $('#data').load('/m/user/showplaylist');
+                            $('#data').load('/m/user/showplaylist', function() {
+                                $(this).append('<div class="playlistdetail"></div>');
+                            });
+
                         });
                         $('#info').click(function(event) {
                             $("#side li").removeClass('active');
