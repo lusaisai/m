@@ -6,6 +6,6 @@ public class App
 {
     public static void main( String[] args ) throws SQLException {
         DBTalker db = new DBTalker();
-        db.lyricUpdate();
+        db.updateLyrics();
     }
 }

@@ -1,8 +1,8 @@
 package LyricSearch;
 import java.sql.*;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +15,6 @@ public class DBTalker {
     private static final String DATABASE = "mav";
     private static final String URL = "jdbc:mysql://localhost:3306/" + DATABASE + "?characterEncoding=UTF-8";
     private Connection con;
-    private List<Song> songs = new LinkedList<Song>();
 
     private static class Song {
         final int id;
@@ -42,7 +41,7 @@ public class DBTalker {
         con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
     }
 
-    private void setSongs() {
+    public void updateLyrics() {
         String query = "select\n" +
                 "s.id, s.name as song_name, ar.name as artist_name\n" +
                 "from song s\n" +
@@ -50,15 +49,22 @@ public class DBTalker {
                 "on   s.album_id = al.id\n" +
                 "join artist ar\n" +
                 "on   al.artist_id = ar.id\n" +
-//                "limit 30"
                 "where s.lrc_lyric is null\n"
                 ;
-        songs.clear();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
+            ExecutorService es = Executors.newFixedThreadPool(15);
             while (rs.next()) {
-                songs.add( new Song( rs.getInt("id"), rs.getString("artist_name"), nameCleanUp(rs.getString("song_name")) ) );
+                Song s = new Song( rs.getInt("id"), rs.getString("artist_name"), nameCleanUp(rs.getString("song_name")) );
+                es.execute( new SearchLyrics(s, con) );
+            }
+            es.shutdown();
+
+            try {
+                es.awaitTermination(1, TimeUnit.HOURS);
+            } catch (InterruptedException e) {
+                es.shutdownNow();
             }
         } catch (SQLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -66,11 +72,11 @@ public class DBTalker {
     }
 
     private static class SearchLyrics implements Runnable {
-        private List<Song> songs;
+        private Song song;
         private Connection conn;
 
-        private SearchLyrics(List<Song> songs, Connection conn) {
-            this.songs = songs;
+        private SearchLyrics(Song song, Connection conn) {
+            this.song = song;
             this.conn = conn;
         }
 
@@ -80,42 +86,20 @@ public class DBTalker {
                 Lyricer bLrc = new BaiduLyricer();
                 Lyricer lLrc = new Lrc123Lyricer();
                 PreparedStatement ps = conn.prepareStatement("update song set lrc_lyric = ? where id = ?");
-                conn.setAutoCommit(false);
 
-                for(Song song: songs) {
-                    String lrcLyric = bLrc.findLrcLyric(song.artist, song.name);
-                    if( lrcLyric.equals("") ) {
-                        lrcLyric = lLrc.findLrcLyric(song.artist, song.name);
-                    }
-                    ps.setString(1,lrcLyric);
-                    ps.setInt(2,song.id);
-                    ps.executeUpdate();
+                String lrcLyric = bLrc.findLrcLyric(song.artist, song.name);
+                if( lrcLyric.equals("") ) {
+                    lrcLyric = lLrc.findLrcLyric(song.artist, song.name);
                 }
-                conn.commit();
+                ps.setString(1,lrcLyric);
+                ps.setInt(2,song.id);
+                ps.executeUpdate();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
     }
 
-    public void lyricUpdate() throws SQLException {
-        setSongs();
-        int threadCount = 10;
-        int songsPerThread = this.songs.size() / threadCount + 1;
-
-        ListIterator li = this.songs.listIterator();
-
-        while ( li.hasNext() ) {
-            List<Song> ls = new LinkedList<Song>();
-            for( int i = 0; i < songsPerThread; i++ ) {
-                if ( li.hasNext() ) ls.add((Song)li.next());
-            }
-            Thread t = new Thread(new SearchLyrics(ls, this.con));
-            t.start();
-        }
-
-    }
 
     public static String nameCleanUp(String input) {
         return input.replaceAll("^.*-","").trim()
