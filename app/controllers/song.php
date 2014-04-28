@@ -126,13 +126,13 @@ class Song extends \mako\Controller {
 
         private function querySongIds( $queries ) {
             $ids = "";
-            // $log = \mako\Log::instance();
+            $log = \mako\Log::instance();
             
             foreach( $queries as $query ) {
-                // $log->write($query);
+                $log->write($query);
                 // $log->write("query starts");
                 // $log->write(microtime());
-                $ids .= Database::column($query);
+                $ids = $ids . ',' . Database::column($query);
                 // $log->write("query ends");
                 // $log->write(microtime());
             }
