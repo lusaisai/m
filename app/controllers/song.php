@@ -139,7 +139,7 @@ class Song extends \mako\Controller {
 
             // $log->write("array unique starts");
             // $log->write(microtime());
-            $data = array_unique( explode(",", $ids) );
+            $data = array_filter( array_unique( explode(",", $ids) ) );
             // $log->write("array unique ends");
             // $log->write(microtime());
 
