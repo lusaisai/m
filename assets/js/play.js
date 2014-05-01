@@ -251,9 +251,16 @@ $(document).ready(function(){
             var pagetype = $("#data").attr("pagetype");
 
             reloadGif();
+            if (history.pushState) {
+                history.pushState( 
+                    { fields: $("#searching form").serializeArray() }, 
+                    '',  
+                    base + pagetype + "/index/" + pageid + '?' + $("#searching form").serialize()
+                );
+            }
             $("#data").load( base + pagetype + "/load/" + pageid, $("#searching form").serialize(), function(){
                 songListToggle();
-            } );
+            });
 
         });
 
@@ -265,6 +272,13 @@ $(document).ready(function(){
         $("#searching form").submit(function(){
             var pagetype = $("#data").attr("pagetype");
             reloadGif();
+            if (history.pushState) {
+                history.pushState( 
+                    { fields: $("#searching form").serializeArray() }, 
+                    '',  
+                    base + pagetype + "/index/" + pageid + '?' + $("#searching form").serialize()
+                );
+            }
             $("#data").load( base + pagetype + "/load", $("#searching form").serialize(), function(){
                 songListToggle();
             } );
