@@ -269,19 +269,21 @@ $(document).ready(function(){
             $.getJSON( base + 'playutils/songplay/' + songs, play );
         } )
 
-        $("#searching form").submit(function(){
+        $("#searching form").submit(function(e){
+            e.preventDefault();
             var pagetype = $("#data").attr("pagetype");
             reloadGif();
             if (history.pushState) {
                 history.pushState( 
                     { fields: $("#searching form").serializeArray() }, 
                     '',  
-                    base + pagetype + "/index/" + pageid + '?' + $("#searching form").serialize()
+                    base + pagetype + "/index/?" + $("#searching form").serialize()
                 );
             }
+            
             $("#data").load( base + pagetype + "/load", $("#searching form").serialize(), function(){
                 songListToggle();
-            } );
+            });
             return false;
         });
 
