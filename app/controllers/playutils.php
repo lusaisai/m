@@ -13,7 +13,7 @@ use mako\File;
 class Playutils extends \mako\Controller {
     public function action_songplay($songs = 0, $iflog = false) {
         $query = "select
-            s.id as song_id, s.name as song_name, al.name as album_name, ar.name as artist_name
+            s.id as song_id, s.name as song_name, s.file_name, al.name as album_name, ar.name as artist_name
             from song s
             join album al
             on   s.album_id = al.id
@@ -22,6 +22,9 @@ class Playutils extends \mako\Controller {
             where s.id in ( $songs )
             order by field ( s.id, $songs )
             ";
+        $musicDir = Config::get( "music.dir" );
+        $musicUrlPre = Config::get( "music.url" );
+        
 
         $song_array = array();
         $rows = Database::all($query);
@@ -30,7 +33,7 @@ class Playutils extends \mako\Controller {
             $song["songid"] = $row->song_id;
             $song["title"] = $row->song_name;
             $song["song_info"] = "From: " . $row->artist_name . " - " . $row->album_name;
-            $song["mp3"] = "/music/song/{$row->song_id}/$iflog";
+            $song["mp3"] = "{$musicUrlPre}/{$row->artist_name}/{$row->album_name}/{$row->file_name}";
             array_push($song_array, $song);
         }
 

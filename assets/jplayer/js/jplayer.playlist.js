@@ -412,6 +412,13 @@
 			} else if(index === undefined) {
 				$(this.cssSelector.jPlayer).jPlayer("play");
 			}
+			// add for stats
+			var songid = $('.jp-playlist-current').attr("songid");
+			setTimeout( function() {
+				if( songid == $('.jp-playlist-current').attr("songid") ) {
+					$.post('/music/stats/' + songid);
+				}
+			}, 10 * 1000 );
 		},
 		pause: function() {
 			$(this.cssSelector.jPlayer).jPlayer("pause");
