@@ -39,11 +39,11 @@
 	$(".playlist-name").click(function(event) {
 		var id = $(this).attr('playlistid');
 		$('.playlist-name').removeClass('btn-success');
-		$(".playlistdetail").load( '/m/user/playlistdetail/' + id );
+		$(".playlistdetail").load( '/user/playlistdetail/' + id );
 		$(this).addClass('btn-success');
 	});
 	$('.play-list-pagination a[pageid]').click(function(event) {
 		var pageid = $(this).attr("pageid");
-		$("#playlists").load( "/m/user/showplaylist/" + pageid);
+		$("#playlists").load( "/user/showplaylist/" + pageid);
 	});
 </script>

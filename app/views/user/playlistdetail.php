@@ -27,8 +27,8 @@
         var id = JActive.attr('playlistid');
         bootbox.confirm("You are going to delete playlist " + JActive.closest('.playlist').find('.playlist-name').text() + ", Please confirm.", function(result) {
             if (result) {
-                $.get( '/m/user/deleteplaylist/' + id , function(data) {
-                    $('#data').load('/m/user/showplaylist');
+                $.get( '/user/deleteplaylist/' + id , function(data) {
+                    $('#data').load('/user/showplaylist');
                 });
             };
         }); 
@@ -39,8 +39,8 @@
         var songids = JActive.attr('songids');
         bootbox.prompt("Please enter the new playlist name ", function(result) {
             if (result !== null) {
-                $.get( '/m/user/saveplaylist/' + songids + '/' + result + '/' + playlistid , function(data) {
-                    $('#data').load('/m/user/showplaylist');
+                $.get( '/user/saveplaylist/' + songids + '/' + result + '/' + playlistid , function(data) {
+                    $('#data').load('/user/showplaylist');
                 });
             };
         }); 

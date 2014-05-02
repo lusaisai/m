@@ -69,7 +69,7 @@
 	$('#newplaylist').click(function(event) {
 		bootbox.prompt("Please enter the playlist name", function(playlistName) {                
 			if (playlistName !== null && $.trim(playlistName) !== "" ) {
-		        $.get('/m/user/saveplaylist/' + gatherList() + "/" + playlistName, function(data) {
+		        $.get('/user/saveplaylist/' + gatherList() + "/" + playlistName, function(data) {
 		        	bootbox.alert("Playlist saved");
 		        }).fail( function() {
 		        	bootbox.alert("Failed to save the playlist, please try later");
@@ -79,7 +79,7 @@
 	});
 
 	$('#downloadplaylist').click(function(){
-		window.location = '/m/playutils/download/' + gatherList();
+		window.location = '/playutils/download/' + gatherList();
 	});
 })();	
 

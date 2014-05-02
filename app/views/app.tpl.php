@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" type="image/ico" href="/m/assets/img/favicon.ico"/>
+        <link rel="icon" type="image/ico" href="/assets/img/favicon.ico"/>
         <title><?php include $dir . 'poem.php';?></title>
         <?php include $dir . 'assets.php';?>
     </head>

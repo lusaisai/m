@@ -30,7 +30,7 @@ class Playutils extends \mako\Controller {
             $song["songid"] = $row->song_id;
             $song["title"] = $row->song_name;
             $song["song_info"] = "From: " . $row->artist_name . " - " . $row->album_name;
-            $song["mp3"] = "/m/music/song/{$row->song_id}/$iflog";
+            $song["mp3"] = "/music/song/{$row->song_id}/$iflog";
             array_push($song_array, $song);
         }
 

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var myPlaylist;
-    var base = "/m/";
+    var base = "/";
     // var playerY = $("#the_player").position().top;
     var playerY = 40;
     var lrc = new Lyricer();
@@ -24,7 +24,7 @@ $(document).ready(function(){
         var currentTime = event.jPlayer.status.currentTime;
 
         if ( currentSongId !== localStorage.getItem('currentsongid') ) {
-            $.get('/m/playutils/showdynamiclyric/' + currentSongId, function(data) {
+            $.get('/playutils/showdynamiclyric/' + currentSongId, function(data) {
                 lrc.setLrc(data);
                 lrc.move(currentTime);
             });
@@ -171,7 +171,7 @@ $(document).ready(function(){
             }, [],
             {
                 supplied: "m4a, mp3",
-                swfPath: "/m/assets/jplayer/js",
+                swfPath: "/assets/jplayer/js",
                 solution: 'html, flash',
                 smoothPlayBar: true,
                 keyEnabled: true,

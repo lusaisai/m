@@ -33,7 +33,7 @@
         $('#playlist').click(function(event) {
             $("#side li").removeClass('active');
             $(this).addClass('active');
-            $('#data').load('/m/user/showplaylist', function() {
+            $('#data').load('/user/showplaylist', function() {
                 $(this).append('<div class="playlistdetail"></div>');
             });
 
@@ -41,12 +41,12 @@
         $('#info').click(function(event) {
             $("#side li").removeClass('active');
             $(this).addClass('active');
-            $('#data').load('/m/user/updateinfo');
+            $('#data').load('/user/updateinfo');
         });
         $('#admin').click(function(event) {
             $("#side li").removeClass('active');
             $(this).addClass('active');
-            $('#data').load('/m/user/showadmin');
+            $('#data').load('/user/showadmin');
         });
     </script>
 {% endblock %}
