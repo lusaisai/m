@@ -11,7 +11,7 @@ return array
 	 * The framework will try to autodetect the url if the value is left empty.
 	 */
 	
-	'base_url' => 'http://ubuntus/m',
+	'base_url' => 'http://music.ubuntus.com',
 	
 	/**
 	 * Set to true to hide "index.php" from your urls (this requires mod_rewrite).
@@ -23,7 +23,7 @@ return array
 	 * URL or path to your asset directory (without trailing slash).
 	 */
 
-	'asset_location' => '/m/assets',
+	'asset_location' => '/assets',
 
 	/**
 	 * Secret used to provide cryptographic signing, and should be set to a unique, unpredictable value.

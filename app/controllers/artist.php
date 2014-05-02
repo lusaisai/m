@@ -136,6 +136,8 @@ class Artist extends \mako\Controller
         $artistIDs = array();
 
         foreach( $queries as $query ) {
+            $log = \mako\Log::instance();
+            $log->write($query);
             $artists = Database::all($query);
             foreach ($artists as $artist) {
                 array_push($artistIDs, $artist->id);
