@@ -44,8 +44,11 @@ class Home extends \mako\Controller
 		} else {
 			$userid = 0;
 		}
-		$data = array('topSongs' => $this->topSongs( $userid, $time ) );
-		return new View( 'home.topsongstags', $data );
+
+		$this->response->type('application/json');
+
+		return json_encode($this->topSongs( $userid, $time ));
+
 	}
 
 	public function topSongs( $userid = 0, $time = "all" )
@@ -72,9 +75,9 @@ class Home extends \mako\Controller
 		}
 		$query .= " group by 1,2
 		order by cnt desc
-		limit 15
+		limit 30
 		";
-		return Database::query($query);
+		return Database::all($query);
 	}
 
 	public function action_topartistdata( $user = "all", $time = "all")

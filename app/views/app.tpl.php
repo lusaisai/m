@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" type="image/ico" href="/assets/img/favicon.ico"/>
         <title><?php include $dir . 'poem.php';?></title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <?php include $dir . 'assets.php';?>
     </head>
     <body>

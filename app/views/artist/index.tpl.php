@@ -18,7 +18,7 @@
 {% block:main %}
     <?php $dir = MAKO_APPLICATION_PATH . "/views/artist/" ?>
     <div id="searching">
-        <form class="form-inline form-search" method="get">
+        <form class="form-inline form-search" method="get" autocomplete="off">
             <input data-provide="typeahead" name="words" style="width:350px" type="text" class="typeahead form-control" placeholder="品冠">
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
             <select class="type form-control" name="type" style="width:138px">

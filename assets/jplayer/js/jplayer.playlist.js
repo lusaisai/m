@@ -403,6 +403,8 @@
 			}
 		},
 		play: function(index) {
+			var oldsongid = $('.jp-playlist-current').attr("songid");
+
 			index = (index < 0) ? this.original.length + index : index; // Negative index relates to end of array.
 			if(0 <= index && index < this.playlist.length) {
 				if(this.playlist.length) {
@@ -412,11 +414,12 @@
 			} else if(index === undefined) {
 				$(this.cssSelector.jPlayer).jPlayer("play");
 			}
+
 			// add for stats
-			var songid = $('.jp-playlist-current').attr("songid");
+			var newsongid = $('.jp-playlist-current').attr("songid");
 			setTimeout( function() {
-				if( songid == $('.jp-playlist-current').attr("songid") ) {
-					$.post('/music/stats/' + songid);
+				if( oldsongid != newsongid && newsongid == $('.jp-playlist-current').attr("songid") ) {
+					$.post('/music/stats/' + newsongid);
 				}
 			}, 10 * 1000 );
 		},

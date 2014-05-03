@@ -134,20 +134,7 @@ $(document).ready(function(){
         $(window).focus(function(event) {
             $(canvasid).tagcanvas("resume");
         });
-        $("#topsongs .timeline label").click(function() {
-            var time = $(this).attr("time");
-            var user = $("#topsongs .userstatus .active").attr("user");
-            $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
-                $(canvasid).tagcanvas("reload");
-            });
-        });
-        $('#topsongs .userstatus label').not(".disabled").click(function() {
-            var user = $(this).attr("user");
-            var time = $("#topsongs .timeline .active").attr("time");
-            $("#topSongsTags").load(base + "home/topsongdata/" + user + "/" + time + "/" , function () {
-                $(canvasid).tagcanvas("reload");
-            });
-        });
+        
         $("#topartists .timeline label").click(function() {
             var time = $(this).attr("time");
             var user = $("#topartists .userstatus .active").attr("user");
@@ -223,6 +210,11 @@ $(document).ready(function(){
 
         $("#data").on( 'click','.song-play', function(){
             var songID = $(this).attr('songid');
+            $.getJSON( base + 'playutils/songplay/' + songID, play );
+        });
+
+        $("#top-song-cloud").on( 'click','text', function(){
+            var songID = $(this).attr('song-id');
             $.getJSON( base + 'playutils/songplay/' + songID, play );
         });
 
@@ -306,8 +298,6 @@ $(document).ready(function(){
     var run= function () {
         songListToggle();
         plays();
-        setTagCanvas( "#topSongs", "topSongsTags" );
-        setTagCanvas( "#topArtists", "topArtistsTags" );
     };
 
     run();

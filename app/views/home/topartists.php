@@ -23,9 +23,4 @@
   </label>
 </div>
 
-<div class="cw">
-	<canvas width="800" height="500" id="topArtists"></canvas>
-</div>
-<div id="topArtistsTags">
-<?php include 'topartiststags.php'; ?>
-</div>
+<div id="top-artists"></div>

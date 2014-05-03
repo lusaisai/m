@@ -1,5 +1,5 @@
 <?php
-    Assets::add('jquery-js', '/js/jquery-2.1.0.min.js');
+    // Assets::add('jquery-js', '/js/jquery-2.1.0.min.js');
 
     Assets::add('lyricer-js', '/Lyricer/lyricer-1.0.0.min.js');
     Assets::add('lyricer-css', '/Lyricer/lyricer-1.0.0.min.css');
@@ -11,10 +11,12 @@
     Assets::add('jplayer-js', '/jplayer/js/jquery.jplayer.min.js');
     Assets::add('jplayer-playlist-js', '/jplayer/js/jplayer.playlist.js');
 
-    Assets::add('tagcanvas-js', '/js/jquery.tagcanvas.min.js');
-
     Assets::add('play-js', '/js/play.js');
     Assets::add('complete-js', '/js/complete.js');
+
+
+    Assets::add('d3-js', '/js/d3.min.js');
+    Assets::add('d3-cloud-js', '/js/d3.layout.cloud.js');
 
     Assets::add('bootstrap-css', '/bootstrap/css/bootstrap.min.css');
     Assets::add('bootstrap-js', '/bootstrap/js/bootstrap.min.js');

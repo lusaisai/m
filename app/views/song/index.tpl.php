@@ -18,7 +18,7 @@
 {% block:main %}
     <?php $dir = MAKO_APPLICATION_PATH . "/views/song/" ?>
     <div id="searching">
-        <form class="form-inline form-search" method="get">
+        <form class="form-inline form-search" method="get" autocomplete="off">
             <input name="words" data-provide="typeahead" style="width:350px" type="text" class="typeahead form-control" placeholder="后来的我们">
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
             <select class="type form-control" name="type" style="width:138px">

@@ -42,7 +42,7 @@ class Artist extends \mako\Controller
         }
 
         $data = array( 'pageid'=>1, 'count'=>1, 'limit'=>1, 'data'=>array($this->artistInfo($id)) );
-        $view = View("artist.index", $data);
+        $view = new View("artist.index", $data);
         if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
         return $view;
     }
