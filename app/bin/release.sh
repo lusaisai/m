@@ -11,6 +11,11 @@ cp -r $PROJECT_HOME/assets $TARGET_DIR
 cp -r $PROJECT_HOME/vendor $TARGET_DIR
 cp -r $PROJECT_HOME/index.php $TARGET_DIR
 
+rm -f $TARGET_DIR/app/storage/cache/*
+rm -f $TARGET_DIR/app/storage/logs/*
+rm -f $TARGET_DIR/app/storage/sessions/*
+rm -f $TARGET_DIR/app/storage/templates/*
+
 cd $TARGET_DIR/..
 tar -zcvf $TARGET_ZIP `basename $TARGET_DIR`
 
