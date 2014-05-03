@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use mako\Config;
 use mako\Database;
 use mako\View;
 use mako\Validate;
@@ -201,7 +202,10 @@ class User extends \mako\Controller
 
     public function action_logout()
     {
-        Hash::clear_cache();
+        if (Config::get('music.use_cache')) {
+            Hash::clear_cache();
+        }
+        
         Session::destroy();
         Session::regenerate();
         $this->response->redirect('user/login');

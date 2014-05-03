@@ -11,7 +11,7 @@ return array
 	 * The framework will try to autodetect the url if the value is left empty.
 	 */
 	
-	'base_url' => 'http://music.ubuntud.com',
+	'base_url' => 'http://music.ubuntux.com',
 	
 	/**
 	 * Set to true to hide "index.php" from your urls (this requires mod_rewrite).
