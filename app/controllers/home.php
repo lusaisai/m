@@ -64,16 +64,20 @@ class Home extends \mako\Controller
 				$backdays = 365 * 100;
 				break;
 		}
-		$query = "select l.song_id, s.name as song_name, count(*) as cnt
+		$query = "select l.song_id, s.name as song_name, ar.name artist_name, count(*) as cnt
 		from playlogs l
 		join song s
 		on   l.song_id = s.id
+		join album al
+		on   s.album_id = al.id
+		join artist ar
+		on   al.artist_id = ar.id
 		where date(l.play_ts) >= date_sub( CURRENT_DATE, interval $backdays day )
 		";
 		if ($userid) {
 			$query .= " and l.user_id = $userid ";
 		}
-		$query .= " group by 1,2
+		$query .= " group by 1,2,3
 		order by cnt desc
 		limit 30
 		";
@@ -87,8 +91,12 @@ class Home extends \mako\Controller
 		} else {
 			$userid = 0;
 		}
+
+		$this->response->type('application/json');
+
+		return json_encode($this->topSongs( $userid, $time ));
 		$data = array('topArtists' => $this->topArtists( $userid, $time ) );
-		return new View( 'home.topartiststags', $data );
+		return new View( 'home.topartistslist', $data );
 	}
 
 	public function topArtists( $userid = 0, $time = "all" )
@@ -121,7 +129,7 @@ class Home extends \mako\Controller
 		}
 		$query .= " group by 1,2,3
 		order by cnt desc
-		limit 15
+		limit 10
 		";
 		return Database::query($query);
 	}

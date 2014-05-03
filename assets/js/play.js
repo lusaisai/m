@@ -96,60 +96,6 @@ $(document).ready(function(){
         window.mPlayList = myPlaylist; // exposed to window object for other javascripts to use
     };
 
-    var canvasClick = function (argument) {
-        $("#topSongsTags").on( 'click','li.topsongs a', function() {
-            var songid = $(this).attr("songid");
-            $.getJSON( base + 'playutils/songplay/' + songid + "/0", play );
-        });
-    }
-
-    var setTagCanvas = function ( canvasid, tagid ) {
-        canvasClick();
-
-        if(! $(canvasid).tagcanvas({
-                textColour : '#00f',
-                textHeight : 25,
-                outlineColour : '#ff9999',
-                maxSpeed : 0.03,
-                minSpeed : 0.005,
-                minBrightness : 0.2,
-                depth : 0.92,
-                pulsateTo : 0.6,
-                initial : [0.1,-0.1],
-                decel : 0.98,
-                reverse : true,
-                hideTags : true,
-                shadow : '#ccf',
-                shadowBlur : 3,
-                weight : false,
-                imageScale : null,
-                fadeIn : 1000
-                }, tagid) ) {
-            $(canvasid).hide();
-        }
-
-        $(window).blur(function(event) {
-            $(canvasid).tagcanvas("pause");
-        });
-        $(window).focus(function(event) {
-            $(canvasid).tagcanvas("resume");
-        });
-        
-        $("#topartists .timeline label").click(function() {
-            var time = $(this).attr("time");
-            var user = $("#topartists .userstatus .active").attr("user");
-            $("#topArtistsTags").load(base + "home/topartistdata/" + user + "/" + time + "/" , function () {
-                $(canvasid).tagcanvas("reload");
-            });
-        });
-        $('#topartists .userstatus label').not(".disabled").click(function() {
-            var user = $(this).attr("user");
-            var time = $("#topartists .timeline .active").attr("time");
-            $("#topArtistsTags").load(base + "home/topartistdata/" + user + "/" + time + "/" , function () {
-                $(canvasid).tagcanvas("reload");
-            });
-        });
-    };
 
     myPlaylist = new jPlayerPlaylist(
             {

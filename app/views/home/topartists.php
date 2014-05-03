@@ -23,4 +23,6 @@
   </label>
 </div>
 
-<div id="top-artists"></div>
+<div id="top-artists">
+  <?php include 'topartistslist.php'; ?>
+</div>

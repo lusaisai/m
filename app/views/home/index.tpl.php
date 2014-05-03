@@ -23,7 +23,4 @@
     <div id="topsongs" class="tops">
         <?php include $dir . 'topsongs.php'; ?>
     </div>
-    <div id="topartists" class="tops">
-        <?php include $dir . 'topartists.php'; ?>
-    </div>
 {% endblock %}

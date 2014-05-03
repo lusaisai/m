@@ -87,4 +87,5 @@
   $('#topsongs .userstatus label').not(".disabled").click(fetchData);
 
 })();
+
 </script>

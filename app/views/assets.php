@@ -14,7 +14,6 @@
     Assets::add('play-js', '/js/play.js');
     Assets::add('complete-js', '/js/complete.js');
 
-
     Assets::add('d3-js', '/js/d3.min.js');
     Assets::add('d3-cloud-js', '/js/d3.layout.cloud.js');
 
