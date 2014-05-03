@@ -421,7 +421,7 @@
 				if( oldsongid != newsongid && newsongid == $('.jp-playlist-current').attr("songid") ) {
 					$.post('/music/stats/' + newsongid);
 				}
-			}, 10 * 1000 );
+			}, 60 * 1000 );
 		},
 		pause: function() {
 			$(this.cssSelector.jPlayer).jPlayer("pause");

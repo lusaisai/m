@@ -6,16 +6,21 @@ use mako\Config;
 
 
 class Song extends \mako\Controller {
+    public function before()
+    {
+        $this->cache = new DefaultCache();
+    }
+
     public function action_index($pageid = 1) {
         $_GET['pageid'] = $pageid;
         $isCache = Config::get('music.use_cache');
         if ($isCache) {
-            $result = Hash::find_cache($this->request->controller(), $this->request->action(), $_GET );
+            $result = $this->cache->find_cache($this->request->controller(), $this->request->action(), $_GET );
             if ($result) return $result;
         }
 
         $view = new View("song.index", $this->fetchData($pageid));
-        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
+        if ($isCache) $this->cache->store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
         return $view;
     }
 
@@ -23,11 +28,11 @@ class Song extends \mako\Controller {
         $_GET['pageid'] = $pageid;
         $isCache = Config::get('music.use_cache');
         if ($isCache) {
-            $result = Hash::find_cache($this->request->controller(), $this->request->action(), $_GET );
+            $result = $this->cache->find_cache($this->request->controller(), $this->request->action(), $_GET );
             if ($result) return $result;
         }
         $view = new View("song.data", $this->fetchData($pageid));
-        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
+        if ($isCache) $this->cache->store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
         return $view;
     }
 

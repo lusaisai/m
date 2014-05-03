@@ -7,16 +7,21 @@ use mako\Config;
 
 class Artist extends \mako\Controller
 {
-	public function action_index($pageid = 1)
+	public function before()
+    {
+        $this->cache = new DefaultCache();
+    }
+
+    public function action_index($pageid = 1)
 	{
         $isCache = Config::get('music.use_cache');
         if ($isCache) {
-            $result = Hash::find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
+            $result = $this->cache->find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
             if ($result) return $result;
         }
 
         $view = new View("artist.index", $this->fetchData($pageid));
-        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
+        if ($isCache) $this->cache->store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
         return $view;
 	}
 
@@ -24,12 +29,12 @@ class Artist extends \mako\Controller
 	{
         $isCache = Config::get('music.use_cache');
         if ($isCache) {
-            $result = Hash::find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
+            $result = $this->cache->find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
             if ($result) return $result;
         }
 
         $view = new View("artist.data", $this->fetchData($pageid));
-        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
+        if ($isCache) $this->cache->store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
         return $view;
 	}
 
@@ -37,13 +42,13 @@ class Artist extends \mako\Controller
     {
         $isCache = Config::get('music.use_cache');
         if ($isCache) {
-            $result = Hash::find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
+            $result = $this->cache->find_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ) );
             if ($result) return $result;
         }
 
         $data = array( 'pageid'=>1, 'count'=>1, 'limit'=>1, 'data'=>array($this->artistInfo($id)) );
         $view = new View("artist.index", $data);
-        if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
+        if ($isCache) $this->cache->store_cache($this->request->controller(), $this->request->action(), array_merge( array('pageid'=>$pageid), $_GET ), $view);
         return $view;
     }
 

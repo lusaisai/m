@@ -10,18 +10,23 @@ use mako\Config;
 
 class Home extends \mako\Controller
 {
+	public function before()
+	{
+		$this->cache = new DefaultCache();
+	}
+
 	public function action_index()
 	{
 
 		$isCache = Config::get('music.use_cache');
 		if ($isCache) {
-			$result = Hash::find_cache($this->request->controller(), $this->request->action(), $_GET );
+			$result = $this->cache->find_cache($this->request->controller(), $this->request->action(), $_GET );
 			if ($result) return $result;
 		}
 
 		$data = array('topSongs' => $this->topSongs(), 'topArtists' => $this->topArtists() );
 		$view = new View( 'home.index', $data );
-		if ($isCache) Hash::store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
+		if ($isCache) $this->cache->store_cache($this->request->controller(), $this->request->action(), $_GET, $view);
 		return $view;
 	}
 

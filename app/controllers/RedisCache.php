@@ -2,27 +2,24 @@
 
 namespace app\controllers;
 
-use \Redis;
+
 use \mako\Session;
 
-/**
-* To hash a request and cache the result
-*/
-class Hash
+class RedisCache implements Cache
 {
 	const REDIS_SERVER = '127.0.0.1';
 	const REDIS_ENTRY_PREFIX = 'page_cache:';
 
-	public static function hash($controller, $action, $queries)
+	public static function hashRequest($controller, $action, $queries)
 	{
 		$text_string = $controller . $action . static::array_to_string($queries);
 		return hash('md5', $text_string);
 	}
 
-	public static function find_cache( $controller, $action, $queries)
+	public function find_cache( $controller, $action, $queries)
 	{
 
-		$page_key = static::hash($controller, $action, $queries);
+		$page_key = static::hashRequest($controller, $action, $queries);
 		try {
 			$redis = new Redis();
 			$redis->connect(static::REDIS_SERVER);
@@ -34,10 +31,10 @@ class Hash
 		
 	}
 
-	public static function store_cache($controller, $action, $queries, $view)
+	public function store_cache($controller, $action, $queries, $view)
 	{
 		
-		$page_key = static::hash($controller, $action, $queries);
+		$page_key = static::hashRequest($controller, $action, $queries);
 		try {
 			$redis = new Redis();
 			$redis->connect(static::REDIS_SERVER);
@@ -50,20 +47,7 @@ class Hash
 		
 	}
 
-	public static function clear_cache()
-	{
-		try {
-			$redis = new Redis();
-			$redis->connect(static::REDIS_SERVER);
-			$entry = static::REDIS_ENTRY_PREFIX . Session::get('userid', ''); 
-			$redis->del( $entry );
-			return true;
-		} catch (Exception $e) {
-			return false;
-		}
-	}
-
-	public static function clear_cache_all()
+	public function clear_cache()
 	{
 		try {
 			$redis = new Redis();

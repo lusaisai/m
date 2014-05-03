@@ -41,7 +41,7 @@ return array
 		(
 			'type'          => 'Database',
 			'identifier'    => MAKO_APPLICATION_ID,
-			'configuration' => 'test',
+			'configuration' => 'mysql',
 			'table'         => 'mako_cache',
 		),
 

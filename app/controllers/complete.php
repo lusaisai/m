@@ -7,12 +7,10 @@ use mako\Request;
 use mako\Database;
 use mako\Session;
 use mako\Config;
-use \Redis;
+
 
 class Complete extends \mako\Controller
 {
-	const REDIS_SERVER = '127.0.0.1';
-	const REDIS_ENTRY = 'complete_cache:';
 
 	public function before()
 	{
@@ -24,7 +22,7 @@ class Complete extends \mako\Controller
 	public function action_artist()
 	{
 		if ($this->isCache) {
-			$result = $this->get_redis_cache();
+			$result = $this->get_cache();
 			if($result) return $result;
 		}
 
@@ -36,14 +34,14 @@ class Complete extends \mako\Controller
 			$names = Database::column($query);
         	$result = json_encode( array_values(array_unique(explode(',', $names))) );
 		}
-        if ($this->isCache) $this->store_redis_cache($result);
+        if ($this->isCache) $this->store_cache($result);
         return $result;
 	}
 
 	public function action_album()
 	{
 		if ($this->isCache) {
-			$result = $this->get_redis_cache();
+			$result = $this->get_cache();
 			if($result) return $result;
 		}
 
@@ -56,14 +54,14 @@ class Complete extends \mako\Controller
         	$result = json_encode( array_values(array_unique(explode(',', $names))) );
 		}
 		
-        if ($this->isCache) $this->store_redis_cache($result);
+        if ($this->isCache) $this->store_cache($result);
         return $result;
 	}
 
 	public function action_song()
 	{
 		if ($this->isCache) {
-			$result = $this->get_redis_cache();
+			$result = $this->get_cache();
 			if($result) return $result;
 		}
 
@@ -76,32 +74,20 @@ class Complete extends \mako\Controller
         	$result = json_encode( array_values( array_unique(explode(',', $names)) ) );
 		}
 		
-        if ($this->isCache) $this->store_redis_cache($result);
+        if ($this->isCache) $this->store_cache($result);
         return $result;
 	}
 
-	private function get_redis_cache()
+	private function get_cache()
 	{
-		$key = Hash::hash($this->request->controller(), $this->request->action(), $_GET);
-		try {
-			$redis = new Redis();
-			$redis->connect(static::REDIS_SERVER);
-        	return $redis->hGet( static::REDIS_ENTRY, $key );
-		} catch (Exception $e) {
-			return false;
-		}
+		$key = DefaultCache::hashRequest($this->request->controller(), $this->request->action(), $_GET);
+		return \mako\Cache::read($key);
 	}
 
-	private function store_redis_cache($value)
+	private function store_cache($value)
 	{
-		$key = Hash::hash($this->request->controller(), $this->request->action(), $_GET);
-		try {
-			$redis = new Redis();
-			$redis->connect(static::REDIS_SERVER);
-        	return $redis->hSet( static::REDIS_ENTRY, $key, $value );
-		} catch (Exception $e) {
-			return false;
-		}
+		$key = DefaultCache::hashRequest($this->request->controller(), $this->request->action(), $_GET);
+		return \mako\Cache::write($key, $value);
 	}
 
 
