@@ -241,9 +241,17 @@ $(document).ready(function(){
         $('.jp-shuffle').click(playlistTooltip);
     }
 
+    // connect to site every interval seconds
+    var heartBeat = function(interval) {
+        setInterval( function() {
+            $.get('/playutils/heartbeat/');
+        }, interval * 1000);
+    };
+
     var run= function () {
         songListToggle();
         plays();
+        heartBeat(8);
     };
 
     run();

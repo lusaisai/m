@@ -11,6 +11,11 @@ use mako\File;
  * @author lusaisai
  */
 class Playutils extends \mako\Controller {
+    public function action_heartbeat()
+    {
+        return;
+    }
+
     public function action_songplay($songs = 0, $iflog = false) {
         $query = "select
             s.id as song_id, s.name as song_name, s.file_name, al.name as album_name, ar.name as artist_name
