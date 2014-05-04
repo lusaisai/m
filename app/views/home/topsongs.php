@@ -70,7 +70,7 @@
       .enter()
       .append("text")
       .style("font-size", function(d) { return d.size + "px"; })
-      .style("font-family", "Impact")
+      // .style("font-family", "Impact")
       .style("fill", function(d, i) { return fill(i); })
       .attr('song-id', function(d){return d.song_id;})
       .attr("text-anchor", "middle")

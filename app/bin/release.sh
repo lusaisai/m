@@ -20,4 +20,5 @@ cd $TARGET_DIR/..
 tar -zcvf $TARGET_ZIP `basename $TARGET_DIR`
 
 echo "Please upload and extract $TARGET_ZIP using file manager of godaddy"
+echo "You may want to clear cache"
 echo "Please modify .htaccess of url rewrite if it is the first release"
