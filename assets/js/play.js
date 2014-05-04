@@ -251,7 +251,7 @@ $(document).ready(function(){
     var run= function () {
         songListToggle();
         plays();
-        heartBeat(8);
+        // heartBeat(30);
     };
 
     run();
